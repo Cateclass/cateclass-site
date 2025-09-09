@@ -49,7 +49,7 @@
         <div>
 
             <!-- Consertar área do click -->
-            <a class="flex items-center gap-[20px] mt-[20px] ml-[20px] w-fit" href="../index.php">
+            <a class="flex items-center gap-[20px] mt-[20px] ml-[20px] w-fit" href="../">
 
                 <img src="./assets/img/logo-escolink.png" alt="escolink">
 
