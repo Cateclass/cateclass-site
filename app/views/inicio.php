@@ -86,6 +86,32 @@
         </nav>
 
     </header>
+
+    <main class="h-screen">
+
+        <section class="h-[calc(1024px - 64px)] border-2 border-black">
+
+            <div class="border-2 border-black w-[300px] h-[300px]" id="inicio">
+
+                <h1 class="text-[64px] font-bold">Escolink</h1>
+
+                <p class="text-justify mb-[20px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ullam in optio? Accusantium suscipit sunt obcaecati corrupti ut maxime facere explicabo culpa minima, aperiam recusandae quasi perferendis laboriosam similique eum?</p>
+
+                <a class="bg-[#022E51] text-white py-[10px] px-[20px] rounded-[10px]" href="./views/login.php">Entrar</a>
+
+                <a class="border-2 border-[#022E51] py-[10px] px-[20px] rounded-[10px]" href="#">Baixar o Escolink</a>
+
+            </div>
+
+        </section>
+
+        <!-- Sobre -->
+        <section></section>
+
+        <!-- Contato -->
+        <section></section>
+
+    </main>
     
 </body>
 
