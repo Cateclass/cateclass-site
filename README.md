@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/logo-escolink.png" alt="Logo Escolink" width="400"/>
+  <img src="docs/logo-cateclass.png" alt="Logo Escolink" width="400"/>
 </p>
 
 # 📘 Escolink
