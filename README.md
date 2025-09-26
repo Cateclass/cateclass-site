@@ -3,7 +3,7 @@
 </p>
 
 
-✝️ Cateclass
+✝️ **Cateclass**
 
 Plataforma para gestão de catequese integrada
 
