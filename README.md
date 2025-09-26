@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="documentos/logo-cateclass.png" alt="Logo Cateclass" width="400"/>
+  <img src="docs/logo-cateclass.png" alt="Logo Cateclass" width="400"/>
 </p>
 
 
