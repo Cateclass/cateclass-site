@@ -3,9 +3,9 @@
 </p>
 
 
-# 📘 Escolink
+✝️ Cateclass
 
-Plataforma para gestão escolar integrada
+Plataforma para gestão de catequese integrada
 
 ---
 
@@ -25,29 +25,32 @@ Curso de Tecnologia em Desenvolvimento de Software Multiplataforma
 2. [Objetivos](#2-objetivos)  
 3. [Funcionalidades](#3-funcionalidades)  
 4. [Tecnologias utilizadas](#4-tecnologias-utilizadas)  
-5. [Documentos do projeto](#5-documentos-do-projeto)
+5. [Documentos do projeto](#6-documentos-do-projeto)
 
 ---
 
 ### 1. Resumo da aplicação web  
-O **Escolink** é uma plataforma desenvolvida para facilitar a comunicação e organização no ambiente escolar.  
-Muitas vezes, pais, alunos e professores enfrentam dificuldades com a troca de informações e controle de atividades.  
-O sistema busca centralizar essas informações, tornando a comunicação mais rápida, prática e acessível.  
+O **Cateclass** é uma plataforma desenvolvida para facilitar a comunicação e a organização na catequese. Muitas vezes, catequistas, pais e catequizandos enfrentam dificuldades com a troca de informações e o controle das atividades. O sistema busca centralizar essas informações, tornando a comunicação mais rápida, prática e acessível.  .  
 
 ---
 
 ### 2. Objetivos  
-- Facilitar a comunicação entre escola, professores, pais e alunos.  
-- Organizar tarefas, provas, eventos e comunicados escolares.  
-- Oferecer um ambiente acessível via computador ou celular.  
+Facilitar a comunicação entre a paróquia, catequistas, pais e catequizandos.
+
+Organizar encontros, eventos e comunicados da catequese.
+
+Oferecer um ambiente acessível via computador ou celular.  .  
 
 ---
 
 ### 3. Funcionalidades  
-- 📚 **Boletim Online**: acompanhamento do desempenho dos alunos.  
-- 📝 **Tarefas e Atividades**: controle de atividades e prazos.  
-- 📅 **Agenda Escolar**: eventos e calendário escolar.  
-- 📢 **Comunicados**: envio de mensagens importantes pela direção ou coordenação.  
+✝️ Acompanhamento: Acompanhamento do desempenho dos catequizandos.
+
+📝 Atividades e Lições: controle de atividades e prazos.
+
+📅 Agenda da Catequese: eventos e calendário da catequese.
+
+📢 Comunicados: envio de mensagens importantes pela coordenação.   
 
 ---
 
@@ -58,8 +61,11 @@ O sistema busca centralizar essas informações, tornando a comunicação mais r
 - **Versionamento:** Git/GitHub  
 
 ---
+### 5.Local e Escopo
+Inicialmente, o Cateclass está sendo desenvolvido para atender às necessidades de gestão da **Paróquia São Benedito**. No futuro, há planos para expandir a plataforma, tornando-a acessível e adaptável para outras paróquias e comunidades.
 
-### 5. Documentos do projeto  
+---
+### 6. Documentos do projeto  
 📂 [Documentação Completa](./documentos)  
 📂 [Recursos do Aplicativo](./aplicativo/recursos)  
 📄 [Apresentações](./documentos/apresentacao.pdf)  
