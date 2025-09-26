@@ -62,7 +62,7 @@ Oferecer um ambiente acessível via computador ou celular.  .
 
 ---
 ### 5.Local e Escopo
-Inicialmente, o Cateclass está sendo desenvolvido para atender às necessidades de gestão da **Paróquia São Benedito**. No futuro, há planos para expandir a plataforma, tornando-a acessível e adaptável para outras paróquias e comunidades.
+Inicialmente, o Cateclass está sendo desenvolvido para atender às necessidades de gestão da **Paróquia São Benedito**,No futuro há planos para expandir a plataforma, tornando-a acessível e adaptável para outras paróquias e comunidades.
 
 ---
 ### 6. Documentos do projeto  
