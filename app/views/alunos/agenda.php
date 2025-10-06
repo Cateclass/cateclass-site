@@ -14,11 +14,11 @@
     <!-- TailwindCSS CLI -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <title>Lucas Gabriel | Home</title>
+    <title>Lucas Gabriel | Agenda</title>
 
 </head>
 
-<body class="flex bg-[#E9F0FF]">
+<body class="flex">
 
     <!-- Importando sidebar -->
     <?php require_once "sidebar.php"; ?>
@@ -26,7 +26,7 @@
     <!-- Main -->
     <main class="p-[20px]">
 
-        <h1 class="text-[36px]">Bem-vindo(a) de volta Lucas! 👋</h1>
+        <h1 class="text-[36px]">Agenda</h1>
 
     </main>
     
