@@ -14,105 +14,50 @@
     <!-- TailwindCSS CLI -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <title>Início | Escolink</title>
+    <title>São Benedito | Início</title>
 
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="w-screen h-[64px] bg-[#022E51] text-white">
+    <header class="flex items-center justify-between p-[20px] px-[100px] border-b-1 border-black">
 
-        <!-- Navbar -->
-        <nav class="flex justify-around items-center gap-x-[50px] w-screen">
+        <img class="w-[261px]" src="http://localhost/projetos/cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
 
-            <!-- Logo -->
-            <a class="flex items-center gap-[10px]" href="./">
-                <img class="w-[64px] h-[64px] border-2 border-white rounded-[50%]" src="./views/assets/img/logo-escolink.png" alt="">
-                <p class="">Escolink</p>
-            </a>
+        <nav>
 
-            <!-- Links -->
-            <div 
-                class="
-                flex items-center
-                
-                max-sm:hidden"
-            >
-                <ul class="flex gap-[50px]">
-                    <li><a href="#">Início</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="./views/login.php">Login</a></li>
-                </ul>
-            </div>
-
-            <div 
-                class="
-                text-white hidden
-
-                max-sm:block"
-            >
-                <span class="material-symbols-outlined" style="font-size: 40px;">
-                    menu
-                </span>
-            </div>
-
-            <!-- Dark Mode -->
-            <div class="flex items-center ">
-
-                <div class="flex p-2 items-center w-[100px] h-[50px] border-1 border-black rounded-[30px] bg-white">
-
-                    <div class="flex items-center">
-
-                        <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[25px] bg-[#022E51]">
-                            <span class="material-symbols-outlined">
-                                wb_sunny
-                            </span>
-                        </div>
-
-                        <div class="hidden">
-                            <span class="material-symbols-outlined">
-                                dark_mode
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            <ul class="flex gap-[30px] uppercase font-bold">
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Paróquia</a></li>
+                <li><a href="#">Catecismo</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
 
         </nav>
 
     </header>
 
-    <main class="h-screen">
+    <section
+        class="
+        flex items-center justify-center 
+        h-[calc(100vh_-_87px)] bg-cover bg-center relative"
+        style="background-image: url('http://localhost/projetos/cateclass-site/app/views/assets/img/igreja-interna.jpg')"
+      >
+    </section>
 
-        <section class="h-[calc(1024px - 64px)] border-2 border-black">
+    <main class="py-[100px]">
 
-            <div class="border-2 border-black w-[300px] h-[300px]" id="inicio">
+        <!-- Catequese e Crisma -->
+        <section class="px-[100px]">
 
-                <h1 class="text-[64px] font-bold">Escolink</h1>
+            <h2 class="text-[32px] font-bold uppercase">Catequese e Crisma</h2>
 
-                <p class="text-justify mb-[20px]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur ullam in optio? Accusantium suscipit sunt obcaecati corrupti ut maxime facere explicabo culpa minima, aperiam recusandae quasi perferendis laboriosam similique eum?</p>
-
-                <a class="bg-[#022E51] text-white py-[10px] px-[20px] rounded-[10px]" href="./views/login.php">Entrar</a>
-
-                <a class="border-2 border-[#022E51] py-[10px] px-[20px] rounded-[10px]" href="#">Baixar o Escolink</a>
-
-            </div>
+            <a class="bg-[#00ff00] px-[20px] py-[7px] rounded-[30px]" href="views/escolher-login.php">Log In</a>
 
         </section>
 
-        <!-- Sobre -->
-        <section></section>
-
-        <!-- Contato -->
-        <section></section>
-
     </main>
-    
+
 </body>
 
 </html>
