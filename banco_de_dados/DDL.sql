@@ -1,0 +1,11 @@
+-- DROP DATABASE IF EXISTS sao_benedito;
+
+CREATE DATABASE IF NOT EXISTS sao_benedito CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE sao_benedito;
+
+CREATE TABLE IF NOT EXISTS Catequizandos(
+	id_catequizando BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    etapa INT NOT NULL
+);

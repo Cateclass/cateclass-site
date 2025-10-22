@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordenação | Dashboard</title>
+    <title>Coordenação | Catequizandos</title>
 
     <!-- TailwindCSS CLI -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -14,7 +14,7 @@
 
     
 </head>
-<body class="bg-[#E5ECFF]">
+<body class="flex bg-[#E5ECFF]">
 
     <!-- Sidebar -->
     <aside class="bg-[#fff] w-[300px] h-[100vh]">
@@ -35,7 +35,7 @@
             <ul class="list-none">
 
                 <li>
-                    <a class="flex items-center gap-[10px] p-[10px]" href="#">
+                    <a class="flex items-center gap-[10px] p-[10px]" href="dashboard.php">
                         <i class="material-icons">home</i>
                         Dashboard
                     </a>
@@ -49,7 +49,7 @@
                 </li>
 
                 <li>
-                    <a class="flex items-center gap-[10px] p-[10px]" href="#">
+                    <a class="flex items-center gap-[10px] p-[10px]" href="catequistas.php">
                         <i class="material-icons">wallpaper</i>
                         Catequistas
                     </a>
@@ -115,6 +115,45 @@
         </div>       
 
     </aside>
+
+    <!-- Main -->
+    <main class="p-[10px]">
+
+        <h1 class="text-[32px] font-bold">Gerenciar Catequizandos</h1>
+
+        <p class="text-[20px] mb-[20px]">Adicione, edite ou remova contas de catequizandos.</p>
+
+        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar">
+
+        <table class="border-1 border-black">
+
+            <tr class="border-1 border-black">
+
+                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
+                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Etapa</th>
+                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Ações</th>
+
+            </tr>
+
+            <tr class="border-1 border-black">
+
+                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
+                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
+                <td class="flex w-[300px] p-[10px] bg-[#fff]">
+                    <a class="flex justify-center items-center w-[25px] h-[25px] rounded-[50%] border-1 border-blue text-white bg-[#0000ff]" href="#">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a class="flex justify-center items-center w-[25px] h-[25px] rounded-[50%] border-1 border-blue text-white bg-[#ff0000]" href="#">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                    <a href="#">F</a>
+                </td>
+
+            </tr>
+
+        </table>
+
+    </main>
     
 </body>
 </html>
