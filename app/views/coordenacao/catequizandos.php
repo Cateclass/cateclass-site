@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coordenação | Catequizandos</title>
 
@@ -130,57 +130,26 @@
             <tr class="border-1 border-black">
 
                 <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Status</th>
                 <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Etapa</th>
+                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Ações</th>
 
             </tr>
 
             <tr class="border-1 border-black">
 
                 <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
                 <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
+                <td class="flex w-[300px] p-[10px] bg-[#fff]">
+                    <a class="flex justify-center items-center w-[25px] h-[25px] rounded-[50%] border-1 border-blue text-white bg-[#0000ff]" href="#">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                    <a class="flex justify-center items-center w-[25px] h-[25px] rounded-[50%] border-1 border-blue text-white bg-[#ff0000]" href="#">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                    <a href="#">F</a>
+                </td>
 
             </tr>
-
-            <tr class="border-1 border-black">
-
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-
-            </tr>
-
-            <tr class="border-1 border-black">
-
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-
-            </tr>
-
-            <tr class="border-1 border-black">
-
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-
-            </tr>
-
-            <tr class="border-1 border-black">
-
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-
-            </tr>
-
 
         </table>
 
