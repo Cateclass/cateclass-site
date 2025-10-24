@@ -39,17 +39,26 @@ function isActiveForm($formName, $activeForm) {
 <body>
 
     <div class="container">
+        <!-- Form Fazer Login -->
         <div class="form-box <?= isActiveForm('login', $activeForm); ?>" id="login-form">
             <form action="login_register.php" method="post">
                 <h2>Login</h2>
                 <?= showError($errors['login']); ?>
                 <input type="email" name="email" id="email" placeholder="Email" required>
                 <input type="password" name="senha" id="senha" placeholder="Senha" required>
+                <select name="funcao" required>
+                    <option value="">--Selecione a função--</option>
+                    <option value="catequizando">Catequizando</option>
+                    <option value="catequista">Catequista</option>
+                    <option value="responsavel">Responsavel</option>
+                    <option value="coordenador">Coordenador</option>
+                </select>
                 <button type="submit" name="login">Login</button>
                 <p>Não tem uma conta? <a href="#" onclick="showForm('register-form')">Criar conta</a></p>
             </form>
         </div>
 
+        <!-- Form Criar Conta -->
         <div class="form-box <?= isActiveForm('register', $activeForm); ?>" id="register-form">
             <form action="login_register.php" method="post">
                 <h2>Criar conta</h2>
@@ -57,10 +66,12 @@ function isActiveForm($formName, $activeForm) {
                 <input type="text" name="nome" id="nome" placeholder="Nome" required>
                 <input type="email" name="email" id="email" placeholder="Email" required>
                 <input type="password" name="senha" id="senha" placeholder="Senha" required>
-                <select name="role" required>
-                    <option value="">--Select Role--</option>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
+                <select name="funcao" required>
+                    <option value="">--Selecione a função--</option>
+                    <option value="catequizando">Catequizando</option>
+                    <option value="catequista">Catequista</option>
+                    <option value="responsavel">Responsavel</option>
+                    <option value="coordenador">Coordenador</option>
                 </select>
                 <button type="submit" name="register">Cadastrar</button>
                 <p>Já tem uma conta? <a href="#" onclick="showForm('login-form')">Login</a></p>
