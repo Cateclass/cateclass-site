@@ -45,7 +45,7 @@ if (!isset($_SESSION["email"])) {
             <ul class="list-none">
 
                 <li>
-                    <a class="flex items-center gap-[10px] p-[10px]" href="#">
+                    <a class="flex items-center gap-[10px] p-[10px]" href="dashboard.php">
                         <i class="material-icons">home</i>
                         Dashboard
                     </a>
@@ -128,42 +128,35 @@ if (!isset($_SESSION["email"])) {
 
     <main class="p-[20px]">
 
-        <h1 class="text-[32px] font-bold">Dashboard</h1>
-        <p class="mb-[50px]">Bem-Vindo(a) <?= $_SESSION["nome"] ?>. Aqui está o resumo das suas atividades da catequese.</p>
+        <h1 class="text-[32px] font-bold">Enviar Comunicados</h1>
+        <p class="mb-[50px]">Envie Mensagens e avisos importantes para grupos especificos ou para toda comunidade.</p>
 
-        <div class="mb-[50px]">
+        <form class="flex flex-col" action="#">
 
-            <h2 class="text-[24px] font-bold mb-[20px]">Visão geral</h2>
+            <label class="text-[18px]" for="titulo">Título</label>
+            <input class="bg-[#fff] border-1 px-[10px] py-[7px] mb-[30px]" name="titulo" id="titulo" type="text">
 
-            <div class="flex gap-[50px]">
-                <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
-                    <p class="text-[17px]">Total de Catequizandos</p>
-                    <p class="text-[24px] text-[#1E64F0]">0</p>
-                </div>
-                <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
-                    <p class="text-[17px]">Total de Catequistas</p>
-                    <p class="text-[24px] text-[#008000]">0</p>
-                </div>
-                <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
-                    <p class="text-[17px]">Total de Turmas</p>
-                    <p class="text-[24px] text-[#62449D]">0</p>
-                </div>
-            </div> 
+            <label class="text-[18px]" for="mensagem">Mensagem</label>
+            <textarea class="bg-[#fff] border-1 px-[10px] py-[7px] mb-[30px]" name="mensagem" id="mensagem" rows="7"></textarea>
 
-        </div>
+            <label class="text-[18px]" for="titulo">Selecionar destinatários</label>
+            <div class="bg-[#fff] p-[10px] mb-[30px] border-1">
 
-        <div class="flex flex-col">
+                <input type="checkbox" id="catequizandos" name="catequizandos" value="Catequizandos">
+                <label for="catequizandos">Catequizandos</label><br>
+                <input type="checkbox" id="catequistas" name="catequistas" value="Catequistas">
+                <label for="catequistas">Catequistas</label><br>
+                <input type="checkbox" id="responsaveis" name="responsaveis" value="Responsaveis">
+                <label for="responsaveis">Responsáveis</label><br>
 
-            <a class="flex items-center gap-[20px] bg-[#1E64F0] text-[#fff] w-[250px] py-[10px] px-[10px] mb-[20px] rounded-[5px]" href="novaturma.php">
-                <i class="fa fa-plus"></i>
-                Criar nova turma
-            </a>
-            <a class="flex items-center gap-[20px] bg-[#1E64F0] text-[#fff] w-[250px] py-[10px] px-[10px] rounded-[5px]" href="comunicados.php">
+            </div>
+
+            <button class="flex items-center gap-[20px] bg-[#1E64F0] text-[#fff] w-[250px] py-[10px] px-[10px] rounded-[5px]" type="submit" href="comunicados.php">
                 <i class="material-icons">message</i>
                 Enviar Comunicado Geral
-            </a>
+            </button>
 
-        </div>
+        </form>
 
     </main>
     
