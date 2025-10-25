@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordenação | Catequistas</title>
+    <title>Coordenação | Turmas</title>
 
     <!-- TailwindCSS CLI -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -21,9 +21,9 @@
     <!-- Main -->
     <main class="p-[20px]">
 
-        <h1 class="text-[32px] font-bold">Gerenciar Catequistas</h1>
+        <h1 class="text-[32px] font-bold">Gerenciar Turmas</h1>
 
-        <p class="text-[20px] mb-[20px]">Adicione, edite ou remova contas de catequistas.</p>
+        <p class="text-[20px] mb-[20px]">Adicione, edite ou remova turmas.</p>
 
         <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar">
 
