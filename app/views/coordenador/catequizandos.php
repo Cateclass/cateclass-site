@@ -1,3 +1,7 @@
+<?php
+require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu projeto
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,33 +29,51 @@
 
         <p class="text-[20px] mb-[20px]">Adicione, edite ou remova contas de catequizandos.</p>
 
-        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar">
+        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar"> 
 
         <table class="border-1 border-black">
 
-            <tr class="border-1 border-black">
+            <thead>
 
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Etapa</th>
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Ações</th>
+                <tr class="border-1 border-black">
 
-            </tr>
+                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
+                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
+                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Funções</th>
 
-            <tr class="border-1 border-black">
+                </tr>
 
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-                <td class="flex w-[300px] p-[10px] bg-[#fff]">
-                    <a class="flex justify-center items-center w-[25px] h-[25px] rounded-[50%] border-1 border-blue text-white bg-[#0000ff]" href="#">
-                        <i class="fa fa-pencil"></i>
-                    </a>
-                    <a class="flex justify-center items-center w-[25px] h-[25px] rounded-[50%] border-1 border-blue text-white bg-[#ff0000]" href="#">
-                        <i class="fa fa-trash"></i>
-                    </a>
-                    <a href="#">F</a>
-                </td>
+            </thead>
 
-            </tr>
+            <tbody>
+                <?php
+                $sql = "SELECT * FROM catequizandos";
+
+                // Prepara e executa a consulta
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+
+                // Verifica se retornou algum resultado
+                if ($stmt->rowCount() > 0) {
+                    // Pega todos os registros em um array associativo
+                    $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    // Loop para exibir cada usuário
+                    foreach ($catequizandos as $catequizando) {
+                ?>
+                        <tr class="border-1 border-black">
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['nome'] ?></td>
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['email'] ?></td>
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['funcao'] ?></td>
+                        </tr>
+                <?php
+                    }
+                } else {
+                    echo "<tr><td colspan='3'>Nenhum catequizando encontrado.</td></tr>";
+                }
+                ?>
+
+            </tbody>
 
         </table>
 

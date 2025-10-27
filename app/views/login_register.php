@@ -1,95 +1,47 @@
 <?php
-
 session_start();
 require_once 'config.php';
 
 // Se clicou no botão de cadastro
-if(isset($_POST['register'])) {
+if (isset($_POST['register'])) {
 
-    // Atribuindo variáveis
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
     $funcao = $_POST['funcao'];
 
-    // Se for catequizando
-    if($funcao === "catequizando") {
+    // Mapeia o nome da tabela com base na função
+    $tabelas = [
+        "catequizando" => "catequizandos",
+        "catequista" => "catequistas",
+        "responsavel" => "responsaveis",
+        "coordenador" => "coordenadores"
+    ];
 
-        $checkEmail = $conn->query("SELECT email FROM catequizandos WHERE email = '$email'");
-        // Verificando se esse email já está cadastrado
-        if ($checkEmail->num_rows > 0) {
+    if (isset($tabelas[$funcao])) {
+        $tabela = $tabelas[$funcao];
+
+        // Verifica se o e-mail já existe
+        $checkEmail = $conn->prepare("SELECT email FROM $tabela WHERE email = :email");
+        $checkEmail->bindParam(':email', $email);
+        $checkEmail->execute();
+
+        if ($checkEmail->rowCount() > 0) {
             $_SESSION['register_error'] = 'Email já cadastrado!';
             $_SESSION['active_form'] = 'register';
-        } 
-        // Se esse email não for cadastrado, ele cadastra
-        else
-        {
-            $conn->query("INSERT INTO catequizandos (nome, email, senha, funcao) VALUES ('$nome', '$email', '$senha', '$funcao')");
+        } else {
+            // Insere novo registro
+            $stmt = $conn->prepare("INSERT INTO $tabela (nome, email, senha, funcao) VALUES (:nome, :email, :senha, :funcao)");
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':senha', $senha);
+            $stmt->bindParam(':funcao', $funcao);
+            $stmt->execute();
         }
-        
-        // Redirecionando para a página do login
+
         header("Location: login.php");
+        exit();
     }
-
-    // Se for catequista
-    if($funcao === "catequista") {
-
-        $checkEmail = $conn->query("SELECT email FROM catequistas WHERE email = '$email'");
-        // Verificando se esse email já está cadastrado
-        if ($checkEmail->num_rows > 0) {
-            $_SESSION['register_error'] = 'Email já cadastrado!';
-            $_SESSION['active_form'] = 'register';
-        } 
-        // Se esse email não for cadastrado, ele cadastra
-        else 
-        {
-            $conn->query("INSERT INTO catequistas (nome, email, senha, funcao) VALUES ('$nome', '$email', '$senha', '$funcao')");
-        }
-        
-        // Redirecionando para a página do login
-        header("Location: login.php");
-    }
-
-    // Se for responsavel
-    if($funcao === "responsavel") {
-
-        $checkEmail = $conn->query("SELECT email FROM responsaveis WHERE email = '$email'");
-        // Verificando se esse email já está cadastrado
-        if ($checkEmail->num_rows > 0) {
-            $_SESSION['register_error'] = 'Email já cadastrado!';
-            $_SESSION['active_form'] = 'register';
-        } 
-        // Se esse email não for cadastrado, ele cadastra
-        else 
-        {
-            $conn->query("INSERT INTO responsaveis (nome, email, senha, funcao) VALUES ('$nome', '$email', '$senha', '$funcao')");
-        }
-        
-        // Redirecionando para a página do login
-        header("Location: login.php");
-    }
-
-    // Se for coordenador
-    if($funcao === "coordenador") {
-
-        $checkEmail = $conn->query("SELECT email FROM coordenadores WHERE email = '$email'");
-        // Verificando se esse email já está cadastrado
-        if ($checkEmail->num_rows > 0) {
-            $_SESSION['register_error'] = 'Email já cadastrado!';
-            $_SESSION['active_form'] = 'register';
-        } 
-        // Se esse email não for cadastrado, ele cadastra
-        else 
-        {
-            $conn->query("INSERT INTO coordenadores (nome, email, senha, funcao) VALUES ('$nome', '$email', '$senha', '$funcao')");
-        }
-        
-        // Redirecionando para a página do login
-        header("Location: login.php");
-    }
-
-    header("Location: login.php");
-    exit();
 }
 
 // Se clicou no botão de login
@@ -98,103 +50,39 @@ if (isset($_POST['login'])) {
     $senha = $_POST['senha'];
     $funcao = $_POST['funcao'];
 
-    if ($funcao === "catequizando") {
+    $tabelas = [
+        "catequizando" => "catequizandos",
+        "catequista" => "catequistas",
+        "responsavel" => "responsaveis",
+        "coordenador" => "coordenadores"
+    ];
 
-        $result = $conn->query("SELECT * FROM catequizandos WHERE email = '$email'");
+    if (isset($tabelas[$funcao])) {
+        $tabela = $tabelas[$funcao];
 
-        // Verificando se o email usado para o login existe
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
+        // Busca o usuário
+        $stmt = $conn->prepare("SELECT * FROM $tabela WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
 
-            // Verificando se as senhas estão certas
-            if(password_verify($senha, $user['senha'])) {
+        if ($stmt->rowCount() > 0) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                // Armazenando nome e email na variável de sessão
+            // Verifica senha
+            if (password_verify($senha, $user['senha'])) {
                 $_SESSION['nome'] = $user['nome'];
                 $_SESSION['email'] = $user['email'];
 
-                // Redirecionamento para a página do usuário
-                header("Location: catequizando/dashboard.php");
+                header("Location: {$funcao}/dashboard.php");
                 exit();
             }
         }
-
     }
 
-    if ($funcao === "catequista") {
-
-        $result = $conn->query("SELECT * FROM catequistas WHERE email = '$email'");
-
-        // Verificando se o email usado para o login existe
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-
-            // Verificando se as senhas estão certas
-            if(password_verify($senha, $user['senha'])) {
-
-                // Armazenando nome e email na variável de sessão
-                $_SESSION['nome'] = $user['nome'];
-                $_SESSION['email'] = $user['email'];
-
-                // Redirecionamento para a página do usuário
-                header("Location: catequista/dashboard.php");
-                exit();
-            }
-        }
-        
-    }
-
-    if ($funcao === "responsavel") {
-
-        $result = $conn->query("SELECT * FROM responsaveis WHERE email = '$email'");
-
-        // Verificando se o email usado para o login existe
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-
-            // Verificando se as senhas estão certas
-            if(password_verify($senha, $user['senha'])) {
-
-                // Armazenando nome e email na variável de sessão
-                $_SESSION['nome'] = $user['nome'];
-                $_SESSION['email'] = $user['email'];
-
-                // Redirecionamento para a página do usuário
-                header("Location: responsavel/dashboard.php");
-                exit();
-            }
-        }
-        
-    }
-
-    if ($funcao === "coordenador") {
-
-        $result = $conn->query("SELECT * FROM coordenadores WHERE email = '$email'");
-
-        // Verificando se o email usado para o login existe
-        if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-
-            // Verificando se as senhas estão certas
-            if(password_verify($senha, $user['senha'])) {
-
-                // Armazenando nome e email na variável de sessão
-                $_SESSION['nome'] = $user['nome'];
-                $_SESSION['email'] = $user['email'];
-
-                // Redirecionamento para a página do usuário
-                header("Location: coordenador/dashboard.php");
-                exit();
-            }
-        }
-        
-    }
-
-    // Se o login não funcionar
+    // Se o login falhar
     $_SESSION['login_error'] = "Email ou senha incorretos";
     $_SESSION['active_form'] = "login";
     header("Location: login.php");
     exit();
 }
-
 ?>

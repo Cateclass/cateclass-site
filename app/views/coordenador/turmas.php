@@ -1,3 +1,7 @@
+<?php
+require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu projeto
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -29,60 +33,47 @@
 
         <table class="border-1 border-black">
 
-            <tr class="border-1 border-black">
+            <thead>
 
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Status</th>
-                <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Etapa</th>
+                <tr class="border-1 border-black">
 
-            </tr>
+                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
+                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
+                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Funções</th>
 
-            <tr class="border-1 border-black">
+                </tr>
 
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
+            </thead>
 
-            </tr>
+            <tbody>
+                <?php
+                $sql = "SELECT * FROM catequistas";
 
-            <tr class="border-1 border-black">
+                // Prepara e executa a consulta
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
 
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
+                // Verifica se retornou algum resultado
+                if ($stmt->rowCount() > 0) {
+                    // Pega todos os registros em um array associativo
+                    $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            </tr>
+                    // Loop para exibir cada usuário
+                    foreach ($catequizandos as $catequizando) {
+                ?>
+                        <tr class="border-1 border-black">
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['nome'] ?></td>
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['email'] ?></td>
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['funcao'] ?></td>
+                        </tr>
+                <?php
+                    }
+                } else {
+                    echo "<tr><td colspan='3'>Nenhum catequizando encontrado.</td></tr>";
+                }
+                ?>
 
-            <tr class="border-1 border-black">
-
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-
-            </tr>
-
-            <tr class="border-1 border-black">
-
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-
-            </tr>
-
-            <tr class="border-1 border-black">
-
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Nome</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Email</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Status</td>
-                <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black">Etapa</td>
-
-            </tr>
-
+            </tbody>
 
         </table>
 

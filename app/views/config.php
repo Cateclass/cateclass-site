@@ -6,10 +6,17 @@ $user = "root";
 $password = "";
 $database = "sao_benedito";
 
-$conn = new mysqli($host, $user, $password, $database, $port);
+try {
+    // Cria a conexão usando PDO
+    $dsn = "mysql:host=$host;port=$port;dbname=$database;charset=utf8";
+    $conn = new PDO($dsn, $user, $password);
+    
+    // Define o modo de erro do PDO para exceção
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // echo "Conexão bem-sucedida!"; // opcional para testar
+} catch (PDOException $e) {
+    die("Erro na conexão: " . $e->getMessage());
 }
 
 ?>
