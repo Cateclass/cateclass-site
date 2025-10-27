@@ -18,7 +18,7 @@
     <nav class="flex-1">
         <ul class="list-none p-0">
             <li>
-                <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="dashboard.php">
+                <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="/cateclass-site/app/views/catequizandos/dashboard.php">
                     <i class="material-icons">home</i>
                     Dashboard
                 </a>
@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="catequistas.php">
+                <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="/cateclass-site/app/views/catequizandos/atividades.php">
                     <i class="material-icons">checklist</i>
                     Atividades
                 </a>
@@ -43,7 +43,7 @@
             <p class="pl-2 uppercase text-sm font-semibold text-gray-600 mb-3">Ações rápidas</p>
 
             <div class="flex flex-col items-center gap-3">
-                <a class="flex justify-center items-center gap-2 bg-[#008000] text-white w-full py-2 rounded-lg" href="novaturma.php">
+                <a class="flex justify-center items-center gap-2 bg-[#008000] text-white w-full py-2 rounded-lg" href="/cateclass-site/app/views/catequizandos/entrar_turma.php">
                     <i class="material-icons">login</i>
                     Entrar na turma
                 </a>
