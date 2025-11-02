@@ -8,7 +8,7 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch($url)
 {
-    case '/cateclass-site/app/':
+    case '/projetos/cateclass-site/app/':
         require_once "views/inicio.php";
     break;
 
