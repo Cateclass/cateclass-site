@@ -79,13 +79,13 @@
 
         <div class="flex justify-center">
 
-            <a class="flex items-center gap-[10px] bg-[#BEDDF5] text-[#fff] w-[250px] py-[7px] pl-[10px] mt-[15px] rounded-[7px] text-center" href="#">
+            <a class="flex items-center gap-[10px] bg-[#BEDDF5] text-[#fff] w-[250px] py-[7px] pl-[10px] mt-[15px] rounded-[7px] text-center" href="perfil.php">
                 <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[50%] bg-[#4A9FFF]">
                     U
                 </div>
                 <div class="flex flex-col items-start">
-                    <span class="text-black">Usuário</span>
-                    <span class="text-[#4A9FFF]">Catequista</span>
+                    <span class="text-black"><?= $_SESSION["nome"]; ?></span>
+                    <span class="text-[#4A9FFF]">Coordenador</span>
                 </div>
             </a>
 
