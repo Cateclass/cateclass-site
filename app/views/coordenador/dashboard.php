@@ -54,19 +54,6 @@ if (!isset($_SESSION["email"])) {
 
         </div>
 
-        <div class="flex flex-col">
-
-            <a class="flex items-center gap-[20px] bg-[#1E64F0] text-[#fff] w-[250px] py-[10px] px-[10px] mb-[20px] rounded-[5px]" href="novaturma.php">
-                <i class="fa fa-plus"></i>
-                Criar nova turma
-            </a>
-            <a class="flex items-center gap-[20px] bg-[#1E64F0] text-[#fff] w-[250px] py-[10px] px-[10px] rounded-[5px]" href="comunicados.php">
-                <i class="material-icons">message</i>
-                Enviar Comunicado Geral
-            </a>
-
-        </div>
-
     </main>
     
 </body>

@@ -41,17 +41,7 @@ if (!isset($_SESSION["email"])) {
             <label class="text-[18px]" for="mensagem">Mensagem</label>
             <textarea class="bg-[#fff] border-1 px-[10px] py-[7px] mb-[30px]" name="mensagem" id="mensagem" rows="7"></textarea>
 
-            <label class="text-[18px]" for="titulo">Selecionar destinatários</label>
-            <div class="bg-[#fff] p-[10px] mb-[30px] border-1">
-
-                <input type="checkbox" id="catequizandos" name="catequizandos" value="Catequizandos">
-                <label for="catequizandos">Catequizandos</label><br>
-                <input type="checkbox" id="catequistas" name="catequistas" value="Catequistas">
-                <label for="catequistas">Catequistas</label><br>
-                <input type="checkbox" id="responsaveis" name="responsaveis" value="Responsaveis">
-                <label for="responsaveis">Responsáveis</label><br>
-
-            </div>
+            
 
             <button class="flex items-center gap-[20px] bg-[#1E64F0] text-[#fff] w-[250px] py-[10px] px-[10px] rounded-[5px]" type="submit" href="comunicados.php">
                 <i class="material-icons">message</i>
