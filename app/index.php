@@ -1,26 +1,33 @@
 <?php
 
-// echo "Home";
+require_once "controllers/InicioController.php";
+require_once "controllers/CatequizandoController.php";
 
-// echo "<a href='./views/login.php'>Login</a>";
+// se a URL existir, pega. Se não fica vazia ""
+$url = isset($_GET['url']) ? $_GET['url'] : '';
 
-$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+// limpa barras extras
+$urlLimpa = trim($url, '/');
 
-switch($url)
+switch($urlLimpa)
 {
-    case '/projetos/cateclass-site/app/':
-        require_once "views/inicio.php";
+    case '':
+        $controller = new InicioController();
+        $controller->inicio();
     break;
 
-    case '/pessoa':
-        echo "listagem de pessoas";
+    case 'catequizando':
+        $controller = new CatequizandoController();
+        $controller->home();
     break;
 
-    case '/pessoa/form':
-        echo "formulário para salvar pessoa";
+    case 'catequizando/atividades':
+        $controller = new CatequizandoController();
+        $controller->atividades();
     break;
 
     default:
-        echo "Erro 404";
+        http_response_code(404); // Define o código de status 404
+        echo "<h1>Erro 404 - Página não encontrada</h1>";
     break;
 }

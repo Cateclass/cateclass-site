@@ -7,15 +7,15 @@
             parent:: __construct();
         }
 
-        public function insert($Catequizando)
+        public function insert($catequizando)
         {
             $sql = "INSERT INTO catequizandos (nome, etapa) VALUES (?, ?);";
 
             try
             {
                 $stm = $this->db->prepare($sql);
-                $stm->bindValue(1, $usuario->getNome());
-                $stm->bindValue(2, $usuario->getEtapa());
+                $stm->bindValue(1, $catequizando->getNome());
+                $stm->bindValue(2, $catequizando->getEtapa());
                 $stm->execute();
                 $this->db = null;
                 return "Catequizando inserido com sucesso";

@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li>
-                <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="/cateclass-site/app/views/catequizandos/atividades.php">
+                <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="/cateclass-site/app/catequizando/atividades">
                     <i class="material-icons">checklist</i>
                     Atividades
                 </a>
