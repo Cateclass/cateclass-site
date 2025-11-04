@@ -50,11 +50,6 @@
 
         /** Setters */
 
-        public function setId_usuario($id_usuario)
-        {
-            $this->id_usuario = $id_usuario;
-        }
-
         public function setNome($nome) 
         {
             $this->nome = $nome;

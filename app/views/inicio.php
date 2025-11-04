@@ -29,7 +29,7 @@
             <ul class="flex gap-[30px] uppercase font-bold">
                 <li><a href="#">Início</a></li>
                 <li><a href="#">Paróquia</a></li>
-                <li><a href="/cateclass-site/app/catequizando">Catecismo</a></li>
+                <li><a href="/cateclass-site/app/login">Catecismo</a></li>
                 <li><a href="#">Contato</a></li>
             </ul>
 
