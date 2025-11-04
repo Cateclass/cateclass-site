@@ -23,7 +23,15 @@
 
 <body>
 
-    <header class="flex items-center justify-between p-[20px] px-[100px] border-b-1 border-black" id="inicio">
+    <header 
+        class="
+            flex items-center justify-between p-[20px] px-[100px] border-b-1 border-black
+
+            max-md:flex-col gap-[30px]
+        " 
+        id="inicio"
+    >
+
 
         <a href="#inicio">
             <img class="w-[261px]" src="http://localhost/cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
