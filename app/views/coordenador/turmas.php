@@ -1,5 +1,13 @@
 <?php
+
+session_start();
+if (!isset($_SESSION["email"])) {
+    header("Location: ../login.php");
+    exit();
+}   
+
 require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu projeto
+
 ?>
 
 <!DOCTYPE html>
