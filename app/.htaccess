@@ -1,0 +1,22 @@
+# Ativa o "Motor de Reescrita" de URLs
+RewriteEngine On
+
+# Define a pasta base do projeto 
+# Substitua pela sua subpasta real se for diferente
+RewriteBase /cateclass-site/app/
+
+# --- Regras de Reescrita ---
+
+# 1. Se a requisição for por um ARQUIVO que existe (ex: .css, .js, .jpg)
+# não faça nada (deixe o Apache entregar o arquivo)
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# 2. Se a requisição for por um DIRETÓRIO que existe
+# não faça nada
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# 3. Para TODAS AS OUTRAS requisições...
+# Envie-as para o index.php, passando a URL como um parâmetro GET chamado 'url'
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
