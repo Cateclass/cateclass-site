@@ -3,6 +3,7 @@
 require_once "controllers/InicioController.php";
 require_once "controllers/CatequizandoController.php";
 require_once "controllers/UsuarioController.php";
+require_once "controllers/LoginController.php";
 
 // se a URL existir, pega. Se não fica vazia ""
 $url = isset($_GET['url']) ? $_GET['url'] : '';
@@ -17,10 +18,25 @@ switch($urlLimpa)
         $controller->inicio();
     break;
 
-    // case 'login':
-    //     $controller = new UsuarioController();
-    //     $controller->login();
-    // break;
+    case 'cadastro':
+        $controller = new UsuarioController();
+        $controller->cadastro();
+    break;
+
+    case 'registrar':
+        $controller = new UsuarioController();
+        $controller->salvar();
+    break;
+
+    case 'login':
+        $controller = new LoginController();
+        $controller->login();
+    break;
+
+    case 'autenticar':
+        $controller = new LoginController();
+        $controller->autenticar();
+    break;
 
     case 'catequizando':
         $controller = new CatequizandoController();

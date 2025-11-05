@@ -8,9 +8,27 @@
             parent::__construct(); 
         }
 
+        public function buscarPorEmail($email)
+        {
+            try
+            {
+                $sql = "SELECT id, nome, email, senha, tipo_usuario FROM usuarios WHERE email = ?";
+                $stm = $this->db->prepare($sql);
+                $stm->execute([$email]);
+
+                // retorna o usuário ou flase se não encontrar
+                return $stm->fetch(PDO::FETCH_ASSOC);
+            }
+            catch(PDOException $e)
+            {
+                $this->db = null;
+                return "Erro ao inserir tarefa: " . $e->getMessage();
+            }
+        }
+
         public function inserir($usuario)
         {
-            $sql = "INSERT INTO usuarios (nome, email, senha, telefone, endereco, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario) VALUES (?, ?, ?, ?)";
 
             try
             {
@@ -18,9 +36,7 @@
                 $stm->bindValue(1, $usuario->getNome());
                 $stm->bindValue(2, $usuario->getEmail());
                 $stm->bindValue(3, $usuario->getSenha());
-                $stm->bindValue(4, $usuario->getTelefone());
-                $stm->bindValue(5, $usuario->getEndereco());
-                $stm->bindValue(6, $usuario->getTipoFuncao());
+                $stm->bindValue(4, $usuario->getTipoFuncao());
                 $stm->execute();
                 $this->db = null;
                 return "Usuário criado com sucesso!";
@@ -28,6 +44,9 @@
             catch(PDOException $e)
             {
                 $this->db = null;
+                if ($e->getCode() == 23000) {
+                    return "Erro: Este email já está cadastrado.";
+                }
                 return "Erro ao inserir tarefa: " . $e->getMessage();
             }
         } // fim do inserir
