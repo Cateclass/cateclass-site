@@ -6,125 +6,70 @@
         /** Método construtor */
 
         public function __construct(
-            private int $id_catequizando = 0, private string $nome = "", private int $etapa = 0
-            /**, private int $ano = 0, private string $nome_do_responavel = "", private string $data_de_nascimento = "", private string $escola = "", private string $paroquia_de_origem = "", private string $transferencia = "", private string $data_de_inicio = "", private int $codigo_catequista = 0
-             */
-        ) {}
+            private string $data_nascimento = "",
+            private string $escola = "",
+            private string $paroquia_origem = "",
+            private string $transferencia = "",
+            private string $data_inicio = ""
+        ) 
+        {
+            parent::__construct();
+        }
 
         /** Getters */
 
-        public function getId_catequizando()
+        public function getDataNascimento()
         {
-            return $this->id_catequizando;
+            return $this->data_nascimento;
         }
 
-        public function getNome()
+        public function getEscola()
         {
-            return $this->nome;
+            return $this->escola;
         }
 
-        public function getEtapa() 
+        public function getParoquiaOrigem()
         {
-            return $this->etapa;
+            return $this->paroquia_origem;
         }
 
-        // public function getAno()
-        // {
-        //     return $this->ano;
-        // }
+        public function getTransferencia()
+        {
+            return $this->transferencia;
+        }
 
-        // public function getNome_do_responsavel()
-        // {
-        //     return $this->nome_do_resposavel;
-        // }
-
-        // public function getData_de_nascimento()
-        // {
-        //     return $this->data_de_nascimento;
-        // }
-
-        // public function getEscola()
-        // {
-        //     return $this->escola;
-        // }
-
-        // public function getParoquia_de_origem()
-        // {
-        //     return $this->paroquia_de_origem;
-        // }
-
-        // public function getTransferencia()
-        // {
-        //     return $this->transferencia;
-        // }
-
-        // public function getData_de_inicio()
-        // {
-        //     return $this->data_de_inicio;
-        // }
-
-        // public function getCodigo_catequista()
-        // {
-        //     return $this->codigo_catequista;
-        // }
+        public function getDataInicio()
+        {
+            return $this->data_inicio;
+        }
 
         /** Setters */
 
-        public function setId_catequizando($id_catequizando)
+        public function setDataNascimento($data_nascimento)
         {
-            $this->id_catequizando = $id_catequizando;
-        }
-        
-        public function setNome($nome) 
-        {
-            $this->nome = $nome;
+            $this->data_nascimento = $data_nascimento;
         }
 
-        public function setEtapa($etapa) 
+        public function setEscola($escola)
         {
-            $this->etapa = $etapa;
+            $this->escola = $escola;
         }
 
-        // public function setAno($ano)
-        // {
-        //     $this->ano = $ano;
-        // }
+        public function setParoquiaOrigem($paroquia_origem)
+        {
+            $this->paroquia_origem = $paroquia_origem;
+        }
 
-        // public function setNome_do_responsavel($nome_do_resposavel)
-        // {
-        //     $this->nome_do_resposavel = $nome_do_resposavel;
-        // }
+        public function setTransferencia($transferencia)
+        {
+            $this->transferencia = $transferencia;
+        }
 
-        // public function setData_de_nascimento($data_de_nascimento)
-        // {
-        //     $this->data_de_nascimento = $data_de_nascimento;
-        // }
+        public function setDataInicio($data_inicio)
+        {
+            $this->data_inicio = $data_inicio;
+        }
 
-        // public function setEscola($escola)
-        // {
-        //     $this->escola = $escola;
-        // }
-
-        // public function setParoquia_de_origem($paroquia_de_origem)
-        // {
-        //     $this->paroquia_de_origem = $paroquia_de_origem;
-        // }
-
-        // public function setTransferencia($transferencia)
-        // {
-        //     $this->transferencia = $transferencia;
-        // }
-
-        // public function setData_de_inicio($data_de_inicio)
-        // {
-        //     $this->data_de_inicio = $data_de_inicio;
-        // }
-
-        // public function setCodigo_catequista($codigo_catequista)
-        // {
-        //     $this->codigo_catequista = $codigo_catequista;
-        // }
-
-    }
+    }   
 
 ?>

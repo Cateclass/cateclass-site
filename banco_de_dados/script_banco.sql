@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS sao_benedito;
+
 CREATE DATABASE IF NOT EXISTS sao_benedito CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE sao_benedito;
@@ -51,4 +53,71 @@ CREATE TABLE IF NOT EXISTS reunioes(
     
     CONSTRAINT fk_usuarios_reunioes 
 		FOREIGN KEY (organizador_id) REFERENCES usuarios (id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS etapas(
+	id_etapa BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nome_etapa VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    -- log
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    deletado_em DATETIME NULL
+);
+
+CREATE TABLE IF NOT EXISTS turmas(
+	id_turma BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	nome_turma VARCHAR(100) NOT NULL,
+    tipo_turma VARCHAR(10) NOT NULL,
+    data_inicio DATE NOT NULL,
+    data_termino DATE,
+    etapa_id BIGINT UNSIGNED NOT NULL,
+    -- log
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    deletado_em DATETIME NULL,
+    
+    CONSTRAINT fk_etapas_turmas
+		FOREIGN KEY (etapa_id) REFERENCES etapas (id_etapa)
+);
+
+CREATE TABLE IF NOT EXISTS avisos(
+	id_aviso BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    data_publicacao DATE NOT NULL,
+    turma_id BIGINT UNSIGNED NOT NULL,
+    autor_id BIGINT UNSIGNED NOT NULL,
+    -- log
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    deletado_em DATETIME NULL,
+    
+    CONSTRAINT fk_turmas_avisos 
+		FOREIGN KEY (turma_id) REFERENCES turmas (id_turma),
+	CONSTRAINT fk_catequista_avisos
+		FOREIGN KEY (autor_id) REFERENCES usuarios (id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS atividades(
+	id_atividade BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descricao VARCHAR(255) NOT NULL,
+    -- log
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    deletado_em DATETIME NULL
+);
+
+CREATE TABLE IF NOT EXISTS respostas(
+	id_resposta BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    catequizando_id BIGINT UNSIGNED NOT NULL,
+    atividade_id BIGINT UNSIGNED NOT NULL,
+    texto VARCHAR(255) NOT NULL,
+    data_envio DATETIME NOT NULL,
+    comentario_catequista VARCHAR(255),
+    -- log
+    criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
+    deletado_em DATETIME NULL,
+    
+    CONSTRAINT fk_catequizandos_respostas
+		FOREIGN KEY (catequizando_id) REFERENCES usuarios (id_usuario),
+	CONSTRAINT fk_atividades_respostas
+		FOREIGN KEY (atividade_id) REFERENCES atividades (id_atividade)
 );

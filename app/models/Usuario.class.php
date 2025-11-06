@@ -8,7 +8,7 @@
         public function __construct(
             private int $id_usuario = 0, private string $nome = "",
             private string $email = "", private string $senha = "",
-            private string $telefone = "", private string $endereco = ""
+            private string $telefone = "", private string $endereco = "", private string $tipoFuncao = ""
         ) {}
 
         /** Getters */
@@ -43,12 +43,12 @@
             return $this->endereco;
         }
 
-        /** Setters */
-
-        public function setId_usuario($id_usuario)
+        public function getTipoFuncao()
         {
-            $this->id_usuario = $id_usuario;
+            return $this->tipoFuncao;
         }
+
+        /** Setters */
 
         public function setNome($nome) 
         {
@@ -73,6 +73,11 @@
         public function setEndereco($endereco)
         {
             $this->endereco = $endereco;
+        }
+
+        public function setTipoFuncao($tipoFuncao)
+        {
+            $this->tipoFuncao = $tipoFuncao;
         }
 
     }
