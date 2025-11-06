@@ -99,6 +99,8 @@ com os modelos prontos,inciou-se a etapa de desenvolvimento do sistema,utilizand
 
  Por meio dessas etapas,o projeto Cateclass foi desenvolvido de forma colaborativa  estruturada,unindo a teoria estudada no curso com a prática da construnção de um sistema real,o método aplicado permitiu que o grupo compreendesse todas as etapas do processo de desenvolvimento de software,desde a identifcação do problema até a entrega da solução final.
 
+ ---
+
 ## 4. DOCUMENTO DE REQUISITOS  
 
 Um Documento de Requisitos de Sistema é parte essencial no desenvolvimento de software, pois deve descrever, detalhadamente, as funcionalidades, características e restrições que o sistema deve atender. Esse documento inclui requisitos funcionais (ações que o sistema deve executar), requisitos não funcionais (como desempenho, segurança e usabilidade) e possíveis restrições técnicas. Com a definição clara dos requisitos, evita-se falhas na comunicação, reduz-se os riscos no desenvolvimento e garante-se que o produto final atenda às expectativas dos usuários e os objetivos do projeto.
@@ -139,52 +141,105 @@ Um Documento de Requisitos de Sistema é parte essencial no desenvolvimento de s
 
 ## 6 - ESTUDO DE VIABILIDADE  
 
+O estudo de viabilidade tem como objetivo analisar se o projeto cateclass pode ser realmente colocado em prática,considerando os três pontos principais:a parte técnica,a econômica e a operacional,essa análise ajuda a entender se o sistema é possível de ser desenvolvido com os recursos disponíveis e se ele realmente atende ao propósito para o qual foi criado.
+
+
+### 6.1 viabilidade técnica
+
+A parte tecnica do projeto foi considera totalmente viável,o cateclass foi desenvolvido com o uso de ferramentas e tecnologias acessíveis,que são bastante conhecidas e gratuitas,foram utilizadas linguagens com HTML,CSS,PHP,MYSQL,além do Github,que serviu para o controle de versão eo trabalho em equipe.
+Essas tecnologias permitem que o sistema funcione bem tanto em computadores quanto em celulares,oferecendo praticidade e facilidade na manutenção,Durante o desenvolvimento ,o grupo utilizou os computadores e a internet da Fatec Jahu,o que garantiu um ambiente adequado para testar e aprimorar o sistema.
+
+
+### 6.2 viabilidade econômica
+
+Por se tratar de um projeto acadêmico e experimental,o desenvolvimento do cateclass não gerou custos financeiros diretos,já que todas as ferramentas utilizadas são gratuitas,Os únicos "custos"envolvidos foram o tempo e a dedicação do grupo, além do uso dos equipamentos pessoais,como notebooks e acesso á internet.
+Parte do trabalho foi feita na Fatec Jahu,utilizando os computadores e a internet da instituição,e outra parte foi realizada em casa,com recursos próprios,Por isso, a viabilidade econômica é considerada totalemnte favorável.o sistema pode ser desenvolvido sem gastos adicionais,aproveitando bem os recursos disponíveis,tanto na faculdade quanto dos integrantes do grupo.
+
+
+### 6.3 viabilidade operacional
+
+A viabilidade operacional também é posistiva,pois o cateclass foi pensando para ser simples,intuitivo e fácil de usar.A navegação é clara,o design é leve e as funções são diretas,o que facilita o uso por catequistas,coordenadores e catequizandos,o o sistema realmente cumpre o que se propõe:a melhorar a comunicação e a organização dentro da catequese,por isso,o projeto cateclass se mostra viável em todos os aspectos-técnico,econômico e operacionalnunido o aprendizado em sala de aula á pratica de desenvolver uma solução útil e aplicável na vida real.
 
 ---
 
 ## 7. MODELO DE DADOS  
 (Colocar imagens dos modelos)
 
-### 7.1 Modelo de Caso de Uso
+## 8. Modelo de Caso de Uso
 
 
-### 7.2 Modelo Conceitual  
+## 9. Modelo Conceitual  
 
 
-### 7.3 Modelo Lógico  
-
-
----
-
-## 8. DESIGN  
-
-### 8.1 Paleta de Cores
-
-### 8.2 Tipografia
-
-### 8.3 Logo
-
-### 8.4 Modelo de Navegação
-
----
-
-## 9. PROTÓTIPO  
-
+### 10. Modelo Lógico  
 
 
 ---
 
-## 10. APLICAÇÃO  
+## 11. DESIGN  
+
+### 11.1 Paleta de Cores
+
+a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre fé,serenidade e modernidade,combinando tons neutros com cores vibrantes que representam organização,acolhimento e energia.
+
+<div style="width:50px;height:20px;background-color:#2C3E50;border-radius:4px border:1px solid #ccc;"></div>
+
+
+<div style="width:50px;height:20px;background-color:#FFFFFF;border-radius:4px border:1px solid #ccc;"></div>
+
+
+<div style="width:50px;height:20px;background-color:#008000;border-radius:4px border:1px solid #ccc;"></div>
+
+
+<div style="width:50px;height:20px;background-color:#4A9FFF;border-radius:4px border:1px solid #ccc;"></div>
+
+
+<div style="width:50px;height:20px;background-color:#000000;border-radius:4px border:1px solid #ccc;"></div>
+
+
+<div style="width:50px;height:20px;background-color:#306FF0;border-radius:4px border:1px solid #ccc;"></div>
+
+
+<div style="width:50px;height:20px;background-color:#FFA500;border-radius:4px border:1px solid #ccc;"></div>
+
+
+### 11.2 Tipografia
+  a tipografia usada na aplicação é:
+  Roboto: a escolha deve-se ao fato de ser uma fonte moderna, legível
+   e com uma boa usabilidade.
+  Inter: Legibilidade superior para telas, design moderno e otimizado
+   para a web.
+
+---
+
+### 11.3 Logo
+![Logo Cateclass](/docs/logo-cateclass.png)
+
+o logotipo do cateclass representa a união entre fé e aprendizado,o livro aberto simboliza o conhecimento e o ensino da catequese,enquanto a cruz no centro expressa a fé cristã que guia o projeto,as cores suaves transmitem acolhimento e serenidade,reforçando a proposta do sistema de ser um ambiente moderno,acessível e voltado á evangelização.
+
+---
+
+### 11.4 Modelo de Navegação
+
+---
+
+## 12. PROTÓTIPO  
+
+
+
+---
+
+## 13. APLICAÇÃO  
 (Descrição da Aplicação)
 
 ---
 
-## 11. CONSIDERAÇÕES FINAIS  
+## 14. CONSIDERAÇÕES FINAIS  
 (Considerações Finais)
 
 ---
 
-## 12. REFERÊNCIAS BIBLIOGRÁFICAS  
+## 15. REFERÊNCIAS BIBLIOGRÁFICAS  
 FIGMA. Figma: The collaborative interface design tool. [Software]. São
 Francisco: Figma, [s.d.]. Disponível em: https://www.figma.com. Acesso em: 16 jun.2025.
 
