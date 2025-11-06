@@ -12,8 +12,8 @@
         public function autenticar()
         {
             // recebe os dados
-            $email = $_POST["email"];
-            $senha_digitada = $_POST["senha"];
+            $email = trim($_POST["email"]);
+            $senha_digitada = trim($_POST["senha"]);
 
             // chama o model
             $usuarioDAO = new UsuarioDAO();

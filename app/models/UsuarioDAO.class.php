@@ -12,7 +12,7 @@
         {
             try
             {
-                $sql = "SELECT id, nome, email, senha, tipo_usuario FROM usuarios WHERE email = ?";
+                $sql = "SELECT id_usuario AS id, nome, email, senha, tipo_usuario FROM usuarios WHERE email = ?";
                 $stm = $this->db->prepare($sql);
                 $stm->execute([$email]);
 
@@ -22,7 +22,7 @@
             catch(PDOException $e)
             {
                 $this->db = null;
-                return "Erro ao inserir tarefa: " . $e->getMessage();
+                return false;
             }
         }
 

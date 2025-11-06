@@ -14,10 +14,10 @@ require_once "models/Usuario.class.php";
         public function salvar()
         {
             // pega os dados
-            $nome = $_POST["nome"];
-            $email = $_POST["email"];
-            $senha_digitada = $_POST["senha"];
-            $funcao = $_POST["funcao"];
+            $nome = trim($_POST["nome"]);
+            $email = trim($_POST["email"]);
+            $senha_digitada = trim($_POST["senha"]);
+            $funcao = ($_POST["funcao"]);
 
             // transforma a senha em hash
             $senha_hash = password_hash($senha_digitada, PASSWORD_DEFAULT);
