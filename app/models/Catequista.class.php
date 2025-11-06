@@ -5,23 +5,12 @@
 
         /** Método construtor */
 
-        public function __construct(
-            private int $etapa = 0 
-        ) {}
+        public function __construct() 
+        {
+            parent::__construct();
+        }
 
         /** Getters */
-
-        public function getEtapa()
-        {
-            return $this->etapa;
-        }
-
-        /** Setters */
-
-        public function setEtapa($etapa)
-        {
-            $this->etapa = $etapa;
-        }
 
     }
 
