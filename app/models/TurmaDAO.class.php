@@ -46,5 +46,46 @@
                 return [];
             }
         }
+
+        public function matricularPorCodigo($codigoTurma, $catequizando_id)
+        {
+            try
+            {
+                // acha o id da turma usando o codigo
+                $sql_find = "SELECT id_turma FROM turmas WHERE codigo_turma = :codigo";
+                $stmt_find = $this->db->prepare($sql_find);
+                $stmt_find->bindParam(':codigo', $codigoTurma);
+                $stmt_find->execute(); 
+
+                $turma = $stmt_find->fetch(PDO::FETCH_ASSOC);
+
+                // se a turma não existir retorna um erro
+                if (!$turma) {
+                    return "Código da turma inválido.";
+                }
+
+                $turmaId = $turma['id_turma'];
+
+                // tenta inserir o catequizando na tabela auxiliar
+                $sql_insert = "INSERT INTO turmas_catequizandos (catequizando_id, turma_id, status) 
+                    VALUES (:catequizando_id, :turma_id, 'Cursando')";
+                $stmt_insert = $this->db->prepare($sql_insert);
+                $stmt_insert->bindParam(':catequizando_id', $catequizandoId, PDO::PARAM_INT);
+                $stmt_insert->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmt_insert->execute();
+
+                return "sucesso";
+            }
+            catch(PDOException $e)
+            {
+                // Trata o erro
+                if ($e->getCode() == 23000) {
+                return "Você já está matriculado nesta turma.";
+                }
+                // Outro erro
+                error_log($e->getMessage());
+                return "Ocorreu um erro ao tentar entrar na turma.";
+            }
+        }
     }
 ?>

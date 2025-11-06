@@ -48,6 +48,16 @@ switch($urlLimpa)
         $controller->atividades();
     break;
 
+    case 'catequizando/entrar-turma':
+        $controller = new CatequizandoController();
+        $controller->entrarTurmaForm();
+    break;
+
+    case 'catequizando/matricular':
+        $controller = new CatequizandoController();
+        $controller->matricular();
+    break;
+
     default:
         http_response_code(404); // Define o código de status 404
         echo "<h1>Erro 404 - Página não encontrada</h1>";
