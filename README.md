@@ -139,9 +139,9 @@ Um Documento de Requisitos de Sistema é parte essencial no desenvolvimento de s
 
 ---
 
-## 6 - ESTUDO DE VIABILIDADE  
+## 6. ESTUDO DE VIABILIDADE  
 
-O estudo de viabilidade tem como objetivo analisar se o projeto cateclass pode ser realmente colocado em prática,considerando os três pontos principais:a parte técnica,a econômica e a operacional,essa análise ajuda a entender se o sistema é possível de ser desenvolvido com os recursos disponíveis e se ele realmente atende ao propósito para o qual foi criado.
+ tem como objetivo analisar se o projeto cateclass pode ser realmente colocado em prática,considerando os três pontos principais:a parte técnica,a econômica e a operacional,essa análise ajuda a entender se o sistema é possível de ser desenvolvido com os recursos disponíveis e se ele realmente atende ao propósito para o qual foi criado.
 
 
 ### 6.1 viabilidade técnica
