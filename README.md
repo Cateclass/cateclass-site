@@ -160,6 +160,10 @@ Parte do trabalho foi feita na Fatec Jahu,utilizando os computadores e a interne
 
 A viabilidade operacional também é posistiva,pois o cateclass foi pensando para ser simples,intuitivo e fácil de usar.A navegação é clara,o design é leve e as funções são diretas,o que facilita o uso por catequistas,coordenadores e catequizandos,o o sistema realmente cumpre o que se propõe:a melhorar a comunicação e a organização dentro da catequese,por isso,o projeto cateclass se mostra viável em todos os aspectos-técnico,econômico e operacionalnunido o aprendizado em sala de aula á pratica de desenvolver uma solução útil e aplicável na vida real.
 
+### 6.4 viabilidade de mercado
+
+a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessidade real nas comunidades religiosas,que ainda enfrentam dificuldades de comunicação e organização entre catequistas,coordenadores e catequizandos,o projeto oferece uma alternativa simples,acessível e prática em relação aos métodos tradicionais omo envio de mensagens e avisos,por ser fácil de usar e sem custos,o cteclass tem potencial para ser adotado por diversas paróquias e instituições que desejam modernizar a sua gestão de forma eficiente.
+
 ---
 
 ## 7. MODELO DE DADOS  
@@ -182,7 +186,7 @@ A viabilidade operacional também é posistiva,pois o cateclass foi pensando par
 
 a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre fé,serenidade e modernidade,combinando tons neutros com cores vibrantes que representam organização,acolhimento e energia.
 
-<div style="width:50px;height:20px;background-color:#2C3E50;border-radius:4px border:1px solid #ccc;"></div>
+<div style="width:50px;height:20px;background-color:#2C3E50;border-radius:4px;border:1px solid #ccc;"></div>
 
 
 <div style="width:50px;height:20px;background-color:#FFFFFF;border-radius:4px border:1px solid #ccc;"></div>
