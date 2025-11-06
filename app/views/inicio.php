@@ -27,10 +27,9 @@
         <nav>
 
             <ul class="flex gap-[30px] uppercase font-bold">
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Paróquia</a></li>
-                <li><a href="/cateclass-site/app/login">Catecismo</a></li>
-                <li><a href="#">Contato</a></li>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Paróquia</a></li>
+                <li><a href="#catequese">catequese</a></li>
             </ul>
 
         </nav>
