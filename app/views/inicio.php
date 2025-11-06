@@ -22,7 +22,7 @@
 
     <header class="flex items-center justify-between p-[20px] px-[100px] border-b-1 border-black">
 
-        <img class="w-[261px]" src="http://localhost/projetos/cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
+        <img class="w-[261px]" src="cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
 
         <nav>
 
@@ -51,7 +51,7 @@
 
             <h2 class="text-[32px] font-bold uppercase">Catequese e Crisma</h2>
 
-            <a class="bg-[#00ff00] px-[20px] py-[7px] rounded-[30px]" href="views/escolher-login.php">Log In</a>
+            <a class="bg-[#00ff00] px-[20px] py-[7px] rounded-[30px]" href="/cateclass-site/app/login">Log In</a>
 
         </section>
 
