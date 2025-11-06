@@ -69,39 +69,33 @@ O Cateclass é uma plataforma desenvolvida para facilitar a comunicação e a or
 
  As etapas da pesquisa foram organizadas da seguinte forma:
 
- ---
+ 
 
- ## 3.1 Levantamento de Requisitos 
+ ### 3.1 Levantamento de Requisitos 
 
  A primeira etapa consistiu em identificar as principais necessidades da catequese,observando as dificuldades na troca de informações entre catequistas e pais, além do gerenciamento de atividades e envio de comunicados.
  Essa informações  serviram de base para definir os os requisistos funcionais e não funcionis do sistema, dempre com o objetivo de criar uma solução pratica e eficiente.
 
----
 
-## 3.2 Análise e estudo Teórico 
+### 3.2 Análise e estudo Teórico 
 
 Com base nas atividades e materiais disponibilizados pelo Professor no classroom,o grupo estudou conceitos sobre engenharia de software,levantamento de requisitos e prototipagem,aplicando essas referências na elaboração dos modelos e na organização do projeto.
  
----
 
-## 3.3 Modelagem e prototipagem  
+### 3.3 Modelagem e prototipagem  
 
  Após a definição dos requisitos,foram criados os  mdoelos de diagramas de caso de uso,diagrama de classes,modelo conceitual e modelo lógico,representando as principais interações do sistema e suas entidades.
  Em seguida,o grupo elaborou um protótipo das telas,permitindo visualizar como seria a navegação e a estrutura da aplicação.
 
----
-
-## 3.4 Desenvolvimento da aplicação 
+### 3.4 Desenvolvimento da aplicação 
 
 com os modelos prontos,inciou-se a etapa de desenvolvimento do sistema,utilizando ferramentas de programação web e seguindo os conceitos apresentados em aula,o objetivo foi construir uma aplicação funcional, de facíl uso e que pudesse ser acessada tanto por computador quanto por dispositivos móveis.
 
----
 
-## 3.5 Teste e validação
+### 3.5 Teste e validação
 
  na fase final,o grupo realizou testes internos para verificar o funcionamento das principais funcionalidades e corrigir evntuais falhas,além disso,foram feito ajustes de usabilidade e alinhamentos com as necessidades observadas na fase final.
 
- ---
 
  Por meio dessas etapas,o projeto Cateclass foi desenvolvido de forma colaborativa  estruturada,unindo a teoria estudada no curso com a prática da construnção de um sistema real,o método aplicado permitiu que o grupo compreendesse todas as etapas do processo de desenvolvimento de software,desde a identifcação do problema até a entrega da solução final.
 
