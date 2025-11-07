@@ -186,9 +186,9 @@ a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessid
 
 a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre fé,serenidade e modernidade,combinando tons neutros com cores vibrantes que representam organização,acolhimento e energia.
 
-|cor| Código|
-|------|------|
-| | ![#2C3E50](https://via.placeholder.com/40x20/2C3E50/FFFFFF?text=+) | `#2C3E50` |
+| Cor | Código |
+|------|---------|
+| ![#2C3E50](https://via.placeholder.com/40x20/2C3E50/FFFFFF?text=+) | `#2C3E50` |
 
 
 <div style="width:50px;height:20px;background-color:#FFFFFF;border-radius:4px border:1px solid #ccc;"></div>
