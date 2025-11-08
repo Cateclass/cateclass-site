@@ -21,7 +21,7 @@
     }
   </script>
 </head>
-<body class="flex bg-fundo h-screen">
+<body class="flex bg-[#E5ECFF] h-screen">
 
     <?php require_once 'sidebar.php';?>
 
