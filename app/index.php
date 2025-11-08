@@ -4,6 +4,7 @@ require_once "controllers/InicioController.php";
 require_once "controllers/CatequizandoController.php";
 require_once "controllers/UsuarioController.php";
 require_once "controllers/LoginController.php";
+require_once "controllers/CatequistaController.php";
 
 // se a URL existir, pega. Se não fica vazia ""
 $url = isset($_GET['url']) ? $_GET['url'] : '';
@@ -56,6 +57,16 @@ switch($urlLimpa)
     case 'catequizando/matricular':
         $controller = new CatequizandoController();
         $controller->matricular();
+    break;
+
+    case 'catequistas/atividades':
+        $controller = new CatequistaController();
+        $controller->atividades();
+    break;
+
+    case 'catequistas/turmas':
+        $controller = new CatequistaController();
+        $controller->turmas();
     break;
 
     default:
