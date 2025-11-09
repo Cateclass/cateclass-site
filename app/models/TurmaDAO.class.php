@@ -87,5 +87,54 @@
                 return "Ocorreu um erro ao tentar entrar na turma.";
             }
         }
+
+        public function getTurmasDoCatequista($catequistaId)
+        {
+            $sql = "SELECT t.*, e.nome_etapa FROM turmas t JOIN 
+            etapas e ON t.etapa_id = e.id_etapa WHERE 
+            t.catequista_id = :id ORDER BY t.data_inicio DESC";
+
+            try
+            {
+                $stm = $this->db->prepare($sql);
+                $stm->bindParam(':id', $catequistaId, PDO::PARAM_INT);
+                $stm->execute();
+                return $stm->fetchAll(PDO::FETCH_OBJ);
+            }
+            catch(PDOException $e)
+            {
+                error_log($e->getMessage());
+                return [];
+            }
+        }
+
+        public function inserirTurma(Turma $turma)
+        {
+            $sql = "INSERT INTO turmas (nome_turma, tipo_turma, data_inicio, data_termino, etapa_id, catequista_id, codigo_turma) 
+            VALUES (:nome, :tipo, :inicio, :termino, :etapa_id, :catequista_id, :codigo)";
+
+            try
+            {
+                $codigo = strtoupper(substr(uniqid(), 7, 6));
+
+                $stm = $this->db->prepare($sql);
+
+                $stm->bindValue(':nome', $turma->getNomeTurma());
+                $stm->bindValue(':tipo', $turma->getTipoTurma());
+                $stm->bindValue(':inicio', $turma->getDataInicio());
+                $stm->bindValue(':termino', $turma->getDataTermino());
+                $stm->bindValue(':etapa_id', $turma->getEtapaId(), PDO::PARAM_INT);
+                $stm->bindValue(':catequista_id', $turma->getCatequistaId(), PDO::PARAM_INT);
+                $stm->bindValue(':codigo', $codigo);
+
+                $stm->execute();
+                return "Sucesso";
+            }
+            catch(PDOException $e)
+            {
+                error_log($e->getMessage());
+                return "Erro ao criar turma.";
+            }
+        }
     }
 ?>

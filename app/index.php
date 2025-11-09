@@ -59,12 +59,16 @@ switch($urlLimpa)
         $controller->matricular();
     break;
 
-    case 'catequistas/atividades':
+    case 'catequista':
+        $controller = new CatequistaController();
+        $controller->home();
+
+    case 'catequista/atividades':
         $controller = new CatequistaController();
         $controller->atividades();
     break;
 
-    case 'catequistas/turmas':
+    case 'catequista/turmas':
         $controller = new CatequistaController();
         $controller->turmas();
     break;

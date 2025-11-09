@@ -36,11 +36,11 @@
                     break;
 
                     case 'catequista':
-                        header('Location: /cateclass-site/app//catequista');
+                        header('Location: /cateclass-site/app/catequista');
                     break;
 
                     case 'coordenador':
-                        header('Location: /cateclass-site/app//coordenador');
+                        header('Location: /cateclass-site/app/coordenador');
                     break;
 
                     default:
