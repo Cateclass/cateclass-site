@@ -68,9 +68,34 @@ switch($urlLimpa)
         $controller->atividades();
     break;
 
+    case 'catequista/atividades/nova':
+        $controller = new CatequistaController();
+        $controller->novaAtividadeForm();
+    break;
+
+    case 'catequista/atividades/criar':
+        $controller = new CatequistaController();
+        $controller->criarAtividade();
+    break;
+
     case 'catequista/turmas':
         $controller = new CatequistaController();
         $controller->turmas();
+    break;
+
+    case 'catequista/turmas/nova':
+        $controller = new CatequistaController();
+        $controller->novaTurmaForm();
+    break;
+
+    case 'catequista/turmas/criar':
+        $controller = new CatequistaController();
+        $controller->criarTurma();
+    break;
+
+    case 'catequista/turma':
+        $controller = new CatequistaController();
+        $controller->verTurma();
     break;
 
     default:

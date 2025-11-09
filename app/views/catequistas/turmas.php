@@ -65,7 +65,7 @@
                                 <span class="text-xs font-medium text-gray-400 bg-gray-100 px-2 py-1 rounded">
                                     <?php echo htmlspecialchars($turma->codigo_turma); ?>
                                 </span>
-                                <a href="/cateclass-site/app/catequista/turma/<?php echo $turma->id_turma; ?>" class="text-sm font-semibold text-blue-600 hover:underline">
+                                <a href="/cateclass-site/app/catequista/turma?id=<?php echo $turma->id_turma; ?>" class="text-sm font-semibold text-blue-600 hover:underline">
                                     ver mais
                                 </a>
                             </div>

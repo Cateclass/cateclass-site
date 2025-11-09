@@ -7,9 +7,9 @@
             private string $nome_turma = "",
             private string $tipo_turma = "",
             private string $data_inicio = "",
-            private string $data_termino = "",
+            private ?string $data_termino = "",
             private int $etapa_id = 0,
-            private int $codigo_turma = 0,
+            private string $codigo_turma = "",
             private int $catequista_id = 0 
         )
         {}

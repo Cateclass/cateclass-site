@@ -47,44 +47,54 @@
             }
         }
 
-        public function matricularPorCodigo($codigoTurma, $catequizando_id)
+        public function matricularPorCodigo($codigoTurma, $catequizandoId)
         {
-            try
-            {
-                // acha o id da turma usando o codigo
+            try {
+                $this->db->beginTransaction();
+
                 $sql_find = "SELECT id_turma FROM turmas WHERE codigo_turma = :codigo";
                 $stmt_find = $this->db->prepare($sql_find);
                 $stmt_find->bindParam(':codigo', $codigoTurma);
-                $stmt_find->execute(); 
-
+                $stmt_find->execute();
+                
                 $turma = $stmt_find->fetch(PDO::FETCH_ASSOC);
 
-                // se a turma não existir retorna um erro
                 if (!$turma) {
+                    $this->db->rollBack();
                     return "Código da turma inválido.";
                 }
-
                 $turmaId = $turma['id_turma'];
 
-                // tenta inserir o catequizando na tabela auxiliar
+                $sql_check = "SELECT COUNT(catequizando_id) as total 
+                            FROM turmas_catequizandos 
+                            WHERE catequizando_id = :catequizando_id AND turma_id = :turma_id";
+                $stmt_check = $this->db->prepare($sql_check);
+                $stmt_check->bindParam(':catequizando_id', $catequizandoId, PDO::PARAM_INT);
+                $stmt_check->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmt_check->execute();
+                $resultado = $stmt_check->fetch(PDO::FETCH_ASSOC);
+
+                if ($resultado['total'] > 0) {
+                    $this->db->rollBack();
+                    return "Você já está matriculado nesta turma.";
+                }
+
                 $sql_insert = "INSERT INTO turmas_catequizandos (catequizando_id, turma_id, status) 
-                    VALUES (:catequizando_id, :turma_id, 'Cursando')";
+                            VALUES (:catequizando_id, :turma_id, 'Cursando')";
                 $stmt_insert = $this->db->prepare($sql_insert);
                 $stmt_insert->bindParam(':catequizando_id', $catequizandoId, PDO::PARAM_INT);
                 $stmt_insert->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
                 $stmt_insert->execute();
 
+                $this->db->commit();
                 return "sucesso";
-            }
-            catch(PDOException $e)
-            {
-                // Trata o erro
-                if ($e->getCode() == 23000) {
-                return "Você já está matriculado nesta turma.";
-                }
-                // Outro erro
-                error_log($e->getMessage());
-                return "Ocorreu um erro ao tentar entrar na turma.";
+
+            } catch (PDOException $e) {
+                $this->db->rollBack();
+                
+                error_log("Erro em matricularPorCodigo: " . $e->getMessage());
+                
+                return "Ocorreu um erro ao tentar entrar na turma. Por favor, contate o suporte. (Erro: " . $e->getMessage() . ")";
             }
         }
 
@@ -134,6 +144,26 @@
             {
                 error_log($e->getMessage());
                 return "Erro ao criar turma.";
+            }
+        }
+
+        public function buscarTurmaPorId($turmaId, $catequistaId)
+        {
+            $sql = "SELECT t.id_turma, t.nome_turma, t.codigo_turma, e.nome_etapa, t.tipo_turma
+                    FROM turmas t
+                    JOIN etapas e ON t.etapa_id = e.id_etapa
+                    WHERE t.id_turma = :turma_id AND t.catequista_id = :catequista_id";
+            
+            try {
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmt->bindParam(':catequista_id', $catequistaId, PDO::PARAM_INT);
+                $stmt->execute();
+                return $stmt->fetch(PDO::FETCH_OBJ);
+
+            } catch(PDOException $e) {
+                error_log($e->getMessage());
+                return false;
             }
         }
     }
