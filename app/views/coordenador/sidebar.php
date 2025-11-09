@@ -32,14 +32,14 @@
 
             <li>
                 <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="catequistas.php">
-                    <i class="material-icons">wallpaper</i>
+                    <i class="material-icons">content_paste</i>
                     Catequistas
                 </a>
             </li>
 
             <li>
                 <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="catequizandos.php">
-                    <i class="material-icons">wallpaper</i>
+                    <i class="material-icons">school</i>
                     Catequizandos
                 </a>
             </li>
@@ -57,23 +57,7 @@
 
     <div class="absolute bottom-[30px] w-[100%]">
 
-        <div class="pb-[15px] mb-[15px] mx-auto border-b border-black">
-
-            <p class="pl-[25px] uppercase">Ações rápidas</p>
-
-            <div class="flex flex-col items-center">
-
-                <a class="flex justify-center gap-[10px] bg-[#008000] text-[#fff] w-[250px] py-[7px] mb-[15px] rounded-[7px] text-center" href="novaturma.php">
-                    <i class='fa fa-plus-circle' style='font-size:24px'></i>
-                    Nova Turma
-                </a>
-
-                <a class="flex justify-center gap-[10px] bg-[#D4F3E6] text-[#40B568] w-[250px] py-[7px] rounded-[7px] text-center" href="#">
-                    <i class="fa fa-bell" style='font-size:24px'></i>
-                    3 Novas Atividades
-                </a>            
-
-            </div>            
+        <div class="pb-[15px] mb-[15px] mx-auto border-b border-black">  
 
         </div>
 

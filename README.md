@@ -9,7 +9,7 @@
 
 **Jahu, SP**
 
-**Início: 1º semestre/2025**
+**Início: 2º semestre/2025**
 
 </div>
 
@@ -62,9 +62,44 @@ O Cateclass é uma plataforma desenvolvida para facilitar a comunicação e a or
 ---
 
 ## 3. MÉTODOS DA PESQUISA  
-(Insira seus métodos aqui)
+ 
+ Para o desenvolvimento do cateclass foi adotada uma abordagem aplicada e exploratoria,buscando compreender e solucionar um problema real enfrentado nas comunidades paroquiais: a dificuldade de comunicação entre a catequistas,pais e catequizandos.
 
----
+ o processo  de pesquisa foi conduzido com base em atividades e orientações disponibilizadas no google classroom,onde o grupo estruturou as etapas de desenvolvimento,planejamento e validação do projeto,Dessa forma,todo  o  trabalho foi fundamentado em conteúdos apresentados em sala nas discussões ao longo do semesetre
+
+ As etapas da pesquisa foram organizadas da seguinte forma:
+
+ 
+
+ ### 3.1 Levantamento de Requisitos 
+
+ A primeira etapa consistiu em identificar as principais necessidades da catequese,observando as dificuldades na troca de informações entre catequistas e pais, além do gerenciamento de atividades e envio de comunicados.
+ Essa informações  serviram de base para definir os os requisistos funcionais e não funcionis do sistema, dempre com o objetivo de criar uma solução pratica e eficiente.
+
+
+### 3.2 Análise e estudo Teórico 
+
+Com base nas atividades e materiais disponibilizados pelo Professor no classroom,o grupo estudou conceitos sobre engenharia de software,levantamento de requisitos e prototipagem,aplicando essas referências na elaboração dos modelos e na organização do projeto.
+ 
+
+### 3.3 Modelagem e prototipagem  
+
+ Após a definição dos requisitos,foram criados os  mdoelos de diagramas de caso de uso,diagrama de classes,modelo conceitual e modelo lógico,representando as principais interações do sistema e suas entidades.
+ Em seguida,o grupo elaborou um protótipo das telas,permitindo visualizar como seria a navegação e a estrutura da aplicação.
+
+### 3.4 Desenvolvimento da aplicação 
+
+com os modelos prontos,inciou-se a etapa de desenvolvimento do sistema,utilizando ferramentas de programação web e seguindo os conceitos apresentados em aula,o objetivo foi construir uma aplicação funcional, de facíl uso e que pudesse ser acessada tanto por computador quanto por dispositivos móveis.
+
+
+### 3.5 Teste e validação
+
+ na fase final,o grupo realizou testes internos para verificar o funcionamento das principais funcionalidades e corrigir evntuais falhas,além disso,foram feito ajustes de usabilidade e alinhamentos com as necessidades observadas na fase final.
+
+
+ Por meio dessas etapas,o projeto Cateclass foi desenvolvido de forma colaborativa  estruturada,unindo a teoria estudada no curso com a prática da construnção de um sistema real,o método aplicado permitiu que o grupo compreendesse todas as etapas do processo de desenvolvimento de software,desde a identifcação do problema até a entrega da solução final.
+
+ ---
 
 ## 4. DOCUMENTO DE REQUISITOS  
 
@@ -104,54 +139,109 @@ Um Documento de Requisitos de Sistema é parte essencial no desenvolvimento de s
 
 ---
 
-## 6 - ESTUDO DE VIABILIDADE  
+## 6. ESTUDO DE VIABILIDADE  
 
+ tem como objetivo analisar se o projeto cateclass pode ser realmente colocado em prática,considerando os três pontos principais:a parte técnica,a econômica e a operacional,essa análise ajuda a entender se o sistema é possível de ser desenvolvido com os recursos disponíveis e se ele realmente atende ao propósito para o qual foi criado.
+
+
+### 6.1 viabilidade técnica
+
+A parte tecnica do projeto foi considera totalmente viável,o cateclass foi desenvolvido com o uso de ferramentas e tecnologias acessíveis,que são bastante conhecidas e gratuitas,foram utilizadas linguagens com HTML,CSS,PHP,MYSQL,além do Github,que serviu para o controle de versão eo trabalho em equipe.
+Essas tecnologias permitem que o sistema funcione bem tanto em computadores quanto em celulares,oferecendo praticidade e facilidade na manutenção,Durante o desenvolvimento ,o grupo utilizou os computadores e a internet da Fatec Jahu,o que garantiu um ambiente adequado para testar e aprimorar o sistema.
+
+
+### 6.2 viabilidade econômica
+
+Por se tratar de um projeto acadêmico e experimental,o desenvolvimento do cateclass não gerou custos financeiros diretos,já que todas as ferramentas utilizadas são gratuitas,Os únicos "custos"envolvidos foram o tempo e a dedicação do grupo, além do uso dos equipamentos pessoais,como notebooks e acesso á internet.
+Parte do trabalho foi feita na Fatec Jahu,utilizando os computadores e a internet da instituição,e outra parte foi realizada em casa,com recursos próprios,Por isso, a viabilidade econômica é considerada totalemnte favorável.o sistema pode ser desenvolvido sem gastos adicionais,aproveitando bem os recursos disponíveis,tanto na faculdade quanto dos integrantes do grupo.
+
+
+### 6.3 viabilidade operacional
+
+A viabilidade operacional também é posistiva,pois o cateclass foi pensando para ser simples,intuitivo e fácil de usar.A navegação é clara,o design é leve e as funções são diretas,o que facilita o uso por catequistas,coordenadores e catequizandos,o o sistema realmente cumpre o que se propõe:a melhorar a comunicação e a organização dentro da catequese,por isso,o projeto cateclass se mostra viável em todos os aspectos-técnico,econômico e operacionalnunido o aprendizado em sala de aula á pratica de desenvolver uma solução útil e aplicável na vida real.
+
+### 6.4 viabilidade de mercado
+
+a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessidade real nas comunidades religiosas,que ainda enfrentam dificuldades de comunicação e organização entre catequistas,coordenadores e catequizandos,o projeto oferece uma alternativa simples,acessível e prática em relação aos métodos tradicionais omo envio de mensagens e avisos,por ser fácil de usar e sem custos,o cteclass tem potencial para ser adotado por diversas paróquias e instituições que desejam modernizar a sua gestão de forma eficiente.
 
 ---
 
 ## 7. MODELO DE DADOS  
 (Colocar imagens dos modelos)
 
-### 7.1 Modelo de Caso de Uso
+---
 
-
-### 7.2 Modelo Conceitual  
-
-
-### 7.3 Modelo Lógico  
+## 8. Modelo de Caso de Uso
+![Modelos de casos de uso](/docs/CasosdeUso.png)
 
 
 ---
 
-## 8. DESIGN  
-
-### 8.1 Paleta de Cores
-
-### 8.2 Tipografia
-
-### 8.3 Logo
-
-### 8.4 Modelo de Navegação
+### 9. Modelo Conceitual  
 
 ---
 
-## 9. PROTÓTIPO  
 
+### 10. Modelo Lógico  
 
 
 ---
 
-## 10. APLICAÇÃO  
+## 11. DESIGN  
+
+o design do cateclass foi desenvolvido com foco na harmonia entre fé, tecnologia e usabilidade,buscando transmitir acolhimento,organização e modernidade,cada elemento visual e desde das cores até a tipografia e o logotipo foi pensado para refletir a essência do projeto:um ambiente digital que une aprendizado e espiritualidade de forma simples,acessível e inspiradora.
+
+### 11.1 Paleta de Cores
+
+a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre fé,serenidade e modernidade,combinando tons neutros com cores vibrantes que representam organização,acolhimento e energia.
+
+| Cor | Código |
+|------|---------|
+| <div style="width:90px;height:25px;background-color:#2C3E50;color:white;text-align:center;line-height:25px;border-radius:6px;">#2C3E50</div> | `#2C3E50` |
+| <div style="width:90px;height:25px;background-color:#3498DB;color:white;text-align:center;line-height:25px;border-radius:6px;">#3498DB</div> | `#3498DB` |
+| <div style="width:90px;height:25px;background-color:#E67E22;color:white;text-align:center;line-height:25px;border-radius:6px;">#E67E22</div> | `#E67E22` |
+| <div style="width:90px;height:25px;background-color:#ECF0F1;color:black;text-align:center;line-height:25px;border-radius:6px;border:1px solid #ccc;">#ECF0F1</div> | `#ECF0F1` |
+| <div style="width:90px;height:25px;background-color:#F39C12;color:white;text-align:center;line-height:25px;border-radius:6px;">#F39C12</div> | `#F39C12` |
+
+
+
+### 11.2 Tipografia
+  a tipografia usada na aplicação é:
+  Roboto: a escolha deve-se ao fato de ser uma fonte moderna, legível
+   e com uma boa usabilidade.
+  Inter: Legibilidade superior para telas, design moderno e otimizado
+   para a web.
+
+---
+
+### 11.3 Logo
+![Logo Cateclass](/docs/logo-cateclass.png)
+
+o logotipo do cateclass representa a união entre fé e aprendizado,o livro aberto simboliza o conhecimento e o ensino da catequese,enquanto a cruz no centro expressa a fé cristã que guia o projeto,as cores suaves transmitem acolhimento e serenidade,reforçando a proposta do sistema de ser um ambiente moderno,acessível e voltado á evangelização.
+
+---
+
+### 11.4 Modelo de Navegação
+
+---
+
+## 12. PROTÓTIPO  
+
+
+
+---
+
+## 13. APLICAÇÃO  
 (Descrição da Aplicação)
 
 ---
 
-## 11. CONSIDERAÇÕES FINAIS  
+## 14. CONSIDERAÇÕES FINAIS  
 (Considerações Finais)
 
 ---
 
-## 12. REFERÊNCIAS BIBLIOGRÁFICAS  
+## 15. REFERÊNCIAS BIBLIOGRÁFICAS  
 FIGMA. Figma: The collaborative interface design tool. [Software]. São
 Francisco: Figma, [s.d.]. Disponível em: https://www.figma.com. Acesso em: 16 jun.2025.
 
