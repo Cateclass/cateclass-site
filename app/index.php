@@ -4,6 +4,7 @@ require_once "controllers/InicioController.php";
 require_once "controllers/CatequizandoController.php";
 require_once "controllers/UsuarioController.php";
 require_once "controllers/LoginController.php";
+require_once "controllers/CatequistaController.php";
 
 // se a URL existir, pega. Se não fica vazia ""
 $url = isset($_GET['url']) ? $_GET['url'] : '';
@@ -46,6 +47,55 @@ switch($urlLimpa)
     case 'catequizando/atividades':
         $controller = new CatequizandoController();
         $controller->atividades();
+    break;
+
+    case 'catequizando/entrar-turma':
+        $controller = new CatequizandoController();
+        $controller->entrarTurmaForm();
+    break;
+
+    case 'catequizando/matricular':
+        $controller = new CatequizandoController();
+        $controller->matricular();
+    break;
+
+    case 'catequista':
+        $controller = new CatequistaController();
+        $controller->home();
+
+    case 'catequista/atividades':
+        $controller = new CatequistaController();
+        $controller->atividades();
+    break;
+
+    case 'catequista/atividades/nova':
+        $controller = new CatequistaController();
+        $controller->novaAtividadeForm();
+    break;
+
+    case 'catequista/atividades/criar':
+        $controller = new CatequistaController();
+        $controller->criarAtividade();
+    break;
+
+    case 'catequista/turmas':
+        $controller = new CatequistaController();
+        $controller->turmas();
+    break;
+
+    case 'catequista/turmas/nova':
+        $controller = new CatequistaController();
+        $controller->novaTurmaForm();
+    break;
+
+    case 'catequista/turmas/criar':
+        $controller = new CatequistaController();
+        $controller->criarTurma();
+    break;
+
+    case 'catequista/turma':
+        $controller = new CatequistaController();
+        $controller->verTurma();
     break;
 
     default:

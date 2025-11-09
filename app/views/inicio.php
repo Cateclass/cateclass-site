@@ -25,9 +25,7 @@
 
     <header class="flex items-center justify-between p-[20px] px-[100px] border-b-1 border-black" id="inicio">
 
-        <a href="#inicio">
-            <img class="w-[261px]" src="http://localhost/cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
-        </a>
+        <img class="w-[261px]" src="http://localhost/cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
 
         <nav>
 
@@ -120,31 +118,7 @@
 
             <h2 class="text-center text-[32px] font-bold mb-[50px]">Catequese e Crisma</h2>
 
-            <img 
-                class="
-                    w-[700px] border-1 rounded-[20px] mb-[20px]
-
-                    max-md:hidden
-                " 
-                src="http://localhost/cateclass-site/app/views/assets/img/print_sistema.png" 
-                alt=""
-            >
-
-            <div 
-                class="
-                    text-justify w-[700px] mb-[20px]
-
-                    max-md:w-[300px]
-                "
-            >
-                <p>Pensando em facilitar a organização e fortalecer a comunicação entre catequistas, catequizandos e crismandos, foi desenvolvida para a Paróquia São Benedito de Jaú um sistema online exclusivo para a pastoral catequética.</p>
-                <p>Por meio deste espaço digital, é possível acompanhar cadastros, turmas, encontros, presenças, conteúdos formativos e informações importantes sobre o processo de Catequese e Crisma.</p>
-                <p>O sistema foi criado com o objetivo de modernizar e integrar o trabalho pastoral, tornando mais simples o acompanhamento dos grupos e o contato entre catequistas, coordenadores e a equipe paroquial.</p>
-            </div>
-
-            <div class="flex justify-center">
-                <a class="bg-[#00ff00] block w-[200px] text-center px-[20px] py-[7px] rounded-[30px]" href="views/login.php">Fazer Login</a>
-            </div>
+            <a class="bg-[#00ff00] px-[20px] py-[7px] rounded-[30px]" href="/cateclass-site/app/login">Log In</a>
 
         </section>
 
