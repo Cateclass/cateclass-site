@@ -169,10 +169,17 @@ a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessid
 ## 7. MODELO DE DADOS  
 (Colocar imagens dos modelos)
 
+---
+
 ## 8. Modelo de Caso de Uso
 ![Modelos de casos de uso](/docs/CasosdeUso.png)
 
-## 9. Modelo Conceitual  
+
+---
+
+### 9. Modelo Conceitual  
+
+---
 
 
 ### 10. Modelo Lógico  
