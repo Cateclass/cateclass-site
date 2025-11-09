@@ -22,7 +22,7 @@
 
     <header class="flex items-center justify-between p-[20px] px-[100px] border-b-1 border-black">
 
-        <img class="w-[261px]" src="cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
+        <img class="w-[261px]" src="http://localhost/cateclass-site/app/views/assets/img/logo-no-bg.png" alt="Logo Paróquia São Benedito">
 
         <nav>
 
