@@ -188,30 +188,12 @@ a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre f
 
 | Cor | Código |
 |------|---------|
-| ![#2C3E50](https://via.placeholder.com/40x20/2C3E50/FFFFFF?text=+) | `#2C3E50` |
+| <div style="width:90px;height:25px;background-color:#2C3E50;color:white;text-align:center;line-height:25px;border-radius:6px;">#2C3E50</div> | `#2C3E50` |
+| <div style="width:90px;height:25px;background-color:#3498DB;color:white;text-align:center;line-height:25px;border-radius:6px;">#3498DB</div> | `#3498DB` |
+| <div style="width:90px;height:25px;background-color:#E67E22;color:white;text-align:center;line-height:25px;border-radius:6px;">#E67E22</div> | `#E67E22` |
+| <div style="width:90px;height:25px;background-color:#ECF0F1;color:black;text-align:center;line-height:25px;border-radius:6px;border:1px solid #ccc;">#ECF0F1</div> | `#ECF0F1` |
+| <div style="width:90px;height:25px;background-color:#F39C12;color:white;text-align:center;line-height:25px;border-radius:6px;">#F39C12</div> | `#F39C12` |
 
-| Cor | Código |
-|------|---------|
-| ![%232C3E50](https://via.placeholder.com/40x20/2C3E50/FFFFFF?text=+) | `#2C3E50` |
-
-
-
-<div style="width:50px;height:20px;background-color:#FFFFFF;border-radius:4px border:1px solid #ccc;"></div>
-
-
-<div style="width:50px;height:20px;background-color:#008000;border-radius:4px border:1px solid #ccc;"></div>
-
-
-<div style="width:50px;height:20px;background-color:#4A9FFF;border-radius:4px border:1px solid #ccc;"></div>
-
-
-<div style="width:50px;height:20px;background-color:#000000;border-radius:4px border:1px solid #ccc;"></div>
-
-
-<div style="width:50px;height:20px;background-color:#306FF0;border-radius:4px border:1px solid #ccc;"></div>
-
-
-<div style="width:50px;height:20px;background-color:#FFA500;border-radius:4px border:1px solid #ccc;"></div>
 
 
 ### 11.2 Tipografia
