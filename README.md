@@ -182,6 +182,8 @@ a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessid
 
 ## 11. DESIGN  
 
+o design do cateclass foi desenvolvido com foco na harmonia entre fé, tecnologia e usabilidade,buscando transmitir acolhimento,organização e modernidade,cada elemento visual e desde das cores até a tipografia e o logotipo foi pensado para refletir a essência do projeto:um ambiente digital que une aprendizado e espiritualidade de forma simples,acessível e inspiradora.
+
 ### 11.1 Paleta de Cores
 
 a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre fé,serenidade e modernidade,combinando tons neutros com cores vibrantes que representam organização,acolhimento e energia.
