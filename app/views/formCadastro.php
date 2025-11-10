@@ -25,7 +25,7 @@
             </select>
             
             <button type="submit" name="register">Cadastrar</button>
-            <p>Já tem uma conta? <a href="/login">Login</a></p>
+            <p>Já tem uma conta? <a href="/cateclass-site/app/login">Login</a></p>
         </form>
     </div>
 </body>
