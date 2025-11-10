@@ -197,11 +197,11 @@ a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre f
 
 | Cor | Código |
 |------|---------|
-| <div style="width:90px;height:25px;background-color:#2C3E50;color:white;text-align:center;line-height:25px;border-radius:6px;">#2C3E50</div> | `#2C3E50` |
-| <div style="width:90px;height:25px;background-color:#3498DB;color:white;text-align:center;line-height:25px;border-radius:6px;">#3498DB</div> | `#3498DB` |
-| <div style="width:90px;height:25px;background-color:#E67E22;color:white;text-align:center;line-height:25px;border-radius:6px;">#E67E22</div> | `#E67E22` |
-| <div style="width:90px;height:25px;background-color:#ECF0F1;color:black;text-align:center;line-height:25px;border-radius:6px;border:1px solid #ccc;">#ECF0F1</div> | `#ECF0F1` |
-| <div style="width:90px;height:25px;background-color:#F39C12;color:white;text-align:center;line-height:25px;border-radius:6px;">#F39C12</div> | `#F39C12` |
+| <div style="width:90px;height:25px;background-color:#2C3E50;color:white;text-align:center;line-height:25px;border-radius:6px;">#2C3E50</div> | `#2C3E50-cinza` |
+| <div style="width:90px;height:25px;background-color:#3498DB;color:white;text-align:center;line-height:25px;border-radius:6px;">#FFFFFF</div> | `#FFFFFF-Branco` |
+| <div style="width:90px;height:25px;background-color:#E67E22;color:white;text-align:center;line-height:25px;border-radius:6px;">#008000</div> | `#008000-verde forte` |
+| <div style="width:90px;height:25px;background-color:#ECF0F1;color:black;text-align:center;line-height:25px;border-radius:6px;border:1px solid #ccc;">#E5ECFF</div> | `#E5ECFF-Azul Mais Fraco` |
+
 
 
 
