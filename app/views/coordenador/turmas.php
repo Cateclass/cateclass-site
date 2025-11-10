@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION["email"])) {
     header("Location: ../login.php");
     exit();
-}   
+}
 
 require_once __DIR__ . '/../../models/config.php';
 
@@ -24,7 +24,6 @@ require_once __DIR__ . '/../../models/config.php';
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    
 </head>
 <body class="flex bg-[#E5ECFF]">
 
@@ -37,48 +36,66 @@ require_once __DIR__ . '/../../models/config.php';
 
         <p class="text-[20px] mb-[20px]">Adicione, edite ou remova turmas.</p>
 
-        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar" id="filtro">
+        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" 
+               type="text" placeholder="Pesquisar" id="filtro">
 
-        <table class="border-1 border-black" id="tabela-turmas">
+        <table class="border-1 border-black w-full" id="tabela-turmas">
 
             <thead>
-
-                <tr class="border-1 border-black">
-
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Catequista</th>
-
+                <tr class="border-1 border-black text-left">
+                    <th class="py-[10px] px-[10px] bg-[#fff] border-1 border-black">Nome da Turma</th>
+                    <th class="py-[10px] px-[10px] bg-[#fff] border-1 border-black">Tipo</th>
+                    <th class="py-[10px] px-[10px] bg-[#fff] border-1 border-black">Data de Início</th>
+                    <th class="py-[10px] px-[10px] bg-[#fff] border-1 border-black">Data de Término</th>
+                    <th class="py-[10px] px-[10px] bg-[#fff] border-1 border-black">Etapa</th>
                 </tr>
-
             </thead>
 
             <tbody>
-                <!-- <?php
-                $sql = "SELECT * FROM turmas";
-
-                // Prepara e executa a consulta
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                // Verifica se retornou algum resultado
-                if ($stmt->rowCount() > 0) {
-                    // Pega todos os registros em um array associativo
-                    $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                    // Loop para exibir cada usuário
-                    foreach ($turmas as $turma) {
-                ?>
-                        <tr class="border-1 border-black">
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $turma['nome'] ?></td>
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $turma['catequista'] ?></td>
-                        </tr>
                 <?php
-                    }
-                } else {
-                    echo "<tr><td colspan='3'>Nenhuma turma encontrada.</td></tr>";
-                }
-                ?> -->
+                try {
+                    // Consulta todas as turmas com o nome da etapa
+                    $sql = "
+                        SELECT 
+                            t.id_turma,
+                            t.nome_turma,
+                            t.tipo_turma,
+                            t.data_inicio,
+                            t.data_termino,
+                            e.nome_etapa
+                        FROM turmas t
+                        INNER JOIN etapas e ON e.id_etapa = t.etapa_id
+                        WHERE t.deletado_em IS NULL
+                        ORDER BY t.nome_turma ASC
+                    ";
 
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute();
+
+                    if ($stmt->rowCount() > 0) {
+                        $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                        foreach ($turmas as $turma) {
+                            echo "
+                                <tr class='border-1 border-black'>
+                                    <td class='p-[10px] bg-[#fff] border-1 border-black'>{$turma['nome_turma']}</td>
+                                    <td class='p-[10px] bg-[#fff] border-1 border-black'>{$turma['tipo_turma']}</td>
+                                    <td class='p-[10px] bg-[#fff] border-1 border-black'>" . date('d/m/Y', strtotime($turma['data_inicio'])) . "</td>
+                                    <td class='p-[10px] bg-[#fff] border-1 border-black'>" . 
+                                        ($turma['data_termino'] ? date('d/m/Y', strtotime($turma['data_termino'])) : '—') . 
+                                    "</td>
+                                    <td class='p-[10px] bg-[#fff] border-1 border-black'>{$turma['nome_etapa']}</td>
+                                </tr>
+                            ";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5' class='p-[10px] text-center bg-[#fff]'>Nenhuma turma encontrada.</td></tr>";
+                    }
+
+                } catch (PDOException $e) {
+                    echo "<tr><td colspan='5' class='text-red-600 p-[10px] bg-[#fff] text-center'>Erro: {$e->getMessage()}</td></tr>";
+                }
+                ?>
             </tbody>
 
         </table>
@@ -86,23 +103,15 @@ require_once __DIR__ . '/../../models/config.php';
     </main>
 
     <script>
-
         document.getElementById('filtro').addEventListener('input', function () {
-        const valorFiltro = this.value.toLowerCase();
-        const linhas = document.querySelectorAll('#tabela‑turmas tbody tr');
+            const valorFiltro = this.value.toLowerCase();
+            const linhas = document.querySelectorAll('#tabela-turmas tbody tr');
 
-        linhas.forEach(function(linha) {
-            const nome = linha.cells[0].textContent.toLowerCase();
-            const catequista = linha.cells[1].textContent.toLowerCase();
-
-            if (nome.includes(valorFiltro) || catequista.includes(valorFiltro)) {
-            linha.style.display = '';
-            } else {
-            linha.style.display = 'none';
-            }
+            linhas.forEach(function(linha) {
+                const textoLinha = linha.textContent.toLowerCase();
+                linha.style.display = textoLinha.includes(valorFiltro) ? '' : 'none';
+            });
         });
-        });
-
     </script>
     
 </body>
