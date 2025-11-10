@@ -44,12 +44,12 @@
                 </a>
             </li>
 
-            <li>
+            <!-- <li>
                 <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="comunicados.php">
                     <i class="material-icons">message</i>
                     Comunicados
                 </a>
-            </li>
+            </li> -->
 
         </ul>
 

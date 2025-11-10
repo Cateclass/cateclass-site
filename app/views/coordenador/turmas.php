@@ -6,7 +6,7 @@ if (!isset($_SESSION["email"])) {
     exit();
 }   
 
-require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu projeto
+require_once __DIR__ . '/../../models/config.php';
 
 ?>
 
@@ -37,25 +37,24 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
 
         <p class="text-[20px] mb-[20px]">Adicione, edite ou remova turmas.</p>
 
-        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar">
+        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar" id="filtro">
 
-        <table class="border-1 border-black">
+        <table class="border-1 border-black" id="tabela-turmas">
 
             <thead>
 
                 <tr class="border-1 border-black">
 
                     <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Funções</th>
+                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Catequista</th>
 
                 </tr>
 
             </thead>
 
             <tbody>
-                <?php
-                $sql = "SELECT * FROM catequistas";
+                <!-- <?php
+                $sql = "SELECT * FROM turmas";
 
                 // Prepara e executa a consulta
                 $stmt = $conn->prepare($sql);
@@ -67,25 +66,44 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
                     $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                     // Loop para exibir cada usuário
-                    foreach ($catequizandos as $catequizando) {
+                    foreach ($turmas as $turma) {
                 ?>
                         <tr class="border-1 border-black">
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['nome'] ?></td>
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['email'] ?></td>
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['funcao'] ?></td>
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $turma['nome'] ?></td>
+                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $turma['catequista'] ?></td>
                         </tr>
                 <?php
                     }
                 } else {
-                    echo "<tr><td colspan='3'>Nenhum catequizando encontrado.</td></tr>";
+                    echo "<tr><td colspan='3'>Nenhuma turma encontrada.</td></tr>";
                 }
-                ?>
+                ?> -->
 
             </tbody>
 
         </table>
 
     </main>
+
+    <script>
+
+        document.getElementById('filtro').addEventListener('input', function () {
+        const valorFiltro = this.value.toLowerCase();
+        const linhas = document.querySelectorAll('#tabela‑turmas tbody tr');
+
+        linhas.forEach(function(linha) {
+            const nome = linha.cells[0].textContent.toLowerCase();
+            const catequista = linha.cells[1].textContent.toLowerCase();
+
+            if (nome.includes(valorFiltro) || catequista.includes(valorFiltro)) {
+            linha.style.display = '';
+            } else {
+            linha.style.display = 'none';
+            }
+        });
+        });
+
+    </script>
     
 </body>
 </html>

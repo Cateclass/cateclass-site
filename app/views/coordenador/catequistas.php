@@ -6,7 +6,7 @@ if (!isset($_SESSION["email"])) {
     exit();
 }
 
-require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu projeto
+require_once __DIR__ . '/../../models/config.php';
 
 ?>
 
@@ -37,9 +37,9 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
 
         <p class="text-[20px] mb-[20px]">Adicione, edite ou remova contas de catequistas.</p>
 
-        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar">
+        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar" id="filtro">
 
-        <table class="border-1 border-black">
+        <table class="border-1 border-black" id="tabela-catequistas">
 
             <thead>
 
@@ -47,7 +47,6 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
 
                     <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
                     <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Funções</th>
 
                 </tr>
 
@@ -72,7 +71,6 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
                         <tr class="border-1 border-black">
                             <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequista['nome'] ?></td>
                             <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequista['email'] ?></td>
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequista['funcao'] ?></td>
                         </tr>
                 <?php
                     }
@@ -86,6 +84,26 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
         </table>
 
     </main>
+
+    <script>
+
+        document.getElementById('filtro').addEventListener('input', function () {
+        const valorFiltro = this.value.toLowerCase();
+        const linhas = document.querySelectorAll('#tabela-catequistas tbody tr');
+
+            linhas.forEach(function(linha) {
+                const nome = linha.cells[0].textContent.toLowerCase();
+                const email = linha.cells[1].textContent.toLowerCase();
+
+                if (nome.includes(valorFiltro) || email.includes(valorFiltro)) {
+                linha.style.display = '';
+                } else {
+                linha.style.display = 'none';
+                }
+            });
+        });
+
+    </script>
     
 </body>
 </html>

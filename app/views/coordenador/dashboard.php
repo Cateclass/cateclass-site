@@ -6,6 +6,8 @@ if (!isset($_SESSION["email"])) {
     exit();
 }   
 
+require_once __DIR__ . '/../../models/config.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -37,18 +39,46 @@ if (!isset($_SESSION["email"])) {
 
             <h2 class="text-[24px] font-bold mb-[20px]">Visão geral</h2>
 
+            <?php
+
+                // Turmas
+                // $sql = "SELECT COUNT(*) FROM turmas";
+
+                // $stmt = $conn->prepare($sql);
+                // $stmt->execute();
+
+                // $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                // Catequistas
+                $sql = "SELECT COUNT(*) FROM catequistas";
+
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+
+                $catequistas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                // Catequizandos
+                $sql = "SELECT COUNT(*) FROM catequizandos";
+
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+
+                $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            ?>
+
             <div class="flex gap-[50px]">
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
-                    <p class="text-[17px]">Total de Catequizandos</p>
-                    <p class="text-[24px] text-[#1E64F0]">0</p>
+                    <p class="text-[17px]">Total de Turmas</p>
+                    <p class="text-[24px] text-[#62449D]"><!-- <?= $turmas[0]["COUNT(*)"]; ?> -->0</p>
                 </div>
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
                     <p class="text-[17px]">Total de Catequistas</p>
-                    <p class="text-[24px] text-[#008000]">0</p>
+                    <p class="text-[24px] text-[#008000]"><?= $catequistas[0]["COUNT(*)"]; ?></p>
                 </div>
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
-                    <p class="text-[17px]">Total de Turmas</p>
-                    <p class="text-[24px] text-[#62449D]">0</p>
+                    <p class="text-[17px]">Total de Catequizandos</p>
+                    <p class="text-[24px] text-[#1E64F0]"><?= $catequizandos[0]["COUNT(*)"]; ?></p>
                 </div>
             </div> 
 
