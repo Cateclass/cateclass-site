@@ -42,12 +42,12 @@ require_once __DIR__ . '/../../models/config.php';
             <?php
 
                 // Turmas
-                // $sql = "SELECT COUNT(*) FROM turmas";
+                $sql = "SELECT COUNT(*) FROM turmas";
 
-                // $stmt = $conn->prepare($sql);
-                // $stmt->execute();
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
 
-                // $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 // Catequistas
                 $sql = "SELECT COUNT(*) FROM catequistas";
@@ -70,7 +70,7 @@ require_once __DIR__ . '/../../models/config.php';
             <div class="flex gap-[50px]">
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
                     <p class="text-[17px]">Total de Turmas</p>
-                    <p class="text-[24px] text-[#62449D]"><!-- <?= $turmas[0]["COUNT(*)"]; ?> -->0</p>
+                    <p class="text-[24px] text-[#62449D]"><?= $turmas[0]["COUNT(*)"]; ?></p>
                 </div>
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
                     <p class="text-[17px]">Total de Catequistas</p>
