@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: ../login.php");
-    exit();
-}
+// if (!isset($_SESSION["email"])) {
+//     header("Location: ../login.php");
+//     exit();
+// }
 
 require_once __DIR__ . '/../../models/config.php';
 
@@ -53,24 +53,6 @@ require_once __DIR__ . '/../../models/config.php';
 
             <tbody>
                 <?php
-                try {
-                    // Consulta todas as turmas com o nome da etapa
-                    $sql = "
-                        SELECT 
-                            t.id_turma,
-                            t.nome_turma,
-                            t.tipo_turma,
-                            t.data_inicio,
-                            t.data_termino,
-                            e.nome_etapa
-                        FROM turmas t
-                        INNER JOIN etapas e ON e.id_etapa = t.etapa_id
-                        WHERE t.deletado_em IS NULL
-                        ORDER BY t.nome_turma ASC
-                    ";
-
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute();
 
                     if ($stmt->rowCount() > 0) {
                         $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -91,10 +73,6 @@ require_once __DIR__ . '/../../models/config.php';
                     } else {
                         echo "<tr><td colspan='5' class='p-[10px] text-center bg-[#fff]'>Nenhuma turma encontrada.</td></tr>";
                     }
-
-                } catch (PDOException $e) {
-                    echo "<tr><td colspan='5' class='text-red-600 p-[10px] bg-[#fff] text-center'>Erro: {$e->getMessage()}</td></tr>";
-                }
                 ?>
             </tbody>
 

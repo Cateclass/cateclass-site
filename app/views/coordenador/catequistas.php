@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: ../login.php");
-    exit();
-}
+// if (!isset($_SESSION["usuario_nome"])) {
+//     header("Location: ../login.php");
+//     exit();
+// }
 
 require_once __DIR__ . '/../../models/config.php';
 ?>
@@ -47,17 +47,7 @@ require_once __DIR__ . '/../../models/config.php';
             </thead>
 
             <tbody>
-                <?php
-                try {
-                    $sql = "
-                        SELECT u.nome, u.email, u.telefone, u.endereco, u.criado_em
-                        FROM catequistas c
-                        INNER JOIN usuarios u ON c.usuario_id = u.id_usuario
-                        WHERE u.deletado_em IS NULL
-                        ORDER BY u.nome ASC
-                    ";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute();
+                <?php                    
 
                     if ($stmt->rowCount() > 0) {
                         $catequistas = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -73,9 +63,7 @@ require_once __DIR__ . '/../../models/config.php';
                     } else {
                         echo "<tr><td colspan='5' class='p-3 text-center'>Nenhum catequista encontrado.</td></tr>";
                     }
-                } catch (PDOException $e) {
-                    echo "<tr><td colspan='5' class='p-3 text-center text-red-600'>Erro: " . $e->getMessage() . "</td></tr>";
-                }
+                    
                 ?>
             </tbody>
         </table>

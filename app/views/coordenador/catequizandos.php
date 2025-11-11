@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: ../login.php");
-    exit();
-}
+// if (!isset($_SESSION["usuario_nome"])) {
+//     header("Location: ../login.php");
+//     exit();
+// }
 
 require_once __DIR__ . '/../../models/config.php'; // Caminho do config correto
 
@@ -54,46 +54,27 @@ require_once __DIR__ . '/../../models/config.php'; // Caminho do config correto
 
             <tbody>
                 <?php
-                try {
-                    $sql = "
-                        SELECT 
-                            u.nome, 
-                            u.email, 
-                            u.telefone, 
-                            c.data_nascimento, 
-                            c.escola, 
-                            c.paroquia_origem, 
-                            c.transferencia
-                        FROM catequizandos AS c
-                        INNER JOIN usuarios AS u ON c.usuario_id = u.id_usuario
-                        WHERE u.deletado_em IS NULL
-                    ";
-
-                    $stmt = $conn->prepare($sql);
-                    $stmt->execute();
-
+                
                     if ($stmt->rowCount() > 0) {
-                        $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                        foreach ($catequizandos as $c) {
+                    foreach ($catequizandos as $c) {
                 ?>
-                            <tr class="border-1 border-black bg-white">
-                                <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['nome']) ?></td>
-                                <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['email']) ?></td>
-                                <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['telefone']) ?></td>
-                                <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['data_nascimento']) ?></td>
-                                <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['escola']) ?></td>
-                                <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['paroquia_origem']) ?></td>
-                                <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['transferencia']) ?></td>
-                            </tr>
+                    <tr class="border-1 border-black bg-white">
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['nome']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['email']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['telefone']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['data_nascimento']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['escola']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['paroquia_origem']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['transferencia']) ?></td>
+                    </tr>
                 <?php
                         }
                     } else {
                         echo "<tr><td colspan='7' class='text-center p-3 bg-white border border-black'>Nenhum catequizando encontrado.</td></tr>";
                     }
-                } catch (PDOException $e) {
-                    echo "<tr><td colspan='7' class='text-center p-3 bg-white border border-black text-red-500'>Erro: " . $e->getMessage() . "</td></tr>";
-                }
+
                 ?>
             </tbody>
         </table>

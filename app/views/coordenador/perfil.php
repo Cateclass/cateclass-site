@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: ../login.php");
-    exit();
-}   
+// if (!isset($_SESSION["email"])) {
+//     header("Location: ../login.php");
+//     exit();
+// }   
 
-require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu projeto
+// require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu projeto
 
 ?>
 
@@ -82,7 +82,7 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
             <div class="bg-[#fff] border-1 w-[200px] h-[200px] rounded-[50%] mb-[50px]"></div>
 
             <label class="text-[20px] font-bold" for="nome">Nome completo</label>
-            <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" value="<?= $_SESSION['nome'] ?>">
+            <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" value="<?= $_SESSION['usuario_nome'] ?>">
 
             <a class="flex items-center gap-[20px] bg-[#1E64F0] text-[#fff] w-[250px] py-[10px] px-[10px] mb-[20px] rounded-[5px]" href="novaturma.php">
                 <i class="material-icons">check_circle</i>
@@ -104,7 +104,7 @@ require_once '../config.php'; // ajuste o caminho conforme a estrutura do seu pr
                 <p>Tem certeza que deseja sair?</p>
                 <div class="flex justify-between">
                     <button class="flex justify-center items-center gap-[20px] bg-[#DDDDDD] text-[#000] text-center w-[150px] py-[10px] px-[10px] mb-[20px] rounded-[5px]" id="closeModal">Cancelar</button>
-                    <a class="flex justify-center items-center gap-[20px] bg-[#D92626] text-[#fff] text-center w-[150px] py-[10px] px-[10px] mb-[20px] rounded-[5px]" onclick="window.location.href='../logout.php'">Sim</a>
+                    <a class="flex justify-center items-center gap-[20px] bg-[#D92626] text-[#fff] text-center w-[150px] py-[10px] px-[10px] mb-[20px] rounded-[5px]" onclick="window.location.href='../logout'">Sim</a>
                 </div>
             </div>
         </div>
