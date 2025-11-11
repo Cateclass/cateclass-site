@@ -16,6 +16,7 @@ require_once "models/Usuario.class.php";
             // pega os dados
             $nome = trim($_POST["nome"]);
             $email = trim($_POST["email"]);
+            $telefone = trim($_POST["telefone"]);
             $senha_digitada = trim($_POST["senha"]);
             $funcao = ($_POST["funcao"]);
 
@@ -26,6 +27,7 @@ require_once "models/Usuario.class.php";
             $novoUsuario = new Usuario();
             $novoUsuario->setNome($nome);
             $novoUsuario->setEmail($email);
+            $novoUsuario->setTelefone($telefone);
             $novoUsuario->setSenha($senha_hash);
             $novoUsuario->setTipoFuncao($funcao);
 
