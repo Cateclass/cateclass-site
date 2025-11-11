@@ -1,5 +1,6 @@
 <?php 
-    session_start(); 
+// Inicia a sessão para LER a mensagem
+session_start(); 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,21 +16,21 @@
 
 <body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
 
-    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 relative">
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
 
-        <!-- Mensagem de sucesso -->
+        <h2 class="text-3xl font-bold text-center text-blue-700 mb-6">Login</h2>
+
+        <!-- Mensagem de sucesso (flash message) -->
         <?php if (isset($_SESSION['flash_message'])): ?>
-            <div class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-                <?php echo $_SESSION['flash_message']; ?>
+            <div class="mb-4 text-green-700 bg-green-100 border border-green-300 rounded-lg p-3 text-center">
+                <?= htmlspecialchars($_SESSION['flash_message']); ?>
             </div>
             <?php unset($_SESSION['flash_message']); ?>
         <?php endif; ?>
 
-        <h2 class="text-3xl font-bold text-center text-blue-700 mb-6">Login</h2>
-
         <form action="/cateclass-site/app/autenticar" method="post" class="space-y-5">
-            
-            <!-- Erro -->
+
+            <!-- Mensagem de erro -->
             <?php if (isset($dados['erro'])): ?>
                 <p class="text-red-600 bg-red-100 border border-red-300 p-2 rounded text-center">
                     <?= htmlspecialchars($dados['erro']); ?>
@@ -58,13 +59,14 @@
                 Entrar
             </button>
 
-            <!-- Link cadastro -->
+            <!-- Link para cadastro -->
             <p class="text-center text-gray-700">
-                Não tem uma conta? 
+                Não tem uma conta?
                 <a href="/cateclass-site/app/cadastro" class="text-blue-600 hover:underline font-semibold">
                     Criar conta
                 </a>
             </p>
+
         </form>
     </div>
 

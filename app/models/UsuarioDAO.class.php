@@ -28,15 +28,16 @@
 
         public function inserir($usuario)
         {
-            $sql = "INSERT INTO usuarios (nome, email, senha, tipo_usuario) VALUES (?, ?, ?, ?)";
+            $sql = "INSERT INTO usuarios (nome, email, telefone, senha, tipo_usuario) VALUES (?, ?, ?, ?, ?)";
 
             try
             {
                 $stm = $this->db->prepare($sql);
                 $stm->bindValue(1, $usuario->getNome());
                 $stm->bindValue(2, $usuario->getEmail());
-                $stm->bindValue(3, $usuario->getSenha());
-                $stm->bindValue(4, $usuario->getTipoFuncao());
+                $stm->bindValue(3, $usuario->getTelefone());
+                $stm->bindValue(4, $usuario->getSenha());
+                $stm->bindValue(5, $usuario->getTipoFuncao());
                 $stm->execute();
                 $this->db = null;
                 return "Usuário criado com sucesso!";
