@@ -16,6 +16,7 @@
 
             <input type="text" name="nome" id="nome" placeholder="Nome" required>
             <input type="email" name="email" id="email" placeholder="Email" required>
+            <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required>
             <input type="password" name="senha" id="senha" placeholder="Senha" required>
             
             <select name="funcao" required>
@@ -25,7 +26,7 @@
             </select>
             
             <button type="submit" name="register">Cadastrar</button>
-            <p>Já tem uma conta? <a href="/login">Login</a></p>
+            <p>Já tem uma conta? <a href="/cateclass-site/app/login">Login</a></p>
         </form>
     </div>
 </body>
