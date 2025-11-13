@@ -28,6 +28,13 @@
             </p>
         </div>
 
+        <?php if (isset($dados['mensagem'])): ?>
+            <div class="p-3 my-4 text-sm text-center rounded-lg 
+                <?php echo ($dados['mensagem_tipo'] == 'sucesso') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'; ?>">
+                <?php echo $dados['mensagem']; ?>
+            </div>
+        <?php endif; ?>
+
         <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
                 <div>
@@ -130,14 +137,17 @@
                                 </span>
                             </div>
 
-                            <?php $estaConcluida = !is_null($atividade->id_resposta); ?>
+                            <?php 
+                            $estaConcluida = !is_null($atividade->id_resposta); 
+                            $linkAtividade = "/cateclass-site/app/catequizando/atividade?id=" . $atividade->id_atividade;
+                            ?>
 
                             <?php if ($estaConcluida): ?>
-                                <a href="#" class="mt-4 sm:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
+                                <a href="<?php echo $linkAtividade; ?>" class="mt-4 sm:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
                                     Ver Resposta
                                 </a>
                             <?php else: ?>
-                                <a href="#" class="mt-4 sm:mt-0 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">
+                                <a href="<?php echo $linkAtividade; ?>" class="mt-4 sm:mt-0 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">
                                     Ver Atividade
                                 </a>
                             <?php endif; ?>

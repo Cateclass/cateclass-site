@@ -103,7 +103,7 @@
                                 <a href="/cateclass-site/app/catequista/atividade/<?php echo $atividade->id_atividade; ?>/entregas" class="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-md hover:bg-blue-200">ver entregas</a>
                             </div>
                         </div>
-                        <p class="text-gray-600 mt-2 text-sm"><?php echo htmlspecialchars($atividade->descricao); ?></p>
+                        <p class="text-gray-600 mt-2 text-sm"><?php echo htmlspecialchars($atividade->descricao ?? ''); ?></p>
                         <div class="flex flex-col sm:flex-row justify-between sm:items-center mt-4 pt-4 border-t border-gray-100 gap-4">
                             <div class="flex items-center gap-2 text-sm text-gray-500">
                                 <i class="material-icons-outlined text-base">group</i>

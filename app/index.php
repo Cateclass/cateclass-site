@@ -49,6 +49,16 @@ switch($urlLimpa)
         $controller->atividades();
     break;
 
+    case 'catequizando/atividade':
+        $controller = new CatequizandoController();
+        $controller->verAtividade();
+    break;
+
+    case 'catequizando/atividade/responder':
+        $controller = new CatequizandoController();
+        $controller->enviarResposta();
+    break;
+
     case 'catequizando/entrar-turma':
         $controller = new CatequizandoController();
         $controller->entrarTurmaForm();
