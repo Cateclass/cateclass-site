@@ -223,6 +223,10 @@ o logotipo do cateclass representa a união entre fé e aprendizado,o livro aber
 
 ### 11.4 Modelo de Navegação
 
+![Modelos de navegação](/docs/modelodenavegacao.png)
+
+o modelo de navegação do cateclass mostra de forma como o usuário percorre as principais funções do sistema,garantindo uma experiência simples e organizada,ele começa com o usuário,que pode acessar diferentes áreas de acordo com sua necessidade, entre essas áreas estão o gerenciamento de usuários,onde é possível fazer login, cadastro e recuperação de senha,o gerenciamento de trumas que permite acompanhar os catequizandos e visualizar o desempenho de cada um,e as atividades, onde é possível entregar tarefas e se comunicar pelo sistemas de mensagens entre os usuarios,esse modelo representa a estrutura de navegação do sistema,destacando a conexão entre as funcionalidades e facilidade de uso para todos os tipos de usuários.
+
 ---
 
 ## 12. PROTÓTIPO  
