@@ -141,7 +141,6 @@ class CatequistaController
     public function criarAtividade()
     {
         $catequistaId = $this->checarLogin();
-
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
             header('Location: /cateclass-site/app/catequista/atividades/nova');
             exit;
@@ -149,11 +148,12 @@ class CatequistaController
 
         $novaAtividade = new Atividade();
         $novaAtividade->setTitulo(trim($_POST['titulo']));
-        $novaAtividade->setDescricao(trim($_POST['descricao']));
-        $novaAtividade->setTurmaId(trim($_POST['turma_id']));
-        $novaAtividade->setTipo(trim($_POST['tipo']));
+        $novaAtividade->setDescricao(empty($_POST['descricao']) ? null : trim($_POST['descricao']));
         $novaAtividade->setDataEntrega(empty($_POST['data_entrega']) ? null : trim($_POST['data_entrega']));
-
+        $novaAtividade->setTipo(trim($_POST['tipo']));
+        $novaAtividade->setTipoEntrega(trim($_POST['tipo_entrega']));
+        $novaAtividade->setTurmaId((int)$_POST['turma_id']);
+        
         $atividadeDAO = new AtividadeDAO();
         $resultado = $atividadeDAO->inserirAtividade($novaAtividade);
 

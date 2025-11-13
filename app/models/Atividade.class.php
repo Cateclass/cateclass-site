@@ -8,6 +8,7 @@
             private string $descricao = "",
             private string $data_entrega = "",
             private string $tipo = "",
+            private string $tipo_entrega = "texto",
             private int $turma_id = 0
         )
         {}
@@ -45,6 +46,14 @@
         }
         public function setTipo($tipo) {
             $this->tipo = $tipo;
+        }
+
+        public function getTipoEntrega() {
+            return $this->tipo_entrega;
+        }
+
+        public function setTipoEntrega($tipo_entrega) {
+            $this->tipo_entrega = $tipo_entrega;
         }
 
         public function getTurmaId() {

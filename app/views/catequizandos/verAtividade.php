@@ -76,7 +76,18 @@
             <?php if ($dados['resposta']): ?>
                 
                 <div class="bg-white p-6 rounded-lg shadow-md mt-6">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Sua Resposta</h2>
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-2xl font-bold text-gray-800">Sua Resposta</h2>
+                        
+                        <form action="/cateclass-site/app/catequizando/atividade/cancelar" method="POST" onsubmit="return confirm('Tem certeza que deseja cancelar o envio? Sua resposta será apagada e você precisará enviar novamente.');">
+                            <input type="hidden" name="resposta_id" value="<?php echo $dados['resposta']->id_resposta; ?>">
+                            <input type="hidden" name="atividade_id" value="<?php echo $dados['atividade']->id_atividade; ?>">
+                            <button type="submit" class="text-sm font-medium text-red-600 bg-red-100 px-4 py-2 rounded-md hover:bg-red-200">
+                                Cancelar Envio
+                            </button>
+                        </form>
+                    </div>
+
                     <div class="p-4 bg-gray-50 rounded-md border border-gray-200">
                         <p class="text-gray-500 text-sm mb-2">
                             Enviado em: 
@@ -85,9 +96,16 @@
                             echo $dataEnvio->format('d/m/Y \à\s H:i');
                             ?>
                         </p>
-                        <p class="text-gray-800 leading-relaxed">
-                            <?php echo nl2br(htmlspecialchars($dados['resposta']->texto)); ?>
-                        </p>
+                        
+                        <?php if ($dados['resposta']->texto): ?>
+                            <p class="text-gray-800 leading-relaxed">
+                                <?php echo nl2br(htmlspecialchars($dados['resposta']->texto)); ?>
+                            </p>
+                        <?php else: ?>
+                            <p class="text-gray-800 italic">
+                                Você marcou esta atividade como concluída.
+                            </p>
+                        <?php endif; ?>
                     </div>
 
                     <?php if ($dados['resposta']->comentario_catequista): ?>
@@ -101,33 +119,58 @@
                 </div>
 
             <?php else: ?>
-
-                <form action="/cateclass-site/app/catequizando/atividade/responder" method="POST" class="bg-white p-6 rounded-lg shadow-md mt-6">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Enviar Resposta</h2>
+                
+                <?php if ($dados['atividade']->tipo_entrega == 'texto'): ?>
                     
-                    <input type="hidden" name="atividade_id" value="<?php echo $dados['atividade']->id_atividade; ?>">
-                    
-                    <div>
-                        <label for="texto_resposta" class="block text-sm font-medium text-gray-700 mb-2">Sua resposta:</label>
-                        <textarea 
-                            id="texto_resposta"
-                            name="texto_resposta" 
-                            rows="8"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                            placeholder="Escreva sua reflexão ou resposta aqui..."
-                            required
-                        ></textarea>
-                    </div>
+                    <form action="/cateclass-site/app/catequizando/atividade/responder" method="POST" class="bg-white p-6 rounded-lg shadow-md mt-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Enviar Resposta</h2>
+                        
+                        <input type="hidden" name="atividade_id" value="<?php echo $dados['atividade']->id_atividade; ?>">
+                        <input type="hidden" name="tipo_entrega" value="texto">
+                        
+                        <div>
+                            <label for="texto_resposta" class="block text-sm font-medium text-gray-700 mb-2">Sua resposta:</label>
+                            <textarea 
+                                id="texto_resposta"
+                                name="texto_resposta" 
+                                rows="8"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Escreva sua reflexão ou resposta aqui..."
+                                required
+                            ></textarea>
+                        </div>
 
-                    <div class="mt-6 text-right">
-                        <button 
-                            type="submit" 
-                            class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Enviar Atividade
-                        </button>
-                    </div>
-                </form>
+                        <div class="mt-6 text-right">
+                            <button 
+                                type="submit" 
+                                class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                Enviar Atividade
+                            </button>
+                        </div>
+                    </form>
+
+                <?php else: ?>
+
+                    <form action="/cateclass-site/app/catequizando/atividade/responder" method="POST" class="bg-white p-6 rounded-lg shadow-md mt-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">Confirmar Conclusão</h2>
+                        
+                        <input type="hidden" name="atividade_id" value="<?php echo $dados['atividade']->id_atividade; ?>">
+                        <input type="hidden" name="tipo_entrega" value="confirmacao">
+                        
+                        <p class="text-gray-700">Esta atividade não requer um envio de texto. Apenas marque como concluída quando você a tiver realizado.</p>
+
+                        <div class="mt-6 text-right">
+                            <button 
+                                type="submit" 
+                                class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                Marcar como Concluída
+                            </button>
+                        </div>
+                    </form>
+
+                <?php endif; ?>
             
             <?php endif; ?>
 

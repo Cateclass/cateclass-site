@@ -103,14 +103,15 @@ class AtividadeDAO extends Conexao
     
     public function inserirAtividade(Atividade $atividade)
     {
-        $sql = "INSERT INTO atividades (titulo, descricao, data_entrega, tipo, turma_id)
-                VALUES (:titulo, :descricao, :data_entrega, :tipo, :turma_id)";
+        $sql = "INSERT INTO atividades (titulo, descricao, data_entrega, tipo, tipo_entrega, turma_id)
+                VALUES (:titulo, :descricao, :data_entrega, :tipo, :tipo_entrega, :turma_id)";
         try {
             $stmt = $this->db->prepare($sql);
             $stmt->bindValue(':titulo', $atividade->getTitulo());
             $stmt->bindValue(':descricao', $atividade->getDescricao());
             $stmt->bindValue(':data_entrega', $atividade->getDataEntrega());
             $stmt->bindValue(':tipo', $atividade->getTipo());
+            $stmt->bindValue(':tipo_entrega', $atividade->getTipoEntrega());
             $stmt->bindValue(':turma_id', $atividade->getTurmaId(), PDO::PARAM_INT);
             $stmt->execute();
             return "sucesso";
@@ -166,7 +167,10 @@ class AtividadeDAO extends Conexao
 
     public function buscarAtividadePorId($atividadeId)
     {
-        $sql = "SELECT a.*, t.nome_turma, e.nome_etapa 
+        $sql = "SELECT 
+                    a.id_atividade, a.titulo, a.descricao, a.data_entrega, a.tipo, a.tipo_entrega,
+                    t.nome_turma, 
+                    e.nome_etapa 
                 FROM atividades a
                 JOIN turmas t ON a.turma_id = t.id_turma
                 LEFT JOIN etapas e ON t.etapa_id = e.id_etapa

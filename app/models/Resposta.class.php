@@ -5,7 +5,7 @@
             private int $id_resposta = 0,
             private int $catequizando_id = 0,
             private int $atividade_id = 0,
-            private string $texto = "",
+            private ?string $texto = null,
             private string $data_envio = "",
             private ?string $comentario_catequista = null
         ) {}
@@ -34,7 +34,7 @@
         public function getTexto() {
             return $this->texto;
         }
-        public function setTexto($texto) {
+        public function setTexto(?string $texto) {
             $this->texto = $texto;
         }
 

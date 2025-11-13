@@ -66,4 +66,28 @@ class RespostaDAO extends Conexao
             return [];
         }
     }
+
+    public function deletarResposta($respostaId, $catequizandoId)
+    {
+        $sql = "DELETE FROM respostas 
+                WHERE id_resposta = :id_resposta 
+                AND catequizando_id = :catequizando_id";
+        
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id_resposta', $respostaId, PDO::PARAM_INT);
+            $stmt->bindParam(':catequizando_id', $catequizandoId, PDO::PARAM_INT);
+            $stmt->execute();
+            
+            if ($stmt->rowCount() > 0) {
+                return "sucesso";
+            } else {
+                return "Resposta não encontrada ou não pertence a você.";
+            }
+
+        } catch(PDOException $e) {
+            error_log($e->getMessage());
+            return "Erro ao cancelar envio: " . $e->getMessage();
+        }
+    }
 }

@@ -185,25 +185,29 @@
 
             $atividadeId = (int)$_POST['atividade_id'];
             $catequizandoId = (int)$_SESSION['usuario_id'];
-            $textoResposta = trim($_POST['texto_resposta']);
+            $tipoEntrega = trim($_POST['tipo_entrega']);
+            $textoResposta = null;
 
-            if (empty($textoResposta)) {
-                $_SESSION['flash_message'] = "Você não pode enviar uma resposta em branco.";
-                $_SESSION['flash_type'] = "erro";
-                header('Location: /cateclass-site/app/catequizando/atividade?id=' . $atividadeId);
-                exit;
+            if ($tipoEntrega == 'texto') {
+                $textoResposta = trim($_POST['texto_resposta']);
+                if (empty($textoResposta)) {
+                    $_SESSION['flash_message'] = "Você não pode enviar uma resposta em branco.";
+                    $_SESSION['flash_type'] = "erro";
+                    header('Location: /cateclass-site/app/catequizando/atividade?id=' . $atividadeId);
+                    exit;
+                }
             }
 
             $resposta = new Resposta();
             $resposta->setAtividadeId($atividadeId);
             $resposta->setCatequizandoId($catequizandoId);
-            $resposta->setTexto($textoResposta);
+            $resposta->setTexto($textoResposta); 
 
             $respostaDAO = new RespostaDAO();
             $resultado = $respostaDAO->inserirResposta($resposta);
 
             if ($resultado === "sucesso") {
-                $_SESSION['flash_message'] = "Resposta enviada com sucesso!";
+                $_SESSION['flash_message'] = "Atividade enviada com sucesso!";
                 $_SESSION['flash_type'] = "sucesso";
             } else {
                 $_SESSION['flash_message'] = $resultado;
@@ -211,6 +215,33 @@
             }
 
             header('Location: /cateclass-site/app/catequizando/atividades');
+            exit;
+        }
+
+        public function cancelarResposta()
+        {
+            session_start();
+            if (!isset($_SESSION['usuario_id']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+                header('Location: /cateclass-site/app/login');
+                exit;
+            }
+
+            $respostaId = (int)$_POST['resposta_id'];
+            $atividadeId = (int)$_POST['atividade_id'];
+            $catequizandoId = (int)$_SESSION['usuario_id'];
+
+            $respostaDAO = new RespostaDAO();
+            $resultado = $respostaDAO->deletarResposta($respostaId, $catequizandoId);
+
+            if ($resultado === "sucesso") {
+                $_SESSION['flash_message'] = "Envio cancelado. Você pode enviar sua resposta novamente.";
+                $_SESSION['flash_type'] = "sucesso";
+            } else {
+                $_SESSION['flash_message'] = $resultado;
+                $_SESSION['flash_type'] = "erro";
+            }
+
+            header('Location: /cateclass-site/app/catequizando/atividade?id=' . $atividadeId);
             exit;
         }
     }
