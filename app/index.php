@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('America/Sao_Paulo');
+
 require_once "controllers/InicioController.php";
 require_once "controllers/CatequizandoController.php";
 require_once "controllers/UsuarioController.php";
