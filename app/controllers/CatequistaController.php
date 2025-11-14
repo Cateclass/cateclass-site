@@ -7,6 +7,7 @@ require_once "models/EtapaDAO.class.php";
 require_once "models/Turma.class.php";
 require_once "models/Atividade.class.php";
 require_once "models/CatequizandoDAO.class.php";
+require_once "models/RespostaDAO.class.php";
 
 class CatequistaController
 {
@@ -201,5 +202,103 @@ class CatequistaController
         $dados['catequizandos'] = $listaCatequizandos;
 
         require_once "views/catequistas/verTurma.php";
+    }
+
+    public function verEntregas($atividadeId)
+    {
+        $catequistaId = $this->checarLogin();
+
+        $atividadeDAO = new AtividadeDAO();
+        $respostaDAO = new RespostaDAO();
+
+        // Busca os dados da atividade
+        $atividade = $atividadeDAO->buscarAtividadeParaCatequista($atividadeId, $catequistaId);
+
+        // Se a atividade não for desse catequista ou não encontrar ela redireciona para a tela de atividades com a msg de erro
+        if (!$atividade) {
+            $_SESSION['flash_message'] = "Atividade não encontrada ou não pertence a você.";
+            $_SESSION['flash_type'] = "erro";
+            header('Location: /cateclass-site/app/catequista/atividades');
+            exit;
+        }
+
+        // Busca a lista de respostas para esta atividade
+        $respostas = $respostaDAO->buscarRespostasDaAtividade($atividadeId);
+
+        // Prepara os dados para a view
+        $dados = [
+            'atividade' => $atividade,
+            'respostas' => $respostas
+        ];
+
+        // Carrega a view
+        require_once "views/catequistas/verEntregas.php";
+    }
+
+    public function corrigirForm($respostaId)
+    {
+        $catequistaId = $this->checarLogin();
+
+        $respostaDAO = new RespostaDAO();
+        $atividadeDAO = new AtividadeDAO();
+
+        // Busca a resposta que o catequista quer corrigir
+        $resposta = $respostaDAO->buscarRespostaUnicaPorId($respostaId);
+
+        if (!$resposta) {
+            // Se a resposta não existe, volta para o dashboard
+            header('Location: /cateclass-site/app/catequista');
+            exit;
+        }
+
+        // Verifica se a atividade desta resposta pertence ao catequista logado
+        $atividade = $atividadeDAO->buscarAtividadeParaCatequista($resposta->atividade_id, $catequistaId);
+        
+        if (!$atividade) {
+            // Se não pertence, redireciona com erro
+            $_SESSION['flash_message'] = "Você não tem permissão para corrigir esta atividade.";
+            $_SESSION['flash_type'] = "erro";
+            header('Location: /cateclass-site/app/catequista');
+            exit;
+        }
+
+        // Prepara os dados para a view
+        $dados = [
+            'resposta' => $resposta,
+            'atividade' => $atividade 
+        ];
+
+        // Carrega a view
+        require_once "views/catequistas/formCorrecao.php";
+    }
+
+    public function salvarCorrecao()
+    {
+        $catequistaId = $this->checarLogin();
+        
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /cateclass-site/app/catequista');
+            exit;
+        }
+
+        // Pega os dados do formulário
+        $respostaId = $_POST['id_resposta'];
+        $atividadeId = $_POST['id_atividade']; 
+        $comentario = trim($_POST['comentario']);
+
+        $respostaDAO = new RespostaDAO();
+        $sucesso = $respostaDAO->salvarFeedback($respostaId, $comentario);
+
+        if ($sucesso) {
+            $_SESSION['flash_message'] = "Feedback enviado com sucesso!";
+            $_SESSION['flash_type'] = "sucesso";
+        } else {
+            $_SESSION['flash_message'] = "Erro ao salvar o feedback.";
+            $_SESSION['flash_type'] = "erro";
+        }
+
+        // Redireciona de volta para a tela de "Ver Entregas"
+        header('Location: /cateclass-site/app/catequista/atividade/' . $atividadeId . '/entregas');
+        exit;
     }
 }

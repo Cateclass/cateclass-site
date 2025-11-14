@@ -187,4 +187,25 @@ class AtividadeDAO extends Conexao
             return false;
         }
     }
+
+    public function buscarAtividadeParaCatequista($atividadeId, $catequistaId)
+    {
+        $sql = "SELECT a.id_atividade, a.titulo, a.descricao, a.tipo_entrega, t.nome_turma
+                FROM atividades a
+                JOIN turmas t ON a.turma_id = t.id_turma
+                WHERE a.id_atividade = :atividade_id 
+                  AND t.catequista_id = :catequista_id";
+        
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':atividade_id', $atividadeId, PDO::PARAM_INT);
+            $stmt->bindParam(':catequista_id', $catequistaId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+
+        } catch(PDOException $e) {
+            error_log($e->getMessage());
+            return false;
+        }
+    }
 }

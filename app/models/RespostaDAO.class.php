@@ -30,8 +30,10 @@ class RespostaDAO extends Conexao
 
     public function buscarRespostaDoAluno($atividadeId, $catequizandoId)
     {
-        $sql = "SELECT * FROM respostas 
-                WHERE atividade_id = :atividade_id AND catequizando_id = :catequizando_id";
+        $sql = "SELECT id_resposta, texto, comentario_catequista 
+                FROM respostas 
+                WHERE atividade_id = :atividade_id 
+                  AND catequizando_id = :catequizando_id";
         
         try {
             $stm = $this->db->prepare($sql);
@@ -88,6 +90,44 @@ class RespostaDAO extends Conexao
         } catch(PDOException $e) {
             error_log($e->getMessage());
             return "Erro ao cancelar envio: " . $e->getMessage();
+        }
+    }
+
+    // busca a resposta especifica pelo ID
+    public function buscarRespostaUnicaPorId($respostaId)
+    {
+        $sql = "SELECT r.*, u.nome as nome_catequizando 
+                FROM respostas r
+                JOIN usuarios u ON r.catequizando_id = u.id_usuario
+                WHERE r.id_resposta = :resposta_id";
+        
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':resposta_id', $respostaId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            return false;
+        }
+    }
+
+    // salva a resposta do catequista
+    public function salvarFeedback($respostaId, $comentario)
+    {
+        $sql = "UPDATE respostas 
+                SET comentario_catequista = :comentario 
+                WHERE id_resposta = :resposta_id";
+        
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':comentario', $comentario);
+            $stmt->bindParam(':resposta_id', $respostaId, PDO::PARAM_INT);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            return false;
         }
     }
 }

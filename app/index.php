@@ -14,6 +14,24 @@ $url = isset($_GET['url']) ? $_GET['url'] : '';
 // limpa barras extras
 $urlLimpa = trim($url, '/');
 
+$matches = [];
+
+if (preg_match('/^catequista\/atividade\/(\d+)\/entregas$/', $urlLimpa, $matches)) {
+    // URL: /catequista/atividade/5/entregas
+    // $matches[1] será "5"
+    $controller = new CatequistaController();
+    $controller->verEntregas($matches[1]); // chama o método ver entregas
+    exit; // para a execução para não cair no switch
+}
+
+// rota para mostrar o formulário de correção
+if (preg_match('/^catequista\/resposta\/(\d+)\/corrigir$/', $urlLimpa, $matches)) {
+    // $matches[1] será o ID da Resposta
+    $controller = new CatequistaController();
+    $controller->corrigirForm($matches[1]);
+    exit;
+}
+
 switch($urlLimpa)
 {
     case '':
@@ -93,6 +111,11 @@ switch($urlLimpa)
     case 'catequista/atividades/criar':
         $controller = new CatequistaController();
         $controller->criarAtividade();
+    break;
+
+    case 'catequista/resposta/salvar-correcao':
+        $controller = new CatequistaController();
+        $controller->salvarCorrecao();
     break;
 
     case 'catequista/turmas':
