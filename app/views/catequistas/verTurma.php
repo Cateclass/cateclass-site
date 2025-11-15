@@ -86,11 +86,11 @@
             </div>
 
             <div class="lg:col-span-1 flex flex-col gap-6">
-                <h2 class="text-2xl font-semibold text-gray-800">Alunos (<?php echo count($dados['catequizandos']); ?>)</h2>
+                <h2 class="text-2xl font-semibold text-gray-800">Catequizando (<?php echo count($dados['catequizandos']); ?>)</h2>
                 <div class="bg-white rounded-lg shadow-md p-6">
                     <ul class="flex flex-col gap-4">
                         <?php if (empty($dados['catequizandos'])): ?>
-                            <p class="text-sm text-gray-500">Nenhum aluno matriculado nesta turma.</p>
+                            <p class="text-sm text-gray-500">Nenhum catequizando matriculado nesta turma.</p>
                         <?php else: ?>
                             <?php foreach ($dados['catequizandos'] as $aluno): ?>
                                 <li class="flex items-center gap-3 pb-3 border-b border-gray-100 last:border-b-0">
