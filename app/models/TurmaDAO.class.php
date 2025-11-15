@@ -149,10 +149,11 @@
 
         public function buscarTurmaPorId($turmaId, $catequistaId)
         {
-            $sql = "SELECT t.id_turma, t.nome_turma, t.codigo_turma, e.nome_etapa, t.tipo_turma
-                    FROM turmas t
-                    JOIN etapas e ON t.etapa_id = e.id_etapa
-                    WHERE t.id_turma = :turma_id AND t.catequista_id = :catequista_id";
+            $sql = "SELECT t.id_turma, t.nome_turma, t.tipo_turma, t.data_inicio, t.data_termino, t.etapa_id, t.codigo_turma,
+                       IFNULL(e.nome_etapa, 'Sem Etapa') as nome_etapa
+                FROM turmas t
+                LEFT JOIN etapas e ON t.etapa_id = e.id_etapa
+                WHERE t.id_turma = :turma_id AND t.catequista_id = :catequista_id";
             
             try {
                 $stmt = $this->db->prepare($sql);
@@ -164,6 +165,86 @@
             } catch(PDOException $e) {
                 error_log($e->getMessage());
                 return false;
+            }
+        }
+
+        public function atualizarTurma(Turma $turma)
+        {
+            $sql = "UPDATE turmas 
+                    SET nome_turma = :nome, 
+                        tipo_turma = :tipo, 
+                        data_inicio = :inicio, 
+                        data_termino = :termino, 
+                        etapa_id = :etapa_id
+                    WHERE id_turma = :id_turma AND catequista_id = :catequista_id";
+            
+            try {
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindValue(':nome', $turma->getNomeTurma());
+                $stmt->bindValue(':tipo', $turma->getTipoTurma());
+                $stmt->bindValue(':inicio', $turma->getDataInicio());
+                $stmt->bindValue(':termino', $turma->getDataTermino());
+                $stmt->bindValue(':etapa_id', $turma->getEtapaId(), PDO::PARAM_INT);
+                $stmt->bindValue(':id_turma', $turma->getIdTurma(), PDO::PARAM_INT);
+                $stmt->bindValue(':catequista_id', $turma->getCatequistaId(), PDO::PARAM_INT);
+                
+                $stmt->execute();
+                return "sucesso";
+
+            } catch (PDOException $e) {
+                error_log($e->getMessage());
+                return "Erro ao atualizar a turma.";
+            }
+        }
+
+        public function deletarTurma($turmaId, $catequistaId)
+        {
+            $checkSql = "SELECT catequista_id FROM turmas WHERE id_turma = :id AND catequista_id = :catequista_id";
+            
+            try {
+                $stmtCheck = $this->db->prepare($checkSql);
+                $stmtCheck->bindParam(':id', $turmaId, PDO::PARAM_INT);
+                $stmtCheck->bindParam(':catequista_id', $catequistaId, PDO::PARAM_INT);
+                $stmtCheck->execute();
+                
+                if ($stmtCheck->rowCount() == 0) {
+                    return "Você não tem permissão para excluir esta turma.";
+                }
+                
+                $this->db->beginTransaction();
+
+                $sqlRespostas = "DELETE FROM respostas WHERE atividade_id IN (SELECT id_atividade FROM atividades WHERE turma_id = :turma_id)";
+                $stmtRespostas = $this->db->prepare($sqlRespostas);
+                $stmtRespostas->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmtRespostas->execute();
+
+                $sqlAtividades = "DELETE FROM atividades WHERE turma_id = :turma_id";
+                $stmtAtividades = $this->db->prepare($sqlAtividades);
+                $stmtAtividades->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmtAtividades->execute();
+
+                $sqlAvisos = "DELETE FROM avisos WHERE turma_id = :turma_id";
+                $stmtAvisos = $this->db->prepare($sqlAvisos);
+                $stmtAvisos->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmtAvisos->execute();
+
+                $sqlMatriculas = "DELETE FROM turmas_catequizandos WHERE turma_id = :turma_id";
+                $stmtMatriculas = $this->db->prepare($sqlMatriculas);
+                $stmtMatriculas->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmtMatriculas->execute();
+                
+                $sqlTurma = "DELETE FROM turmas WHERE id_turma = :turma_id";
+                $stmtTurma = $this->db->prepare($sqlTurma);
+                $stmtTurma->bindParam(':turma_id', $turmaId, PDO::PARAM_INT);
+                $stmtTurma->execute();
+                
+                $this->db->commit();
+                return "sucesso";
+
+            } catch (PDOException $e) {
+                $this->db->rollBack();
+                error_log($e->getMessage());
+                return "Erro ao excluir a turma. Tente novamente.";
             }
         }
     }

@@ -51,9 +51,9 @@
                 <?php foreach ($dados['turmas'] as $turma): ?>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden relative">
                         <div class="h-10 bg-blue-500"></div>
-                        <button class="absolute top-12 right-4 text-gray-400 hover:text-gray-600">
+                        <a href="/cateclass-site/app/catequista/turma/<?php echo $turma->id_turma; ?>/editar" class="absolute top-12 right-4 text-gray-400 hover:text-gray-600">
                             <i class="material-icons-outlined">more_vert</i>
-                        </button>
+                        </a>
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-gray-800 mb-2 h-14">
                                 <?php echo htmlspecialchars($turma->nome_turma); ?>

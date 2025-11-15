@@ -43,6 +43,15 @@
             </a>
         </div>
 
+        <?php if (isset($dados['mensagem'])): ?>
+            <div class="p-3 mb-4 text-sm text-center rounded-lg 
+                 <?php echo ($dados['mensagem_tipo'] === 'sucesso') 
+                       ? 'bg-green-100 text-green-700' 
+                       : 'bg-red-100 text-red-700'; ?>">
+                <?php echo $dados['mensagem']; ?>
+            </div>
+        <?php endif; ?>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             
             <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
@@ -89,21 +98,39 @@
         <div class="flex flex-col gap-4">
 
             <?php if (empty($dados['lista_atividades'])): ?>
-                <p class="text-gray-600">Você ainda não criou nenhuma atividade.</p>
+                <p class="text-gray-600 col-span-3 bg-white p-4 rounded-lg shadow-md">Você ainda não criou nenhuma atividade.</p>
             <?php else: ?>
                 <?php foreach ($dados['lista_atividades'] as $atividade): ?>
                     <div class="bg-white p-6 rounded-lg shadow-md">
                         <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                            
                             <div class="flex items-center gap-3">
                                 <h3 class="text-lg font-semibold text-gray-800"><?php echo htmlspecialchars($atividade->titulo); ?></h3>
                                 <span class="text-xs font-medium bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full"><?php echo htmlspecialchars($atividade->tipo); ?></span>
                             </div>
+                            
                             <div class="flex gap-2 flex-shrink-0">
-                                <a href="/cateclass-site/app/catequista/atividade/<?php echo $atividade->id_atividade; ?>/editar" class="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-md hover:bg-gray-200">editar</a>
-                                <a href="/cateclass-site/app/catequista/atividade/<?php echo $atividade->id_atividade; ?>/entregas" class="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-md hover:bg-blue-200">ver entregas</a>
+                                
+                                <a href="/cateclass-site/app/catequista/atividade/<?php echo $atividade->id_atividade; ?>/editar" class="text-sm font-medium text-gray-600 bg-gray-100 px-3 py-1 rounded-md hover:bg-gray-200">
+                                    editar
+                                </a>
+                                
+                                <a href="/cateclass-site/app/catequista/atividade/<?php echo $atividade->id_atividade; ?>/entregas" class="text-sm font-medium text-blue-600 bg-blue-100 px-3 py-1 rounded-md hover:bg-blue-200">
+                                    ver entregas
+                                </a>
+                                
+                                <form action="/cateclass-site/app/catequista/atividade/excluir" method="POST" onsubmit="return confirm('Atenção! Excluir esta atividade também apagará TODAS as respostas enviadas pelos alunos. Deseja continuar?');">
+                                    <input type="hidden" name="id_atividade" value="<?php echo $atividade->id_atividade; ?>">
+                                    <button type="submit" class="text-sm font-medium text-red-600 bg-red-100 px-3 py-1 rounded-md hover:bg-red-200">
+                                        excluir
+                                    </button>
+                                </form>
+
                             </div>
                         </div>
+                        
                         <p class="text-gray-600 mt-2 text-sm"><?php echo htmlspecialchars($atividade->descricao ?? ''); ?></p>
+                        
                         <div class="flex flex-col sm:flex-row justify-between sm:items-center mt-4 pt-4 border-t border-gray-100 gap-4">
                             <div class="flex items-center gap-2 text-sm text-gray-500">
                                 <i class="material-icons-outlined text-base">group</i>
@@ -127,7 +154,7 @@
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>
-
+            
         </div>
     </main>
 

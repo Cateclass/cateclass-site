@@ -301,4 +301,174 @@ class CatequistaController
         header('Location: /cateclass-site/app/catequista/atividade/' . $atividadeId . '/entregas');
         exit;
     }
+
+    public function editarForm($atividadeId)
+    {
+        $catequistaId = $this->checarLogin();
+        $atividadeDAO = new AtividadeDAO();
+        $turmaDAO = new TurmaDAO();
+
+        // Busca a atividade
+        $atividade = $atividadeDAO->buscarAtividadeParaCatequista($atividadeId, $catequistaId);
+
+        if (!$atividade) {
+            $_SESSION['flash_message'] = "Atividade não encontrada.";
+            $_SESSION['flash_type'] = "erro";
+            header('Location: /cateclass-site/app/catequista/atividades');
+            exit;
+        }
+
+        // Busca as turmas do catequista (para o dropdown)
+        $turmas = $turmaDAO->getTurmasDoCatequista($catequistaId);
+        
+        $dados = [
+            'atividade' => $atividade,
+            'turmas' => $turmas
+        ];
+
+        // Carrega a view de edição
+        require_once "views/catequistas/formEditarAtividade.php";
+    }
+
+    public function atualizar()
+    {
+        $catequistaId = $this->checarLogin();
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /cateclass-site/app/catequista/atividades');
+            exit;
+        }
+
+        // Pega os dados do POST
+        $atividade = new Atividade();
+        $atividade->setIdAtividade((int)$_POST['id_atividade']);
+        $atividade->setTitulo(trim($_POST['titulo']));
+        $atividade->setDescricao(trim($_POST['descricao']));
+        $atividade->setDataEntrega(empty($_POST['data_entrega']) ? null : trim($_POST['data_entrega']));
+        $atividade->setTipo(trim($_POST['tipo']));
+        $atividade->setTipoEntrega(trim($_POST['tipo_entrega']));
+        $atividade->setTurmaId((int)$_POST['turma_id']);
+
+        // Chama o DAO para dar UPDATE
+        $atividadeDAO = new AtividadeDAO();
+        $resultado = $atividadeDAO->atualizarAtividade($atividade, $catequistaId);
+
+        if ($resultado === "sucesso") {
+            $_SESSION['flash_message'] = "Atividade atualizada com sucesso!";
+            $_SESSION['flash_type'] = "sucesso";
+        } else {
+            $_SESSION['flash_message'] = $resultado;
+            $_SESSION['flash_type'] = "erro";
+        }
+
+        // Redireciona de volta para a lista de atividades
+        header('Location: /cateclass-site/app/catequista/atividades');
+        exit;
+    }
+
+    public function excluir()
+    {
+        $catequistaId = $this->checarLogin();
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /cateclass-site/app/catequista/atividades');
+            exit;
+        }
+
+        $atividadeId = (int)$_POST['id_atividade'];
+
+        $atividadeDAO = new AtividadeDAO();
+        $resultado = $atividadeDAO->deletarAtividade($atividadeId, $catequistaId);
+
+        if ($resultado === "sucesso") {
+            $_SESSION['flash_message'] = "Atividade excluída com sucesso.";
+            $_SESSION['flash_type'] = "sucesso";
+        } else {
+            $_SESSION['flash_message'] = $resultado;
+            $_SESSION['flash_type'] = "erro";
+        }
+
+        header('Location: /cateclass-site/app/catequista/atividades');
+        exit;
+    }
+
+    public function editarTurmaForm($turmaId)
+    {
+        $catequistaId = $this->checarLogin();
+        $turmaDAO = new TurmaDAO();
+        $etapaDAO = new EtapaDAO();
+
+        $turma = $turmaDAO->buscarTurmaPorId($turmaId, $catequistaId);
+
+        if (!$turma) {
+            $_SESSION['flash_message'] = "Turma não encontrada.";
+            $_SESSION['flash_type'] = "erro";
+            header('Location: /cateclass-site/app/catequista/turmas');
+            exit;
+        }
+
+        $etapas = $etapaDAO->buscarTodas();
+        
+        $dados = [
+            'turma' => $turma,
+            'etapas' => $etapas
+        ];
+
+        require_once "views/catequistas/formEditarTurma.php";
+    }
+
+    public function atualizarTurma()
+    {
+        $catequistaId = $this->checarLogin();
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /cateclass-site/app/catequista/turmas');
+            exit;
+        }
+
+        $turma = new Turma();
+        $turma->setIdTurma((int)$_POST['id_turma']);
+        $turma->setNomeTurma(trim($_POST['nome_turma']));
+        $turma->setTipoTurma(trim($_POST['tipo_turma']));
+        $turma->setDataInicio(trim($_POST['data_inicio']));
+        $turma->setDataTermino(empty($_POST['data_termino']) ? null : trim($_POST['data_termino']));
+        $turma->setEtapaId((int)$_POST['etapa_id']);
+        $turma->setCatequistaId($catequistaId);
+
+        $turmaDAO = new TurmaDAO();
+        $resultado = $turmaDAO->atualizarTurma($turma);
+
+        if ($resultado === "sucesso") {
+            $_SESSION['flash_message'] = "Turma atualizada com sucesso!";
+            $_SESSION['flash_type'] = "sucesso";
+        } else {
+            $_SESSION['flash_message'] = $resultado;
+            $_SESSION['flash_type'] = "erro";
+        }
+
+        header('Location: /cateclass-site/app/catequista/turmas');
+        exit;
+    }
+
+    public function excluirTurma()
+    {
+        $catequistaId = $this->checarLogin();
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /cateclass-site/app/catequista/turmas');
+            exit;
+        }
+
+        $turmaId = (int)$_POST['id_turma'];
+
+        $turmaDAO = new TurmaDAO();
+        $resultado = $turmaDAO->deletarTurma($turmaId, $catequistaId);
+
+        if ($resultado === "sucesso") {
+            $_SESSION['flash_message'] = "Turma e todos os seus dados (atividades, respostas, alunos) foram excluídos com sucesso.";
+            $_SESSION['flash_type'] = "sucesso";
+        } else {
+            $_SESSION['flash_message'] = $resultado;
+            $_SESSION['flash_type'] = "erro";
+        }
+
+        header('Location: /cateclass-site/app/catequista/turmas');
+        exit;
+    }
 }

@@ -190,7 +190,9 @@ class AtividadeDAO extends Conexao
 
     public function buscarAtividadeParaCatequista($atividadeId, $catequistaId)
     {
-        $sql = "SELECT a.id_atividade, a.titulo, a.descricao, a.tipo_entrega, t.nome_turma
+        $sql = "SELECT 
+                    a.id_atividade, a.titulo, a.descricao, a.data_entrega, 
+                    a.tipo, a.tipo_entrega, a.turma_id, t.nome_turma
                 FROM atividades a
                 JOIN turmas t ON a.turma_id = t.id_turma
                 WHERE a.id_atividade = :atividade_id 
@@ -206,6 +208,85 @@ class AtividadeDAO extends Conexao
         } catch(PDOException $e) {
             error_log($e->getMessage());
             return false;
+        }
+    }
+
+    public function atualizarAtividade(Atividade $atividade, $catequistaId)
+    {
+        $sql = "UPDATE atividades a
+                JOIN turmas t ON a.turma_id = t.id_turma
+                SET a.titulo = :titulo,
+                    a.descricao = :descricao,
+                    a.data_entrega = :data_entrega,
+                    a.tipo = :tipo,
+                    a.tipo_entrega = :tipo_entrega,
+                    a.turma_id = :turma_id
+                WHERE a.id_atividade = :id_atividade AND t.catequista_id = :catequista_id";
+        
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindValue(':titulo', $atividade->getTitulo());
+            $stmt->bindValue(':descricao', $atividade->getDescricao());
+            $stmt->bindValue(':data_entrega', $atividade->getDataEntrega());
+            $stmt->bindValue(':tipo', $atividade->getTipo());
+            $stmt->bindValue(':tipo_entrega', $atividade->getTipoEntrega());
+            $stmt->bindValue(':turma_id', $atividade->getTurmaId(), PDO::PARAM_INT);
+            $stmt->bindValue(':id_atividade', $atividade->getIdAtividade(), PDO::PARAM_INT);
+            $stmt->bindValue(':catequista_id', $catequistaId, PDO::PARAM_INT);
+            
+            $stmt->execute();
+            return "sucesso";
+
+        } catch (PDOException $e) {
+            error_log($e->getMessage());
+            return "Erro ao atualizar a atividade.";
+        }
+    }
+
+    public function deletarAtividade($atividadeId, $catequistaId)
+    {
+        // verifica se a atividade é desse catequista
+        $checkSql = "SELECT t.catequista_id 
+                     FROM atividades a 
+                     JOIN turmas t ON a.turma_id = t.id_turma 
+                     WHERE a.id_atividade = :id";
+        
+        $sqlDeleteRespostas = "DELETE FROM respostas WHERE atividade_id = :id_atividade";
+        $sqlDeleteAtividade = "DELETE FROM atividades WHERE id_atividade = :id_atividade";
+
+        try {
+            // Verificação de segurança
+            $stmtCheck = $this->db->prepare($checkSql);
+            $stmtCheck->bindParam(':id', $atividadeId, PDO::PARAM_INT);
+            $stmtCheck->execute();
+            $dono = $stmtCheck->fetch(PDO::FETCH_OBJ);
+
+            if (!$dono || $dono->catequista_id != $catequistaId) {
+                return "Você não tem permissão para excluir esta atividade.";
+            }
+            
+            // Inicia a transação
+            $this->db->beginTransaction();
+
+            // Deleta as Respostas
+            $stmtRespostas = $this->db->prepare($sqlDeleteRespostas);
+            $stmtRespostas->bindParam(':id_atividade', $atividadeId, PDO::PARAM_INT);
+            $stmtRespostas->execute();
+
+            // Deleta a Atividade
+            $stmtAtividade = $this->db->prepare($sqlDeleteAtividade);
+            $stmtAtividade->bindParam(':id_atividade', $atividadeId, PDO::PARAM_INT);
+            $stmtAtividade->execute();
+
+            // Confirma a transação
+            $this->db->commit();
+            return "sucesso";
+
+        } catch (PDOException $e) {
+            // Se algo der errado, desfaz tudo
+            $this->db->rollBack();
+            error_log($e->getMessage());
+            return "Erro ao excluir a atividade.";
         }
     }
 }

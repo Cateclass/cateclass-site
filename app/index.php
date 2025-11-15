@@ -32,6 +32,21 @@ if (preg_match('/^catequista\/resposta\/(\d+)\/corrigir$/', $urlLimpa, $matches)
     exit;
 }
 
+// rota para editar atividade
+if (preg_match('/^catequista\/atividade\/(\d+)\/editar$/', $urlLimpa, $matches)) {
+    // $matches[1] será o ID da Atividade
+    $controller = new CatequistaController();
+    $controller->editarForm($matches[1]); 
+    exit;
+}
+
+// rota para editar as turmas
+if (preg_match('/^catequista\/turma\/(\d+)\/editar$/', $urlLimpa, $matches)) {
+    $controller = new CatequistaController();
+    $controller->editarTurmaForm($matches[1]);
+    exit;
+}
+
 switch($urlLimpa)
 {
     case '':
@@ -113,6 +128,16 @@ switch($urlLimpa)
         $controller->criarAtividade();
     break;
 
+    case 'catequista/atividade/atualizar':
+        $controller = new CatequistaController();
+        $controller->atualizar(); 
+    break;
+
+    case 'catequista/atividade/excluir':
+        $controller = new CatequistaController();
+        $controller->excluir();
+    break;
+
     case 'catequista/resposta/salvar-correcao':
         $controller = new CatequistaController();
         $controller->salvarCorrecao();
@@ -136,6 +161,16 @@ switch($urlLimpa)
     case 'catequista/turma':
         $controller = new CatequistaController();
         $controller->verTurma();
+    break;
+
+    case 'catequista/turma/atualizar':
+        $controller = new CatequistaController();
+        $controller->atualizarTurma();
+    break;
+    
+    case 'catequista/turma/excluir':
+        $controller = new CatequistaController();
+        $controller->excluirTurma();
     break;
 
     default:
