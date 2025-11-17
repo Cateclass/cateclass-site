@@ -112,6 +112,7 @@ switch($urlLimpa)
     case 'catequista':
         $controller = new CatequistaController();
         $controller->home();
+    break;
 
     case 'catequista/atividades':
         $controller = new CatequistaController();
@@ -171,6 +172,11 @@ switch($urlLimpa)
     case 'catequista/turma/excluir':
         $controller = new CatequistaController();
         $controller->excluirTurma();
+    break;
+
+    case 'catequista/turma/remover-aluno':
+        $controller = new CatequistaController();
+        $controller->removerAluno();
     break;
 
     default:

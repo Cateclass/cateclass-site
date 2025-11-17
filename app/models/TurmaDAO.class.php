@@ -247,5 +247,25 @@
                 return "Erro ao excluir a turma. Tente novamente.";
             }
         }
+
+        public function countTotalAlunosDoCatequista($catequistaId)
+        {
+            $sql = "SELECT COUNT(DISTINCT tc.catequizando_id) as total
+                    FROM turmas_catequizandos tc
+                    JOIN turmas t ON tc.turma_id = t.id_turma
+                    WHERE t.catequista_id = :catequista_id";
+            
+            try {
+                $stm = $this->db->prepare($sql);
+                $stm->bindParam(':catequista_id', $catequistaId, PDO::PARAM_INT);
+                $stm->execute();
+                $resultado = $stm->fetch(PDO::FETCH_ASSOC);
+                return (int) $resultado['total'] ?? 0;
+
+            } catch(PDOException $e) {
+                error_log($e->getMessage()); 
+                return 0;
+            }
+        }
     }
 ?>

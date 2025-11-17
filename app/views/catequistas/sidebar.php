@@ -1,4 +1,8 @@
-<aside id="sidebar" class="fixed lg:relative bg-white w-[280px] lg:w-[300px] h-screen flex flex-col z-50 transition-transform duration-300 ease-in-out shadow-lg lg:shadow-none lg:translate-x-0">
+<aside id="sidebar" class="fixed lg:relative bg-white w-[280px] lg:w-[300px] h-screen
+                         flex flex-col z-50
+                         transition-transform duration-300 ease-in-out 
+                         shadow-lg lg:shadow-none 
+                         -translate-x-full lg:translate-x-0">
 
     <div class="relative flex items-center gap-3 p-4 mb-4 border-b">
         <img class="w-20 h-20 rounded-full" src="/cateclass-site/app/assets/img/logotipo.jpg" alt="Logotipo CateClass">
@@ -13,6 +17,12 @@
 
     <nav class="flex-1">
         <ul class="list-none p-0">
+            <li>
+                <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="/cateclass-site/app/catequista">
+                    <i class="material-icons">home</i>
+                    Dashboard
+                </a>
+            </li>
             <li>
                 <a class="flex items-center gap-3 p-3 pl-6 hover:bg-gray-100 rounded-lg mx-2" href="/cateclass-site/app/catequista/turmas">
                     <i class="material-icons">groups</i>
@@ -42,6 +52,16 @@
                     <i class="material-icons">add_task</i>
                     Criar Atividade
                 </a>
+                
+                <?php if (isset($dados['stats']['pendentes_correcao']) && $dados['stats']['pendentes_correcao'] > 0): ?>
+                    <a class="flex justify-center items-center gap-2 bg-[#D4F3E6] text-[#40B568] w-full py-2 rounded-lg" 
+                       href="/cateclass-site/app/catequista/atividades"> 
+                        <i class="fa fa-bell text-xl"></i>
+                        <?php echo $dados['stats']['pendentes_correcao']; ?> 
+                        <?php echo ($dados['stats']['pendentes_correcao'] == 1) ? 'para Corrigir' : 'para Corrigir'; ?>
+                    </a>
+                <?php endif; ?>
+
             </div>
         </div>
 

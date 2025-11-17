@@ -59,7 +59,7 @@
                     <i class="material-icons-outlined text-3xl">inventory_2</i>
                 </span>
                 <p class="text-3xl font-bold text-gray-900"><?php echo $dados['stats']['total']; ?></p>
-                <p class="text-sm text-gray-500">Total</p>
+                <p class="text-sm text-gray-500">Total de Atividades</p>
             </div>
 
             <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
@@ -71,11 +71,11 @@
             </div>
 
             <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center justify-center text-center">
-                <span class="p-3 rounded-full bg-red-100 text-red-600 mb-2">
-                    <i class="material-icons-outlined text-3xl">error_outline</i>
+                <span class="p-3 rounded-full bg-blue-100 text-blue-600 mb-2">
+                    <i class="material-icons-outlined text-3xl">dynamic_feed</i>
                 </span>
-                <p class="text-3xl font-bold text-gray-900"><?php echo $dados['stats']['naoEnviadas']; ?></p>
-                <p class="text-sm text-gray-500">Não Enviadas (Alunos)</p>
+                <p class="text-3xl font-bold text-gray-900"><?php echo $dados['stats']['total_entregas']; ?></p>
+                <p class="text-sm text-gray-500">Total de Entregas</p>
             </div>
 
             <div class="bg-white p-6 rounded-lg shadow-md flex flex-col items-center justify-center text-center">

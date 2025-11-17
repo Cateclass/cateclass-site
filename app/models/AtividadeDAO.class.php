@@ -142,26 +142,50 @@ class AtividadeDAO extends Conexao
 
     public function getStatsAtividadesDoCatequista($catequistaId)
     {
-        $sqlTotal = "SELECT COUNT(a.id_atividade) as total
-                     FROM atividades a
+        $sql = "SELECT 
+                    (SELECT COUNT(a.id_atividade) 
+                     FROM atividades a 
+                     JOIN turmas t ON a.turma_id = t.id_turma 
+                     WHERE t.catequista_id = :catequista_id_1) as total_atividades,
+                    
+                    (SELECT COUNT(r.id_resposta) 
+                     FROM respostas r
+                     JOIN atividades a ON r.atividade_id = a.id_atividade
                      JOIN turmas t ON a.turma_id = t.id_turma
-                     WHERE t.catequista_id = :catequista_id";
+                     WHERE t.catequista_id = :catequista_id_2) as total_entregas,
+
+                    (SELECT COUNT(r.id_resposta) 
+                     FROM respostas r
+                     JOIN atividades a ON r.atividade_id = a.id_atividade
+                     JOIN turmas t ON a.turma_id = t.id_turma
+                     WHERE t.catequista_id = :catequista_id_3 AND r.comentario_catequista IS NULL) as pendentes_correcao,
+                     
+                    (SELECT COUNT(r.id_resposta) 
+                     FROM respostas r
+                     JOIN atividades a ON r.atividade_id = a.id_atividade
+                     JOIN turmas t ON a.turma_id = t.id_turma
+                     WHERE t.catequista_id = :catequista_id_4 AND r.comentario_catequista IS NOT NULL) as concluidas_correcao";
+
         try {
-            $stmtTotal = $this->db->prepare($sqlTotal);
-            $stmtTotal->bindParam(':catequista_id', $catequistaId, PDO::PARAM_INT);
-            $stmtTotal->execute();
-            $total = $stmtTotal->fetch(PDO::FETCH_ASSOC)['total'] ?? 0;
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':catequista_id_1', $catequistaId, PDO::PARAM_INT);
+            $stmt->bindParam(':catequista_id_2', $catequistaId, PDO::PARAM_INT);
+            $stmt->bindParam(':catequista_id_3', $catequistaId, PDO::PARAM_INT);
+            $stmt->bindParam(':catequista_id_4', $catequistaId, PDO::PARAM_INT);
+            $stmt->execute();
             
+            $stats = $stmt->fetch(PDO::FETCH_ASSOC);
+
             return [
-                'total' => $total,
-                'pendentes' => 0, 
-                'naoEnviadas' => 0, 
-                'concluidas' => 0 
+                'total' => $stats['total_atividades'] ?? 0,
+                'total_entregas' => $stats['total_entregas'] ?? 0,
+                'pendentes' => $stats['pendentes_correcao'] ?? 0, 
+                'concluidas' => $stats['concluidas_correcao'] ?? 0
             ];
 
         } catch(PDOException $e) {
             error_log($e->getMessage());
-            return ['total' => 0, 'pendentes' => 0, 'naoEnviadas' => 0, 'concluidas' => 0];
+            return ['total' => 0, 'total_entregas' => 0, 'pendentes' => 0, 'concluidas' => 0];
         }
     }
 

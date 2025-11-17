@@ -26,9 +26,26 @@ class CatequistaController
 
     public function home()
     {
-        $this->checarLogin();
-        header('Location: /cateclass-site/app/catequista/turmas');
-        exit;
+        $catequistaId = $this->checarLogin();
+
+        $turmaDAO = new TurmaDAO();
+        $atividadeDAO = new AtividadeDAO();
+
+        $turmas = $turmaDAO->getTurmasDoCatequista($catequistaId);
+        $statsAtividades = $atividadeDAO->getStatsAtividadesDoCatequista($catequistaId);
+
+        $dados = [
+            'nomeUsuario' => $_SESSION['usuario_nome'],
+            'turmas' => $turmas,
+            'stats' => [
+                'total_turmas' => count($turmas),
+                'total_alunos' => $turmaDAO->countTotalAlunosDoCatequista($catequistaId),
+                'total_atividades' => $statsAtividades['total'],
+                'pendentes_correcao' => $statsAtividades['pendentes']
+            ]
+        ];
+
+        require_once "views/catequistas/dashboard.php";
     }
 
     public function turmas()
@@ -60,9 +77,18 @@ class CatequistaController
         $listaAtividades = $atividadeDAO->getAtividadesDoCatequista($catequistaId);
         $stats = $atividadeDAO->getStatsAtividadesDoCatequista($catequistaId);
 
-        $dados = [];
-        $dados['lista_atividades'] = $listaAtividades;
-        $dados['stats'] = $stats;
+        $dados = [
+            'lista_atividades' => $listaAtividades,
+            'stats' => $stats
+        ];
+        
+        if(isset($_SESSION['flash_message'])) 
+        {
+            $dados['mensagem'] = $_SESSION['flash_message'];
+            $dados['mensagem_tipo'] = $_SESSION['flash_type'];
+            unset($_SESSION['flash_message']);
+            unset($_SESSION['flash_type']);
+        }
 
         require_once "views/catequistas/atividades.php";
     }
@@ -469,6 +495,42 @@ class CatequistaController
         }
 
         header('Location: /cateclass-site/app/catequista/turmas');
+        exit;
+    }
+
+    public function removerAluno()
+    {
+        $catequistaId = $this->checarLogin();
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: /cateclass-site/app/catequista/turmas');
+            exit;
+        }
+
+        $catequizandoId = (int)$_POST['catequizando_id'];
+        $turmaId = (int)$_POST['turma_id'];
+
+        $turmaDAO = new TurmaDAO();
+        $turma = $turmaDAO->buscarTurmaPorId($turmaId, $catequistaId);
+
+        if (!$turma) {
+            $_SESSION['flash_message'] = "Ação não permitida.";
+            $_SESSION['flash_type'] = "erro";
+            header('Location: /cateclass-site/app/catequista/turmas');
+            exit;
+        }
+
+        $catequizandoDAO = new CatequizandoDAO();
+        $resultado = $catequizandoDAO->removerAlunoDaTurma($catequizandoId, $turmaId);
+
+        if ($resultado === "sucesso") {
+            $_SESSION['flash_message'] = "Aluno removido da turma com sucesso.";
+            $_SESSION['flash_type'] = "sucesso";
+        } else {
+            $_SESSION['flash_message'] = $resultado;
+            $_SESSION['flash_type'] = "erro";
+        }
+
+        header('Location: /cateclass-site/app/catequista/turma?id=' . $turmaId);
         exit;
     }
 }
