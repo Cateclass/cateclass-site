@@ -254,7 +254,7 @@ o modelo de navegação do cateclass mostra de forma como o usuário percorre as
   
  Por fim,fica o semtimento de dever cumprido e de gratidão,Mesmo com pouco tempo e muito desafios,o aprendizado foi enorme, o projeto nos mostrou que,com esforço e união,é possível transformar uma ideia simples em algo que poderealmente fazer a difeença, o cateclass é apenas o começo de um trabalho que ainda tem muito a evoluir e que certamente continuará crescendo junto com a nossa jornada como desenvolvedores.
  
---
+---
 
 ## 15. REFERÊNCIAS BIBLIOGRÁFICAS  
 FIGMA. Figma: The collaborative interface design tool. [Software]. São
