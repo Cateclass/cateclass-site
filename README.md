@@ -241,9 +241,20 @@ o modelo de navegação do cateclass mostra de forma como o usuário percorre as
 ---
 
 ## 14. CONSIDERAÇÕES FINAIS  
-(Considerações Finais)
 
----
+ o desenvolvimento do cateclass foi uma experiência muito importante e enriquecedora para o grupo,Desde o inicío,nosso objetivo foi criar uma ferramenta simples,acessível e útil para melhorar a comunicação e gerenciar a atividade dentro da catequese,durante o processo,conseguimos aplicar na prática o que aprendemos em sala de aula,unindo teoria,tecnologia e colaboração em equipe.
+ 
+ Mesmo com alguns desafios no caminho,como a saída de um dos integrantes do grupo e a correria do semestre,conseguimos seguir firmes e concluir o projeto com dedicação,a mudança da antinga ideia da Escolink para o cateclass exigiu bastante esforço e adaptação,mas foi uma transição muito positiva,que resultou em um sistema mais completo,moderno e alinhado ao propósito do curso.
+ 
+ o maior obstáculo que enfretamos foi, sem dúvida, a falta de tempo,com as atividades da faculdade,outras disciplinas e compromissos pessoais,nem sempre foi fácil equilibrar tudo,ainda assim,nos organizamos  da melhor forma possível:dividimos tarefas conforme as habilidades de cada um,usamos Github para acompanhar  o andamento do projeto e aproveitamos os recursos da Fatec,como os computadores e a internet,para otimizar o trabalho.
+ 
+ Apesar das dificuldades,o resultado foi muito satisfatório, o cateclass mostrou ser uma sistema viável,com grande potencial par ajudar as comunidades religiosas e facilitar o dia a dia dos catequistas,coordenadores e catequizandos,Além de aprender sobre tecnologia,apremdemos também sobre trabalho em equipe, repsonsabilidade e perseverança.
+ 
+  no próximo semestre,o cateclass deverá continuar crescendo,com a implementação de novas funço~es e melhorias,a ideia é evoluir o sistemas,deixar ele cada vez mais completo, interativo e próximo da realidade de quem vai utilizá-lo,queremos que o software continue sendo aprimorado a cada etapa,sempre com foco em oferecer uma ferramenta útil,prática e acolhedora.
+  
+ Por fim,fica o semtimento de dever cumprido e de gratidão,Mesmo com pouco tempo e muito desafios,o aprendizado foi enorme, o projeto nos mostrou que,com esforço e união,é possível transformar uma ideia simples em algo que poderealmente fazer a difeença, o cateclass é apenas o começo de um trabalho que ainda tem muito a evoluir e que certamente continuará crescendo junto com a nossa jornada como desenvolvedores.
+ 
+--
 
 ## 15. REFERÊNCIAS BIBLIOGRÁFICAS  
 FIGMA. Figma: The collaborative interface design tool. [Software]. São
