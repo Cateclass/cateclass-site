@@ -121,3 +121,31 @@ CREATE TABLE IF NOT EXISTS respostas(
 	CONSTRAINT fk_atividades_respostas
 		FOREIGN KEY (atividade_id) REFERENCES atividades (id_atividade)
 );
+
+CREATE TABLE IF NOT EXISTS turmas_catequizandos(
+	catequizando_id BIGINT UNSIGNED NOT NULL,
+    turma_id BIGINT UNSIGNED NOT NULL,
+    status VARCHAR(50) DEFAULT 'Cursando',
+    CONSTRAINT fk_turmas_catequizandos_catequizandos
+        FOREIGN KEY (catequizando_id) REFERENCES usuarios (id_usuario),
+    CONSTRAINT fk_turmas_catequizandos_turmas
+        FOREIGN KEY (turma_id) REFERENCES turmas (id_turma),
+    PRIMARY KEY (catequizando_id, turma_id)
+);
+
+ALTER TABLE atividades
+ADD COLUMN turma_id BIGINT UNSIGNED NOT NULL AFTER descricao,
+ADD CONSTRAINT fk_turmas_atividades
+    FOREIGN KEY (turma_id) REFERENCES turmas (id_turma);
+    
+ALTER TABLE atividades
+ADD COLUMN data_entrega DATETIME NULL AFTER descricao,
+ADD COLUMN tipo VARCHAR(50) DEFAULT 'reflexao' AFTER data_entrega;
+
+ALTER TABLE turmas
+ADD COLUMN codigo_turma VARCHAR(10) UNIQUE NULL AFTER etapa_id;
+
+ALTER TABLE turmas
+ADD COLUMN catequista_id BIGINT UNSIGNED NOT NULL AFTER etapa_id,
+ADD CONSTRAINT fk_turmas_catequistas
+    FOREIGN KEY (catequista_id) REFERENCES usuarios(id_usuario);

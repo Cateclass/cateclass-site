@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catequizando | Atividades</title>
-
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- 
 </head>
 <body class="flex bg-[#E5ECFF] h-screen">
 
@@ -27,6 +24,13 @@
                 Veja suas atividades, entregue as pendentes e acompanhe seu progresso.
             </p>
         </div>
+
+        <?php if (isset($dados['mensagem'])): ?>
+            <div class="p-3 my-4 text-sm text-center rounded-lg 
+                <?php echo ($dados['mensagem_tipo'] == 'sucesso') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'; ?>">
+                <?php echo $dados['mensagem']; ?>
+            </div>
+        <?php endif; ?>
 
         <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             <div class="bg-white p-6 rounded-lg shadow-md flex items-center justify-between">
@@ -130,21 +134,39 @@
                                 </span>
                             </div>
 
-                            <?php $estaConcluida = !is_null($atividade->id_resposta); ?>
+                            <?php 
+                            $estaConcluida = !is_null($atividade->id_resposta);
+                            
+                            $estaAtrasada = false;
+                            $classeData = 'text-gray-500';
+                            
+                            if ($atividade->data_entrega && !$estaConcluida) {
+                                $dataEntrega = new DateTime($atividade->data_entrega);
+                                $agora = new DateTime();
+                                if ($dataEntrega < $agora) {
+                                    $estaAtrasada = true;
+                                    $classeData = 'text-red-600 font-semibold bg-red-100 px-2 py-1 rounded-md';
+                                }
+                            }
+                            ?>
 
                             <?php if ($estaConcluida): ?>
-                                <a href="#" class="mt-4 sm:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
+                                <a href="/cateclass-site/app/catequizando/atividade?id=<?php echo $atividade->id_atividade; ?>" class="mt-4 sm:mt-0 bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors">
                                     Ver Resposta
                                 </a>
+                            <?php elseif ($estaAtrasada): ?>
+                                <a href="/cateclass-site/app/catequizando/atividade?id=<?php echo $atividade->id_atividade; ?>" class="mt-4 sm:mt-0 bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors">
+                                    Ver (Atrasada)
+                                </a>
                             <?php else: ?>
-                                <a href="#" class="mt-4 sm:mt-0 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">
+                                <a href="/cateclass-site/app/catequizando/atividade?id=<?php echo $atividade->id_atividade; ?>" class="mt-4 sm:mt-0 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">
                                     Ver Atividade
                                 </a>
                             <?php endif; ?>
                         </div>
 
                         <p class="mt-3 text-sm text-gray-600">
-                            <?php echo htmlspecialchars($atividade->descricao); ?>
+                            <?php echo htmlspecialchars($atividade->descricao ?? ''); ?>
                         </p>
 
                         <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
@@ -154,7 +176,7 @@
                                 <span>Turma: <?php echo htmlspecialchars($atividade->nome_turma); ?></span>
                             </div>
 
-                            <div class="flex items-center gap-2 text-sm text-gray-500">
+                            <div class="flex items-center gap-2 text-sm <?php echo $classeData; ?>">
                                 <i class="material-icons text-base">calendar_today</i>
                                 <span>
                                     Entrega: 
@@ -173,6 +195,11 @@
                                 <div class="flex items-center gap-2 text-sm text-green-600 font-medium">
                                     <i class="material-icons text-base">check_circle</i>
                                     <span>Concluído</span>
+                                </div>
+                            <?php elseif ($estaAtrasada): ?>
+                                <div class="flex items-center gap-2 text-sm text-red-600 font-medium">
+                                    <i class="material-icons text-base">error</i>
+                                    <span>Atrasada</span>
                                 </div>
                             <?php else: ?>
                                 <div class="flex items-center gap-2 text-sm text-blue-600 font-medium">

@@ -2,6 +2,8 @@
     require_once "models/Conexao.class.php";
     require_once "models/AtividadeDAO.class.php";
     require_once "models/TurmaDAO.class.php";
+    require_once "models/Resposta.class.php";
+    require_once "models/RespostaDAO.class.php";
 
     class CatequizandoController
     {
@@ -49,26 +51,20 @@
 
         public function atividades()
         {
-            // protege a sessão
             session_start();
             if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'catequizando') {
                 header('Location: /cateclass-site/app/login');
                 exit;
             }
             
-            // instancia
             $atividadeDAO = new AtividadeDAO();
             $catequizandoId = $_SESSION['usuario_id'];
-
-            // lê o sinal da URL, se não tiver nada é todas
             $filtro = $_GET['filtro'] ?? 'todas';
 
-            // busca os dados para os Cards 
             $totalAtividades = $atividadeDAO->countAtividadesDoCatequizando($catequizandoId);
             $concluidas = $atividadeDAO->countAtividadesConcluidas($catequizandoId);
             $pendentes = max(0, $totalAtividades - $concluidas);
             
-            // passa o filtro para o DAO
             $listaAtividades = $atividadeDAO->getAtividadesDoCatequizando($catequizandoId, $filtro);
 
             $dados = [];
@@ -79,10 +75,15 @@
                 'naoEnviadas' => $pendentes 
             ];
             $dados['lista_atividades'] = $listaAtividades;
-
-            // passa o filtro para a view
             $dados['filtro_ativo'] = $filtro;
 
+            if (isset($_SESSION['flash_message'])) {
+                $dados['mensagem'] = $_SESSION['flash_message'];
+                $dados['mensagem_tipo'] = $_SESSION['flash_type'];
+                unset($_SESSION['flash_message']);
+                unset($_SESSION['flash_type']);
+            }
+            
             require_once "views/catequizandos/atividades.php";
         }
 
@@ -135,6 +136,112 @@
                 // devolve para o formulario
                 header('Location: /cateclass-site/app/catequizando/entrar-turma');
             }
+            exit;
+        }
+
+        public function verAtividade()
+        {
+            session_start();
+            if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'catequizando') {
+                header('Location: /cateclass-site/app/login');
+                exit;
+            }
+
+            if (!isset($_GET['id']) || !filter_var($_GET['id'], FILTER_VALIDATE_INT)) {
+                header('Location: /cateclass-site/app/catequizando/atividades');
+                exit;
+            }
+
+            $atividadeId = (int)$_GET['id'];
+            $catequizandoId = (int)$_SESSION['usuario_id'];
+
+            $atividadeDAO = new AtividadeDAO();
+            $respostaDAO = new RespostaDAO();
+
+            $atividade = $atividadeDAO->buscarAtividadePorId($atividadeId);
+            
+            if (!$atividade) {
+                header('Location: /cateclass-site/app/catequizando/atividades');
+                exit;
+            }
+
+            $resposta = $respostaDAO->buscarRespostaDoAluno($atividadeId, $catequizandoId);
+
+            $dados = [
+                'atividade' => $atividade,
+                'resposta' => $resposta
+            ];
+
+            require_once "views/catequizandos/verAtividade.php";
+        }
+
+        public function enviarResposta()
+        {
+            session_start();
+            if (!isset($_SESSION['usuario_id']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+                header('Location: /cateclass-site/app/login');
+                exit;
+            }
+
+            $atividadeId = (int)$_POST['atividade_id'];
+            $catequizandoId = (int)$_SESSION['usuario_id'];
+            $tipoEntrega = trim($_POST['tipo_entrega']);
+            $textoResposta = null;
+
+            if ($tipoEntrega == 'texto') {
+                $textoResposta = trim($_POST['texto_resposta']);
+                if (empty($textoResposta)) {
+                    $_SESSION['flash_message'] = "Você não pode enviar uma resposta em branco.";
+                    $_SESSION['flash_type'] = "erro";
+                    header('Location: /cateclass-site/app/catequizando/atividade?id=' . $atividadeId);
+                    exit;
+                }
+            }
+
+            $resposta = new Resposta();
+            $resposta->setAtividadeId($atividadeId);
+            $resposta->setCatequizandoId($catequizandoId);
+            $resposta->setTexto($textoResposta); 
+
+            $respostaDAO = new RespostaDAO();
+            $resultado = $respostaDAO->inserirResposta($resposta);
+
+            if ($resultado === "sucesso") {
+                $_SESSION['flash_message'] = "Atividade enviada com sucesso!";
+                $_SESSION['flash_type'] = "sucesso";
+            } else {
+                $_SESSION['flash_message'] = $resultado;
+                $_SESSION['flash_type'] = "erro";
+            }
+
+            header('Location: /cateclass-site/app/catequizando/atividades');
+            exit;
+        }
+
+        public function cancelarResposta()
+        {
+            session_start();
+            if (!isset($_SESSION['usuario_id']) || $_SERVER['REQUEST_METHOD'] !== 'POST') {
+                header('Location: /cateclass-site/app/login');
+                exit;
+            }
+
+            $respostaId = (int)$_POST['resposta_id'];
+            $atividadeId = (int)$_POST['atividade_id'];
+            $catequizandoId = (int)$_SESSION['usuario_id'];
+
+            $respostaDAO = new RespostaDAO();
+            $resultado = $respostaDAO->deletarResposta($respostaId, $catequizandoId);
+
+            if ($resultado === "sucesso") {
+                $_SESSION['flash_message'] = "Envio cancelado. Você pode enviar sua resposta novamente.";
+                $_SESSION['flash_type'] = "sucesso";
+            } else {
+                $_SESSION['flash_message'] = $resultado;
+                $_SESSION['flash_type'] = "erro";
+            }
+
+            header('Location: /cateclass-site/app/catequizando/atividade?id=' . $atividadeId);
             exit;
         }
     }

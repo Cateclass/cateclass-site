@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('America/Sao_Paulo');
+
 require_once "controllers/InicioController.php";
 require_once "controllers/CatequizandoController.php";
 require_once "controllers/UsuarioController.php";
@@ -12,6 +14,39 @@ $url = isset($_GET['url']) ? $_GET['url'] : '';
 
 // limpa barras extras
 $urlLimpa = trim($url, '/');
+
+$matches = [];
+
+if (preg_match('/^catequista\/atividade\/(\d+)\/entregas$/', $urlLimpa, $matches)) {
+    // URL: /catequista/atividade/5/entregas
+    // $matches[1] será "5"
+    $controller = new CatequistaController();
+    $controller->verEntregas($matches[1]); // chama o método ver entregas
+    exit; // para a execução para não cair no switch
+}
+
+// rota para mostrar o formulário de correção
+if (preg_match('/^catequista\/resposta\/(\d+)\/corrigir$/', $urlLimpa, $matches)) {
+    // $matches[1] será o ID da Resposta
+    $controller = new CatequistaController();
+    $controller->corrigirForm($matches[1]);
+    exit;
+}
+
+// rota para editar atividade
+if (preg_match('/^catequista\/atividade\/(\d+)\/editar$/', $urlLimpa, $matches)) {
+    // $matches[1] será o ID da Atividade
+    $controller = new CatequistaController();
+    $controller->editarForm($matches[1]); 
+    exit;
+}
+
+// rota para editar as turmas
+if (preg_match('/^catequista\/turma\/(\d+)\/editar$/', $urlLimpa, $matches)) {
+    $controller = new CatequistaController();
+    $controller->editarTurmaForm($matches[1]);
+    exit;
+}
 
 switch($urlLimpa)
 {
@@ -55,6 +90,21 @@ switch($urlLimpa)
         $controller->atividades();
     break;
 
+    case 'catequizando/atividade':
+        $controller = new CatequizandoController();
+        $controller->verAtividade();
+    break;
+
+    case 'catequizando/atividade/responder':
+        $controller = new CatequizandoController();
+        $controller->enviarResposta();
+    break;
+
+    case 'catequizando/atividade/cancelar':
+        $controller = new CatequizandoController();
+        $controller->cancelarResposta();
+    break;
+
     case 'catequizando/entrar-turma':
         $controller = new CatequizandoController();
         $controller->entrarTurmaForm();
@@ -68,6 +118,7 @@ switch($urlLimpa)
     case 'catequista':
         $controller = new CatequistaController();
         $controller->home();
+    break;
 
     case 'catequista/atividades':
         $controller = new CatequistaController();
@@ -82,6 +133,21 @@ switch($urlLimpa)
     case 'catequista/atividades/criar':
         $controller = new CatequistaController();
         $controller->criarAtividade();
+    break;
+
+    case 'catequista/atividade/atualizar':
+        $controller = new CatequistaController();
+        $controller->atualizar(); 
+    break;
+
+    case 'catequista/atividade/excluir':
+        $controller = new CatequistaController();
+        $controller->excluir();
+    break;
+
+    case 'catequista/resposta/salvar-correcao':
+        $controller = new CatequistaController();
+        $controller->salvarCorrecao();
     break;
 
     case 'catequista/turmas':
