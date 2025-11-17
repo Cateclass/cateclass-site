@@ -3,31 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css"> <title>São Benedito | Cadastro</title>
+    <title>São Benedito | Cadastro</title>
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="form-box" id="register-form">
-        <form action="/cateclass-site/app/registrar" method="post">
-            <h2>Criar conta</h2>
 
-            <?php if (isset($dados['erro'])): ?>
-                <p style="color: red;"><?php echo htmlspecialchars($dados['erro']); ?></p>
-            <?php endif; ?>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
 
-            <input type="text" name="nome" id="nome" placeholder="Nome" required>
-            <input type="email" name="email" id="email" placeholder="Email" required>
-            <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required>
-            <input type="password" name="senha" id="senha" placeholder="Senha" required>
-            
-            <select name="funcao" required>
-                <option value="">--Selecione a função--</option>
-                <option value="catequizando">Catequizando</option>
-                <option value="catequista">Catequista</option>
-            </select>
-            
-            <button type="submit" name="register">Cadastrar</button>
-            <p>Já tem uma conta? <a href="/cateclass-site/app/login">Login</a></p>
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8">
+
+        <h2 class="text-3xl font-bold text-center text-blue-700 mb-6">Criar Conta</h2>
+
+        <?php if (isset($dados['erro'])): ?>
+            <div class="mb-4 text-red-700 bg-red-100 border border-red-300 rounded-lg p-3 text-center">
+                <?= htmlspecialchars($dados['erro']); ?>
+            </div>
+        <?php endif; ?>
+
+        <form action="/cateclass-site/app/registrar" method="post" class="space-y-5">
+
+            <!-- Nome -->
+            <div>
+                <label for="nome" class="block text-gray-700 font-medium mb-1">Nome</label>
+                <input type="text" name="nome" id="nome"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    placeholder="Digite seu nome" required>
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-gray-700 font-medium mb-1">Email</label>
+                <input type="email" name="email" id="email"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    placeholder="Digite seu email" required>
+            </div>
+
+            <!-- Telefone -->
+            <div>
+                <label for="telefone" class="block text-gray-700 font-medium mb-1">Telefone</label>
+                <input type="tel" name="telefone" id="telefone"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    placeholder="(XX) XXXXX-XXXX" required>
+            </div>
+
+            <!-- Senha -->
+            <div>
+                <label for="senha" class="block text-gray-700 font-medium mb-1">Senha</label>
+                <input type="password" name="senha" id="senha"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+                    placeholder="Crie uma senha" required>
+            </div>
+
+            <!-- Função -->
+            <div>
+                <label for="funcao" class="block text-gray-700 font-medium mb-1">Função</label>
+                <select name="funcao" id="funcao"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 outline-none" required>
+                    <option value="">--Selecione a função--</option>
+                    <option value="catequizando">Catequizando</option>
+                    <option value="catequista">Catequista</option>
+                </select>
+            </div>
+
+            <!-- Botão -->
+            <button type="submit" name="register"
+                class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200">
+                Cadastrar
+            </button>
+
+            <!-- Link para login -->
+            <p class="text-center text-gray-700">
+                Já tem uma conta?
+                <a href="/cateclass-site/app/login" class="text-blue-600 hover:underline font-semibold">
+                    Fazer login
+                </a>
+            </p>
+
         </form>
     </div>
+
 </body>
 </html>

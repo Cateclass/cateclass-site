@@ -1,10 +1,10 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: ../login.php");
-    exit();
-}   
+// if (!isset($_SESSION["email"])) {
+//     header("Location: ../login.php");
+//     exit();
+// }   
 
 require_once __DIR__ . '/../../models/config.php';
 
@@ -33,44 +33,16 @@ require_once __DIR__ . '/../../models/config.php';
     <main class="p-[20px]">
 
         <h1 class="text-[32px] font-bold">Dashboard</h1>
-        <p class="mb-[50px]">Bem-Vindo(a) <?= $_SESSION["nome"] ?>. Aqui está o resumo das suas atividades da catequese.</p>
+        <p class="mb-[50px]">Bem-Vindo(a) <?= $_SESSION["usuario_nome"]; ?>. Aqui está o resumo das suas atividades da catequese.</p>
 
         <div class="mb-[50px]">
 
             <h2 class="text-[24px] font-bold mb-[20px]">Visão geral</h2>
 
-            <?php
-
-                // Turmas
-                // $sql = "SELECT COUNT(*) FROM turmas";
-
-                // $stmt = $conn->prepare($sql);
-                // $stmt->execute();
-
-                // $turmas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                // Catequistas
-                $sql = "SELECT COUNT(*) FROM catequistas";
-
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                $catequistas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                // Catequizandos
-                $sql = "SELECT COUNT(*) FROM catequizandos";
-
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-            ?>
-
             <div class="flex gap-[50px]">
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
                     <p class="text-[17px]">Total de Turmas</p>
-                    <p class="text-[24px] text-[#62449D]"><!-- <?= $turmas[0]["COUNT(*)"]; ?> -->0</p>
+                    <p class="text-[24px] text-[#62449D]"><?= $turmas[0]["COUNT(*)"]; ?></p>
                 </div>
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
                     <p class="text-[17px]">Total de Catequistas</p>

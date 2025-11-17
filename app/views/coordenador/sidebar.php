@@ -17,28 +17,28 @@
         <ul class="list-none">
 
             <li>
-                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="dashboard.php">
+                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="/cateclass-site/app/coordenador">
                     <i class="material-icons">home</i>
                     Dashboard
                 </a>
             </li>
 
             <li>
-                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="turmas.php">
+                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="/cateclass-site/app/coordenador/turmas">
                     <i class="material-icons">people</i>
                     Turmas
                 </a>
             </li>
 
             <li>
-                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="catequistas.php">
+                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="/cateclass-site/app/coordenador/catequistas">
                     <i class="material-icons">content_paste</i>
                     Catequistas
                 </a>
             </li>
 
             <li>
-                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="catequizandos.php">
+                <a class="flex items-center gap-[10px] p-[10px] pl-[25px]" href="/cateclass-site/app/coordenador/catequizandos">
                     <i class="material-icons">school</i>
                     Catequizandos
                 </a>
@@ -63,12 +63,12 @@
 
         <div class="flex justify-center">
 
-            <a class="flex items-center gap-[10px] bg-[#BEDDF5] text-[#fff] w-[250px] py-[7px] pl-[10px] mt-[15px] rounded-[7px] text-center" href="perfil.php">
+            <a class="flex items-center gap-[10px] bg-[#BEDDF5] text-[#fff] w-[250px] py-[7px] pl-[10px] mt-[15px] rounded-[7px] text-center" href="/cateclass-site/app/coordenador/perfil">
                 <div class="flex justify-center items-center w-[40px] h-[40px] rounded-[50%] bg-[#4A9FFF]">
                     U
                 </div>
                 <div class="flex flex-col items-start">
-                    <span class="text-black"><?= $_SESSION["nome"]; ?></span>
+                    <span class="text-black"><?= $_SESSION["usuario_nome"]; ?></span>
                     <span class="text-[#4A9FFF]">Coordenador</span>
                 </div>
             </a>

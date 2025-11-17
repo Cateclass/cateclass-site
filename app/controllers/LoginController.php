@@ -58,5 +58,10 @@
                 require_once "views/formLogin.php";
             }
         }
+
+        public function logout() 
+        {
+            require_once "views/logout.php";
+        }
     }
 ?>

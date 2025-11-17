@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: ../login.php");
-    exit();
-}
+// if (!isset($_SESSION["usuario_nome"])) {
+//     header("Location: ../login.php");
+//     exit();
+// }
 
-require_once __DIR__ . '/../../models/config.php';
+require_once __DIR__ . '/../../models/config.php'; // Caminho do config correto
 
 ?>
 
@@ -24,7 +24,6 @@ require_once __DIR__ . '/../../models/config.php';
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    
 </head>
 <body class="flex bg-[#E5ECFF]">
 
@@ -39,72 +38,59 @@ require_once __DIR__ . '/../../models/config.php';
 
         <input id="filtro" class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar"> 
 
-        <table class="border-1 border-black"  id="tabela‑catequizandos" >
+        <table class="border-1 border-black w-full" id="tabela-catequizandos">
 
             <thead>
-
-                <tr class="border-1 border-black">
-
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
-
+                <tr class="border-1 border-black bg-[#fff]">
+                    <th class="py-[10px] border-1 border-black">Nome</th>
+                    <th class="py-[10px] border-1 border-black">Email</th>
+                    <th class="py-[10px] border-1 border-black">Telefone</th>
+                    <th class="py-[10px] border-1 border-black">Data de Nascimento</th>
+                    <th class="py-[10px] border-1 border-black">Escola</th>
+                    <th class="py-[10px] border-1 border-black">Paróquia de Origem</th>
+                    <th class="py-[10px] border-1 border-black">Transferência</th>
                 </tr>
-
             </thead>
-
-            
 
             <tbody>
                 <?php
-                $sql = "SELECT * FROM catequizandos";
-
-                // Prepara e executa a consulta
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                // Verifica se retornou algum resultado
-                if ($stmt->rowCount() > 0) {
-                    // Pega todos os registros em um array associativo
+                
+                    if ($stmt->rowCount() > 0) {
                     $catequizandos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                    // Loop para exibir cada usuário
-                    foreach ($catequizandos as $catequizando) {
+                    foreach ($catequizandos as $c) {
                 ?>
-                        <tr class="border-1 border-black">
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['nome'] ?></td>
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequizando['email'] ?></td>                            
-                        </tr>
+                    <tr class="border-1 border-black bg-white">
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['nome']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['email']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['telefone']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['data_nascimento']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['escola']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['paroquia_origem']) ?></td>
+                        <td class="p-[10px] border-1 border-black"><?= htmlspecialchars($c['transferencia']) ?></td>
+                    </tr>
                 <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='7' class='text-center p-3 bg-white border border-black'>Nenhum catequizando encontrado.</td></tr>";
                     }
-                } else {
-                    echo "<tr><td colspan='3'>Nenhum catequizando encontrado.</td></tr>";
-                }
+
                 ?>
-
             </tbody>
-
         </table>
 
     </main>
 
     <script>
-
         document.getElementById('filtro').addEventListener('input', function () {
-        const valorFiltro = this.value.toLowerCase();
-        const linhas = document.querySelectorAll('#tabela‑catequizandos tbody tr');
+            const valorFiltro = this.value.toLowerCase();
+            const linhas = document.querySelectorAll('#tabela-catequizandos tbody tr');
 
-        linhas.forEach(function(linha) {
-            const nome = linha.cells[0].textContent.toLowerCase();
-            const email = linha.cells[1].textContent.toLowerCase();
-
-            if (nome.includes(valorFiltro) || email.includes(valorFiltro)) {
-            linha.style.display = '';
-            } else {
-            linha.style.display = 'none';
-            }
+            linhas.forEach(function(linha) {
+                const textoLinha = linha.textContent.toLowerCase();
+                linha.style.display = textoLinha.includes(valorFiltro) ? '' : 'none';
+            });
         });
-        });
-
     </script>
     
 </body>

@@ -1,13 +1,12 @@
 <?php
 
 session_start();
-if (!isset($_SESSION["email"])) {
-    header("Location: ../login.php");
-    exit();
-}
+// if (!isset($_SESSION["usuario_nome"])) {
+//     header("Location: ../login.php");
+//     exit();
+// }
 
 require_once __DIR__ . '/../../models/config.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -17,93 +16,69 @@ require_once __DIR__ . '/../../models/config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coordenação | Catequistas</title>
 
-    <!-- TailwindCSS CLI -->
+    <!-- TailwindCSS -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- W3 Icons -->
+    <!-- Ícones -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    
 </head>
+
 <body class="flex bg-[#E5ECFF]">
+    <?php require_once 'sidebar.php'; ?>
 
-    <?php require_once 'sidebar.php' ?>
-
-    <!-- Main -->
-    <main class="p-[20px]">
-
+    <!-- Conteúdo principal -->
+    <main class="p-[20px] w-full">
         <h1 class="text-[32px] font-bold">Gerenciar Catequistas</h1>
-
         <p class="text-[20px] mb-[20px]">Adicione, edite ou remova contas de catequistas.</p>
 
-        <input class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border-1 border-gray" type="text" placeholder="Pesquisar" id="filtro">
+        <input id="filtro" type="text" placeholder="Pesquisar" 
+            class="bg-[#fff] w-[500px] h-[40px] mb-[50px] rounded border border-1 px-2">
 
-        <table class="border-1 border-black" id="tabela-catequistas">
-
+        <table class="border border-black bg-white w-full" id="tabela-catequistas">
             <thead>
-
-                <tr class="border-1 border-black">
-
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Nome</th>
-                    <th class="w-[300px] py-[10px] bg-[#fff] border-1 border-black">Email</th>
-
+                <tr class="border border-black">
+                    <th class="py-2 px-3 border border-black">Nome</th>
+                    <th class="py-2 px-3 border border-black">E-mail</th>
+                    <th class="py-2 px-3 border border-black">Telefone</th>
+                    <th class="py-2 px-3 border border-black">Endereço</th>
+                    <th class="py-2 px-3 border border-black">Criado em</th>
                 </tr>
-
             </thead>
 
             <tbody>
-                <?php
-                $sql = "SELECT * FROM catequistas";
+                <?php                    
 
-                // Prepara e executa a consulta
-                $stmt = $conn->prepare($sql);
-                $stmt->execute();
-
-                // Verifica se retornou algum resultado
-                if ($stmt->rowCount() > 0) {
-                    // Pega todos os registros em um array associativo
-                    $catequistas = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                    // Loop para exibir cada usuário
-                    foreach ($catequistas as $catequista) {
-                ?>
-                        <tr class="border-1 border-black">
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequista['nome'] ?></td>
-                            <td class="w-[300px] p-[10px] bg-[#fff] border-1 border-black"><?= $catequista['email'] ?></td>
-                        </tr>
-                <?php
+                    if ($stmt->rowCount() > 0) {
+                        $catequistas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        foreach ($catequistas as $catequista) {
+                            echo "<tr class='border border-black'>
+                                    <td class='p-2 border border-black'>{$catequista['nome']}</td>
+                                    <td class='p-2 border border-black'>{$catequista['email']}</td>
+                                    <td class='p-2 border border-black'>{$catequista['telefone']}</td>
+                                    <td class='p-2 border border-black'>{$catequista['endereco']}</td>
+                                    <td class='p-2 border border-black'>" . date('d/m/Y H:i', strtotime($catequista['criado_em'])) . "</td>
+                                </tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='5' class='p-3 text-center'>Nenhum catequista encontrado.</td></tr>";
                     }
-                } else {
-                    echo "<tr><td colspan='3'>Nenhum catequista encontrado.</td></tr>";
-                }
+                    
                 ?>
-
             </tbody>
-
         </table>
-
     </main>
 
     <script>
-
-        document.getElementById('filtro').addEventListener('input', function () {
+    document.getElementById('filtro').addEventListener('input', function () {
         const valorFiltro = this.value.toLowerCase();
         const linhas = document.querySelectorAll('#tabela-catequistas tbody tr');
 
-            linhas.forEach(function(linha) {
-                const nome = linha.cells[0].textContent.toLowerCase();
-                const email = linha.cells[1].textContent.toLowerCase();
-
-                if (nome.includes(valorFiltro) || email.includes(valorFiltro)) {
-                linha.style.display = '';
-                } else {
-                linha.style.display = 'none';
-                }
-            });
+        linhas.forEach(function(linha) {
+            const texto = linha.textContent.toLowerCase();
+            linha.style.display = texto.includes(valorFiltro) ? '' : 'none';
         });
-
+    });
     </script>
-    
 </body>
 </html>
