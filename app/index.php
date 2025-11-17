@@ -179,6 +179,31 @@ switch($urlLimpa)
         $controller->removerAluno();
     break;
 
+    case 'coordenador':
+        $controller = new CoordenadorController();
+        $controller->home();
+    break;
+
+    case 'coordenador/turmas':
+        $controller = new CoordenadorController();
+        $controller->turmas();
+    break;
+
+    case 'coordenador/catequistas':
+        $controller = new CoordenadorController();
+        $controller->catequistas();
+    break;
+
+    case 'coordenador/catequizandos':
+        $controller = new CoordenadorController();
+        $controller->catequizandos();
+    break;
+
+    case 'coordenador/perfil':
+        $controller = new CoordenadorController();
+        $controller->perfil();
+    break;
+
     default:
         http_response_code(404); // Define o código de status 404
         echo "<h1>Erro 404 - Página não encontrada</h1>";
