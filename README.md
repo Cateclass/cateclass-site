@@ -166,32 +166,27 @@ a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessid
 
 ---
 
-## 7. MODELO DE DADOS  
-(Colocar imagens dos modelos)
-
----
-
-## 8. Modelo de Caso de Uso
+## 7. Modelo de Caso de Uso
 ![Modelos de casos de uso](/docs/CasosdeUso.png)
 
 
 ---
 
-### 9. Modelo Conceitual  
+### 8. Modelo Conceitual  
 
 ---
 
 
-### 10. Modelo Lógico  
+### 9. Modelo Lógico  
 
 
 ---
 
-## 11. DESIGN  
+## 10. design 
 
 o design do cateclass foi desenvolvido com foco na harmonia entre fé, tecnologia e usabilidade,buscando transmitir acolhimento,organização e modernidade,cada elemento visual e desde das cores até a tipografia e o logotipo foi pensado para refletir a essência do projeto:um ambiente digital que une aprendizado e espiritualidade de forma simples,acessível e inspiradora.
 
-### 11.1 Paleta de Cores
+### 10.1 Paleta de Cores
 
 a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre fé,serenidade e modernidade,combinando tons neutros com cores vibrantes que representam organização,acolhimento e energia.
 
@@ -205,7 +200,7 @@ a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre f
 
 
 
-### 11.2 Tipografia
+### 10.2 Tipografia
   a tipografia usada na aplicação é:
   Roboto: a escolha deve-se ao fato de ser uma fonte moderna, legível
    e com uma boa usabilidade.
@@ -214,14 +209,14 @@ a paleta de cores do cateclass foi escolhida para transmitir equilíbrio entre f
 
 ---
 
-### 11.3 Logo
+### 10.3 Logo
 ![Logo Cateclass](/docs/logo-cateclass.png)
 
 o logotipo do cateclass representa a união entre fé e aprendizado,o livro aberto simboliza o conhecimento e o ensino da catequese,enquanto a cruz no centro expressa a fé cristã que guia o projeto,as cores suaves transmitem acolhimento e serenidade,reforçando a proposta do sistema de ser um ambiente moderno,acessível e voltado á evangelização.
 
 ---
 
-### 11.4 Modelo de Navegação
+### 10.4 Modelo de Navegação
 
 ![Modelos de navegação](/docs/modelodenavegacao.png)
 
@@ -229,18 +224,18 @@ o modelo de navegação do cateclass mostra de forma como o usuário percorre as
 
 ---
 
-## 12. PROTÓTIPO  
+## 11. PROTÓTIPO  
 
 
 
 ---
 
-## 13. APLICAÇÃO  
+## 12. APLICAÇÃO  
 (Descrição da Aplicação)
 
 ---
 
-## 14. CONSIDERAÇÕES FINAIS  
+## 13. CONSIDERAÇÕES FINAIS  
 
  o desenvolvimento do cateclass foi uma experiência muito importante e enriquecedora para o grupo,Desde o inicío,nosso objetivo foi criar uma ferramenta simples,acessível e útil para melhorar a comunicação e gerenciar a atividade dentro da catequese,durante o processo,conseguimos aplicar na prática o que aprendemos em sala de aula,unindo teoria,tecnologia e colaboração em equipe.
  
@@ -256,7 +251,7 @@ o modelo de navegação do cateclass mostra de forma como o usuário percorre as
  
 ---
 
-## 15. REFERÊNCIAS BIBLIOGRÁFICAS  
+## 14. REFERÊNCIAS BIBLIOGRÁFICAS  
 FIGMA. Figma: The collaborative interface design tool. [Software]. São
 Francisco: Figma, [s.d.]. Disponível em: https://www.figma.com. Acesso em: 16 jun.2025.
 
