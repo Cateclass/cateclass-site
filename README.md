@@ -226,6 +226,21 @@ o modelo de navegação do cateclass mostra de forma como o usuário percorre as
 
 ## 11. PROTÓTIPO  
 
+a Interface de login principal que permite a autenticação via Email/Senha ou integração rápida com o Google
+
+![login catequizandos](/docs/login.figma.png)
+
+
+---
+
+Tela utilizada pelo usuário para ingressar em uma turma existente através da inserção de um código de 6 dígitos.
+![tela login](/docs/tela.login.catequizandos.png)
+
+
+---
+
+Visão geral da plataforma, apresentando o resumo de dados, acesso a turmas e opções rápidas para gerenciamento.
+![dasboard da coordenador(a)](/docs/dash.corde.png)
 
 
 ---
