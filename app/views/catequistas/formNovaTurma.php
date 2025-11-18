@@ -53,7 +53,7 @@
                 <div class="mb-4">
                     <label for="tipo_turma" class="block text-sm font-medium text-gray-700 mb-1">Tipo da Turma</label>
                     <select name="tipo_turma" id="tipo_turma" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
-                        <option value="Catequese">Catequese</option>
+                        <option value="Eucaristia">Eucaristia</option>
                         <option value="Crisma">Crisma</option>
                     </select>
                 </div>
