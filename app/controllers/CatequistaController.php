@@ -122,8 +122,15 @@ class CatequistaController
             exit;
         }
 
+        // geração do nome
+        $nomeCatequista = explode(' ', $_SESSION['usuario_nome'])[0]; 
+        $tipo = trim($_POST['tipo_turma']);
+        $horario = trim($_POST['dia_horario']);
+
+        $nomeGerado = "$tipo - $horario - $nomeCatequista";
+
         $novaTurma = new Turma();
-        $novaTurma->setNomeTurma(trim($_POST['nome_turma']));
+        $novaTurma->setNomeTurma($nomeGerado);
         $novaTurma->setEtapaId(trim($_POST['etapa_id']));
         $novaTurma->setTipoTurma(trim($_POST['tipo_turma']));
         $novaTurma->setDataInicio(trim($_POST['data_inicio']));
