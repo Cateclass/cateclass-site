@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale-1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catequistas | Nova Turma</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
@@ -30,12 +30,6 @@
                         <?php echo $dados['mensagem']; ?>
                     </div>
                 <?php endif; ?>
-
-                <div class="mb-4">
-                    <label for="nome_turma" class="block text-sm font-medium text-gray-700 mb-1">Nome da Turma</label>
-                    <input type="text" name="nome_turma" id="nome_turma" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Ex: Turma Eucaristia 2025" required>
-                </div>
-
                 <div class="mb-4">
                     <label for="etapa_id" class="block text-sm font-medium text-gray-700 mb-1">Etapa</label>
                     <select name="etapa_id" id="etapa_id" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
@@ -53,9 +47,15 @@
                 <div class="mb-4">
                     <label for="tipo_turma" class="block text-sm font-medium text-gray-700 mb-1">Tipo da Turma</label>
                     <select name="tipo_turma" id="tipo_turma" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" required>
-                        <option value="Catequese">Catequese</option>
+                        <option value="Eucaristia">Eucaristia</option>
                         <option value="Crisma">Crisma</option>
                     </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="dia_horario" class="block text-sm font-medium text-gray-700 mb-1">Dia e Horário</label>
+                    <input type="text" name="dia_horario" id="dia_horario" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Ex: Sábado 09h" required>
+                    <p class="text-xs text-gray-500 mt-1">Isso será usado para gerar o nome da turma.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">

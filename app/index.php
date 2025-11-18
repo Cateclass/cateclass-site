@@ -170,6 +170,11 @@ switch($urlLimpa)
         $controller->verTurma();
     break;
 
+    case 'catequista/turma/excluir':
+        $controller = new CatequistaController();
+        $controller->excluirTurma();
+    break;
+
     case 'coordenador':
         $controller = new CoordenadorController();
         $controller->home();
