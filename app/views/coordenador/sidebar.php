@@ -3,7 +3,7 @@
 
     <!-- "header" -->
     <div class="flex items-center gap-[10px] py-[15px] mb-[30px] border-b-1 border-black">
-        <img class="w-[100px] rounded-[50%]" src="../assets/img/logotipo.jpg" alt="">
+        <img class="w-[100px] rounded-[50%]" src="/cateclass-site/app/views/assets/img/logotipo.jpg" alt="">
         
         <div>
             <p>CateClass</p>

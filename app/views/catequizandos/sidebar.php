@@ -4,7 +4,7 @@
                          transition-transform duration-300 ease-in-out shadow-lg lg:shadow-none">
 
     <div class="relative flex items-center gap-3 p-4 mb-4 border-b">
-        <img class="w-20 rounded-full" src="../assets/img/logotipo.jpg" alt="">
+        <img class="w-20 rounded-full" src="/cateclass-site/app/views/assets/img/logotipo.jpg" alt="">
         <div>
             <p class="font-bold">CateClass</p>
             <span class="text-sm text-[#4A9FFF]">Plataforma Educacional</span>
