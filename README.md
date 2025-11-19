@@ -226,9 +226,9 @@ o modelo de navegação do cateclass mostra de forma como o usuário percorre as
 
 ## 11. PROTÓTIPO  
 
-a Interface de login principal que permite a autenticação via Email/Senha ou integração rápida com o Google
+a Interface de login principal que permite a autenticação via Email/Senha 
 
-![login catequizandos](/docs/login.figma.png)
+![login catequizandos](/docs/login.catequizando.png)
 
 
 ---
