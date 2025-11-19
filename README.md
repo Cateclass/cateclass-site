@@ -179,7 +179,7 @@ a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessid
 
 ### 9. Modelo Lógico  
 
-
+![Banco de dados](/docs/bancodados.jpg)
 ---
 
 ## 10. design 
