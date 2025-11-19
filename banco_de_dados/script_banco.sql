@@ -150,11 +150,7 @@ ADD COLUMN catequista_id BIGINT UNSIGNED NOT NULL AFTER etapa_id,
 ADD CONSTRAINT fk_turmas_catequistas
     FOREIGN KEY (catequista_id) REFERENCES usuarios(id_usuario);
     
-INSERT INTO etapas (nome_etapa, descricao)
-VALUES ('1º etapa', '1º etapa');
+ALTER TABLE respostas MODIFY COLUMN texto TEXT NULL;
 
-INSERT INTO etapas (nome_etapa, descricao)
-VALUES ('2º etapa', '2º etapa');
-
-INSERT INTO etapas (nome_etapa, descricao)
-VALUES ('3º etapa', '3º etapa');
+ALTER TABLE atividades
+ADD COLUMN tipo_entrega ENUM('texto', 'confirmacao') NOT NULL DEFAULT 'texto' AFTER tipo;
