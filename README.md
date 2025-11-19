@@ -134,8 +134,8 @@ Um Documento de Requisitos de Sistema é parte essencial no desenvolvimento de s
 
 ---
 
-## 5. REGRAS DE NEGÓCIO  
-![Regras de Negócio do projeto Cateclass](/docs/regrasDeNegocio.png)
+## 5. MODELO DE NEGÓCIO  
+![modelos de Negócio do projeto Cateclass](/docs/modelodenegocios.jpg)
 
 ---
 
