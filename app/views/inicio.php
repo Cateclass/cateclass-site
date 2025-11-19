@@ -124,7 +124,7 @@
         <section 
             class="flex flex-col items-center px-[100px] mb-[100px]" id="catequese">
 
-            <h2 class="text-center text-[32px] font-bold mb-[50px]">Catequese e Crisma</h2>
+            <h2 class="text-center text-[32px] font-bold mb-[50px]">Eucaristia e Crisma</h2>
 
             <a class="bg-[#00ff00] px-[20px] py-[7px] rounded-[30px]" href="/cateclass-site/app/login">Log In</a>
 
