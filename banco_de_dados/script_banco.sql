@@ -154,3 +154,18 @@ ALTER TABLE respostas MODIFY COLUMN texto TEXT NULL;
 
 ALTER TABLE atividades
 ADD COLUMN tipo_entrega ENUM('texto', 'confirmacao') NOT NULL DEFAULT 'texto' AFTER tipo;
+
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('1º etapa', '1º etapa');
+
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('2º etapa', '2º etapa');
+
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('3º etapa', '3º etapa');
+
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('4º etapa', '4º etapa');
+
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('5º etapa', '5º etapa');
