@@ -149,3 +149,12 @@ ALTER TABLE turmas
 ADD COLUMN catequista_id BIGINT UNSIGNED NOT NULL AFTER etapa_id,
 ADD CONSTRAINT fk_turmas_catequistas
     FOREIGN KEY (catequista_id) REFERENCES usuarios(id_usuario);
+    
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('1º etapa', '1º etapa');
+
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('2º etapa', '2º etapa');
+
+INSERT INTO etapas (nome_etapa, descricao)
+VALUES ('3º etapa', '3º etapa');
