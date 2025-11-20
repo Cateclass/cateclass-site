@@ -4,7 +4,7 @@
                          transition-transform duration-300 ease-in-out shadow-lg lg:shadow-none">
 
     <div class="relative flex items-center gap-3 p-4 mb-4 border-b">
-        <img class="w-20 rounded-full" src="../assets/img/logotipo.jpg" alt="">
+        <img class="w-20 rounded-full" src="/cateclass-site/app/views/assets/img/logotipo.jpg" alt="">
         <div>
             <p class="font-bold">CateClass</p>
             <span class="text-sm text-[#4A9FFF]">Plataforma Educacional</span>
@@ -53,7 +53,7 @@
         </div>
 
         <div class="flex justify-center">
-            <a class="flex items-center gap-3 bg-[#BEDDF5] w-full p-2 rounded-lg" href="#">
+            <a class="flex items-center gap-3 bg-[#BEDDF5] w-full p-2 rounded-lg" href="/cateclass-site/app/catequizando/perfil">
                 <div class="flex justify-center items-center w-10 h-10 rounded-full bg-[#4A9FFF] text-white font-bold">
                     <?php echo strtoupper(substr($_SESSION['usuario_nome'] ?? 'U', 0, 1)); ?>
                 </div>

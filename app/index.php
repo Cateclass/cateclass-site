@@ -115,6 +115,11 @@ switch($urlLimpa)
         $controller->matricular();
     break;
 
+    case 'catequizando/perfil':
+        $controller = new CatequizandoController();
+        $controller->perfil();
+    break;
+
     case 'catequista':
         $controller = new CatequistaController();
         $controller->home();
@@ -173,6 +178,11 @@ switch($urlLimpa)
     case 'catequista/turma/excluir':
         $controller = new CatequistaController();
         $controller->excluirTurma();
+    break;
+
+    case 'catequista/perfil':
+        $controller = new CatequistaController();
+        $controller->perfil(); 
     break;
 
     case 'coordenador':
