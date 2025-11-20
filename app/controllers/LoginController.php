@@ -61,7 +61,13 @@
 
         public function logout() 
         {
-            require_once "views/logout.php";
+            session_start();
+            session_unset(); // Limpa as variáveis
+            session_destroy(); // Destrói a sessão no servidor
+
+            // Redireciona para a tela de login
+            header('Location: /cateclass-site/app/login');
+            exit;
         }
     }
 ?>

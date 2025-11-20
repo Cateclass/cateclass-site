@@ -53,7 +53,7 @@
         </div>
 
         <div class="flex justify-center">
-            <a class="flex items-center gap-3 bg-[#BEDDF5] w-full p-2 rounded-lg" href="#">
+            <a class="flex items-center gap-3 bg-[#BEDDF5] w-full p-2 rounded-lg" href="/cateclass-site/app/catequizando/perfil">
                 <div class="flex justify-center items-center w-10 h-10 rounded-full bg-[#4A9FFF] text-white font-bold">
                     <?php echo strtoupper(substr($_SESSION['usuario_nome'] ?? 'U', 0, 1)); ?>
                 </div>

@@ -30,7 +30,7 @@ class RespostaDAO extends Conexao
 
     public function buscarRespostaDoAluno($atividadeId, $catequizandoId)
     {
-        $sql = "SELECT id_resposta, texto, comentario_catequista 
+        $sql = "SELECT id_resposta, texto, data_envio, comentario_catequista 
                 FROM respostas 
                 WHERE atividade_id = :atividade_id 
                   AND catequizando_id = :catequizando_id";

@@ -49,6 +49,17 @@
             require_once "views/catequizandos/dashboard.php";
         }
 
+        public function perfil()
+        {
+            session_start();
+            if (!isset($_SESSION['usuario_id']) || $_SESSION['usuario_tipo'] !== 'catequizando') {
+                header('Location: /cateclass-site/app/login');
+                exit;
+            }
+
+            require_once "views/catequizandos/perfil.php";
+        }
+
         public function atividades()
         {
             session_start();
@@ -79,7 +90,7 @@
 
             if (isset($_SESSION['flash_message'])) {
                 $dados['mensagem'] = $_SESSION['flash_message'];
-                $dados['mensagem_tipo'] = $_SESSION['flash_type'];
+                $dados['mensagem_tipo'] = $_SESSION['flash_type'] ?? 'info';
                 unset($_SESSION['flash_message']);
                 unset($_SESSION['flash_type']);
             }
@@ -171,6 +182,13 @@
                 'atividade' => $atividade,
                 'resposta' => $resposta
             ];
+
+                if (isset($_SESSION['flash_message'])) {
+                $dados['mensagem'] = $_SESSION['flash_message'];
+                $dados['mensagem_tipo'] = $_SESSION['flash_type'] ?? 'info';
+                unset($_SESSION['flash_message']);
+                unset($_SESSION['flash_type']);
+            }
 
             require_once "views/catequizandos/verAtividade.php";
         }

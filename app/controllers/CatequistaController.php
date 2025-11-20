@@ -24,6 +24,16 @@ class CatequistaController
         return $_SESSION['usuario_id'];
     }
 
+    public function perfil()
+    {
+        $this->checarLogin(); // Garante que está logado
+        
+        
+        // $dados = 
+
+        require_once "views/catequistas/perfil.php";
+    }
+
     public function home()
     {
         $catequistaId = $this->checarLogin();
