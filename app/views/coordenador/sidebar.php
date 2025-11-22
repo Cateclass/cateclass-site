@@ -1,5 +1,8 @@
 <!-- Sidebar -->
-<aside class="relative bg-[#fff] w-[300px] h-[100vh]">
+<aside id="sidebar" class="fixed lg:relative bg-white w-[280px] lg:w-[300px] h-screen
+                         flex flex-col z-50
+                         -translate-x-full lg:translate-x-0
+                         transition-transform duration-300 ease-in-out shadow-lg lg:shadow-none">
 
     <!-- "header" -->
     <div class="flex items-center gap-[10px] py-[15px] mb-[30px] border-b-1 border-black">
@@ -9,6 +12,9 @@
             <p>CateClass</p>
             <span class="text-[#4A9FFF]">Plataforma Educacional</span>
         </div>
+        <button id="menu-close" class="lg:hidden absolute top-3 right-3 text-gray-600 hover:text-gray-900">
+            <i class="material-icons text-3xl">close</i>
+        </button>
     </div>
 
     <!-- Links de navegação -->

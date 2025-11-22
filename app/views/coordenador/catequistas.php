@@ -24,11 +24,16 @@ require_once __DIR__ . '/../../models/config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body class="flex bg-[#E5ECFF]">
+<body class="flex bg-[#E5ECFF] h-screen">
     <?php require_once 'sidebar.php'; ?>
 
     <!-- Conteúdo principal -->
-    <main class="p-[20px] w-full">
+    <main class="flex-1 p-8 overflow-y-auto p-[20px] p-[20px] w-full">
+
+        <button id="menu-toggle" class="lg:hidden text-gray-700 mb-4">
+            <i class="material-icons text-3xl">menu</i>
+        </button>
+
         <h1 class="text-[32px] font-bold">Gerenciar Catequistas</h1>
         <p class="text-[20px] mb-[20px]">Adicione, edite ou remova contas de catequistas.</p>
 
@@ -78,6 +83,22 @@ require_once __DIR__ . '/../../models/config.php';
             const texto = linha.textContent.toLowerCase();
             linha.style.display = texto.includes(valorFiltro) ? '' : 'none';
         });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('sidebar');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('translate-x-0');
+            });
+        }
+        if (menuClose) {
+            menuClose.addEventListener('click', () => {
+                sidebar.classList.remove('translate-x-0');
+            });
+        }
     });
     </script>
 </body>

@@ -26,11 +26,15 @@ require_once __DIR__ . '/../../models/config.php';
 
     
 </head>
-<body class="flex bg-[#E5ECFF]">
+<body class="flex bg-[#E5ECFF] h-screen">
 
     <?php require_once 'sidebar.php' ?>
 
-    <main class="p-[20px]">
+    <main class="flex-1 p-8 overflow-y-auto p-[20px]">
+
+        <button id="menu-toggle" class="lg:hidden text-gray-700 mb-4">
+            <i class="material-icons text-3xl">menu</i>
+        </button>
 
         <h1 class="text-[32px] font-bold">Dashboard</h1>
         <p class="mb-[50px]">Bem-Vindo(a) <?= $_SESSION["usuario_nome"]; ?>. Aqui está o resumo das suas atividades da catequese.</p>
@@ -39,7 +43,7 @@ require_once __DIR__ . '/../../models/config.php';
 
             <h2 class="text-[24px] font-bold mb-[20px]">Visão geral</h2>
 
-            <div class="flex gap-[50px]">
+            <div class="flex flex-wrap max-lg:justify-center gap-[50px]">
                 <div class="flex flex-col justify-center items-center bg-[#fff] w-[200px] h-[200px] p-[10px] rounded-[10px]">
                     <p class="text-[17px]">Total de Turmas</p>
                     <p class="text-[24px] text-[#62449D]"><?= $turmas[0]["COUNT(*)"]; ?></p>
@@ -57,6 +61,24 @@ require_once __DIR__ . '/../../models/config.php';
         </div>
 
     </main>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sidebar = document.getElementById('sidebar');
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                sidebar.classList.add('translate-x-0');
+            });
+        }
+        if (menuClose) {
+            menuClose.addEventListener('click', () => {
+                sidebar.classList.remove('translate-x-0');
+            });
+        }
+    });
+    </script>
     
 </body>
 </html>

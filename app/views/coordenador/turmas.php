@@ -25,12 +25,16 @@ require_once __DIR__ . '/../../models/config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
-<body class="flex bg-[#E5ECFF]">
+<body class="flex bg-[#E5ECFF] h-screen">
 
     <?php require_once 'sidebar.php' ?>
 
     <!-- Main -->
-    <main class="p-[20px]">
+    <main class="flex-1 p-8 overflow-y-auto p-[20px]">
+
+        <button id="menu-toggle" class="lg:hidden text-gray-700 mb-4">
+            <i class="material-icons text-3xl">menu</i>
+        </button>
 
         <h1 class="text-[32px] font-bold">Gerenciar Turmas</h1>
 
@@ -89,6 +93,22 @@ require_once __DIR__ . '/../../models/config.php';
                 const textoLinha = linha.textContent.toLowerCase();
                 linha.style.display = textoLinha.includes(valorFiltro) ? '' : 'none';
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuClose = document.getElementById('menu-close');
+            if (menuToggle) {
+                menuToggle.addEventListener('click', () => {
+                    sidebar.classList.add('translate-x-0');
+                });
+            }
+            if (menuClose) {
+                menuClose.addEventListener('click', () => {
+                    sidebar.classList.remove('translate-x-0');
+                });
+            }
         });
     </script>
     
