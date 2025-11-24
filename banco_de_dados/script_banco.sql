@@ -158,6 +158,7 @@ ADD COLUMN tipo_entrega ENUM('texto', 'confirmacao') NOT NULL DEFAULT 'texto' AF
 INSERT INTO usuarios (nome, email, senha, telefone, endereco, tipo_usuario)
 VALUES
 ('Maria dos Santos', 'maria.santos@paroquia.com', '$2y$10$fEZ1LgNTGdjW0Tp9Oxqa.uyXmL8EBnV05/bOLBzq6if7oEwUGb4Di', '(14)98888-1111', 'Rua das Rosas, 45', 'coordenador');
+-- senha: admin123
 
 INSERT INTO etapas (nome_etapa, descricao)
 VALUES ('1º etapa', '1º etapa');

@@ -55,6 +55,11 @@ switch($urlLimpa)
         $controller->inicio();
     break;
 
+    case 'sobre':
+        $controller = new InicioController();
+        $controller->sobre();
+    break;
+
     case 'cadastro':
         $controller = new UsuarioController();
         $controller->cadastro();

@@ -38,7 +38,7 @@
 
         <!-- Seção de Entregas -->
         <div class="mt-8">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">Entregas dos Alunos</h2>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Entregas dos Catequizandos</h2>
 
             <?php if (isset($dados['mensagem'])): ?>
                 <div class="p-3 my-4 text-sm text-center rounded-lg 
@@ -51,7 +51,7 @@
             <?php if (empty($dados['respostas'])): ?>
                 
                 <p class="text-gray-600 p-4 bg-white rounded-lg shadow-md">
-                    Nenhum aluno enviou uma resposta para esta atividade ainda.
+                    Nenhum catequizando enviou uma resposta para esta atividade ainda.
                 </p>
 
             <?php else: ?>
@@ -61,7 +61,7 @@
                     <?php foreach ($dados['respostas'] as $resposta): ?>
                         <div class="bg-white p-6 rounded-lg shadow-md">
                             
-                            <!-- Cabeçalho da Resposta (Nome do Aluno) -->
+                            <!-- Cabeçalho da Resposta (Nome do Catequizando) -->
                             <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                                 <div class="flex items-center gap-3">
                                     <span class="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600 font-semibold">

@@ -41,6 +41,7 @@
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Paróquia</a></li>
                 <li><a href="#catequese">catequese</a></li>
+                <li><a class="uppercase" href="/cateclass-site/app/sobre">Sobre Nós</a></li>
             </ul>
 
         </nav>
@@ -169,8 +170,9 @@
                 <p class="uppercase font-bold mb-[20px]">Páginas</p>
                 <ul class="flex flex-col gap-[10px]">
                     <li><a class="uppercase" href="#inicio">Início</a></li>
-                    <li><a class="uppercase" href="#sobre">Sobre</a></li>                    
+                    <li><a class="uppercase" href="#sobre">Paróquia</a></li>                    
                     <li><a class="uppercase" href="#catequese">Catequese</a></li>
+                    <li><a class="uppercase" href="/cateclass-site/app/sobre">Sobre Nós</a></li>
                 </ul>
             </div>
         </div>
