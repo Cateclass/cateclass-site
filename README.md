@@ -174,7 +174,7 @@ a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessid
 
 ### 8. Modelo Conceitual 
 
-![modelo conceitual](/docs/modeloconceitual.png)
+![modelo conceitual](/docs/modeloconceitual.jpg)
 
 ---
 
