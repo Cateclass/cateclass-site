@@ -172,7 +172,9 @@ a visibilidade de mercado do cateclass mostra  que o sistema atende uma necessid
 
 ---
 
-### 8. Modelo Conceitual  
+### 8. Modelo Conceitual 
+
+![modelo conceitual](/docs/modeloconceitual.png)
 
 ---
 
@@ -246,7 +248,9 @@ Visão geral da plataforma, apresentando o resumo de dados, acesso a turmas e op
 ---
 
 ## 12. APLICAÇÃO  
-(Descrição da Aplicação)
+
+ o cateclass é uma aplicação web desenvolvida para facilitar a organização da catequese,oferecendo recursos como gerenciamento de turmas,envio de atividades,mural de avisos e comunicação entre catequistas e catequizando,a plataforma foi construída com tecnologias acessíveis como HTML,CSS,PHP E MYSQL,garatindo usabilidade e compatibilidade com computadores e celulares,seu design prioriza simplicidade,navegação intuitiva e fácil acesso ás principais funções,durante o desenvolvimento,form relizados testes internos para validar as funcionalidades e assegurar um uso eficiente,a aplicação representa uma solução prática,moderna e totalmente viável para paróquias e comunidades religiosas.
+ 
 
 ---
 
@@ -262,7 +266,7 @@ Visão geral da plataforma, apresentando o resumo de dados, acesso a turmas e op
  
   no próximo semestre,o cateclass deverá continuar crescendo,com a implementação de novas funço~es e melhorias,a ideia é evoluir o sistemas,deixar ele cada vez mais completo, interativo e próximo da realidade de quem vai utilizá-lo,queremos que o software continue sendo aprimorado a cada etapa,sempre com foco em oferecer uma ferramenta útil,prática e acolhedora.
   
- Por fim,fica o semtimento de dever cumprido e de gratidão,Mesmo com pouco tempo e muito desafios,o aprendizado foi enorme, o projeto nos mostrou que,com esforço e união,é possível transformar uma ideia simples em algo que poderealmente fazer a difeença, o cateclass é apenas o começo de um trabalho que ainda tem muito a evoluir e que certamente continuará crescendo junto com a nossa jornada como desenvolvedores.
+ Por fim,fica o semtimento de dever cumprido e de gratidão,Mesmo com pouco tempo e muito desafios,o aprendizado foi enorme, o projeto nos mostrou que,com esforço e união,é possível transformar uma ideia simples em algo que pode realmente fazer a diferença, o cateclass é apenas o começo de um trabalho que ainda tem muito a evoluir e que certamente continuará crescendo junto com a nossa jornada como desenvolvedores.
  
 ---
 
